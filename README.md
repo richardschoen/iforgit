@@ -1,9 +1,9 @@
 # iforgit
-Welcome to iForGit - Git Integration for IBM i
+Welcome to iForGit - Git Client for IBM i
 
 http://www.mobigogo.net/files/docs/iforgit
 
-iForGit is an IBM i specific source control application that allows Git to be more easily integrated with RDi development environments and traditional 5250 SEU development environments for working with source file members or IFS based source members and seamlessly integrating them a Git repository for version control.
+iForGit is an IBM i specific source control client application that allows Git to be more easily integrated with RDi development environments and traditional 5250 SEU development environments for working with source file members or IFS based source members and seamlessly integrating them a Git repository for version control.
 
 iForGit is a nice alternative to expensive version control systems because you can use your own choice of online or self-hosted repositories (Github, Gitlab, Bonobo Git Server (Windows), Bitbucket or any other Git source server) as well as their associated tools for tickets, project management, continuous integration with IBM i, other custom source management workflows and more.
 
