@@ -7,7 +7,7 @@ iForGit is an IBM i specific source control client application that allows Git t
 
 iForGit is a nice alternative to expensive version control systems because you can use your own choice of online or self-hosted repositories (Github, Gitlab, Bonobo Git Server (Windows), Bitbucket or any other Git source server) as well as their associated tools for tickets, project management, continuous integration with IBM i, other custom source management workflows and more.
 
-The process of source control can be made 100% transparent for SEU based developers so they don't have to remember to commit a source version. The STRSEUGIT command can be used to commit source members automatically any time they are edited with SEU.
+The process of source control can be made 100% transparent for SEU and RDi based developers so they don't have to remember to commit a source version. The STRSEUGIT command can be used to commit source members automatically any time they are edited with SEU.
 
 The SRCFRMGIT and SRCTOGIT commands also make checking out, committing or syncing source very easy from SEU, RDi or your own source build applications on IBM i.
 
