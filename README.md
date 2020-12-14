@@ -1,5 +1,5 @@
 # iforgit
-Welcome to iForGit - Git Client for IBM i 
+Welcome to iForGit - Git Client for IBM i Source Physical Files
 
 http://www.mobigogo.net/files/docs/iforgit
 
