@@ -3,7 +3,7 @@ Welcome to iForGit - Git Client for IBM i Source Physical Files
 
 http://www.mobigogo.net/files/docs/iforgit
 
-iForGit is an ***IBM i specific Git Client*** application that allows Git to be more easily integrated with RDi development environments and traditional 5250 SEU development environments for working with source file members or IFS based source members and seamlessly integrating them with a Git repository for version control and the ability to visually review and compare changes.
+iForGit is an ***IBM i Specific Git Client*** application that allows Git to be more easily integrated with RDi development environments and traditional 5250 SEU development environments for working with source file members or IFS based source members and seamlessly integrating them with a Git repository for version control and the ability to visually review and compare changes.
 
 The most common use case for this would be companies who have no IBM i source control systems in place, yet want to start doing more than just daily library backups. Or possibly there is a team of .Net or multi-platform developers using Git and the team wants to start managing IBM i source in the same place for compliance reasons.  
 
