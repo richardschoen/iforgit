@@ -23,7 +23,7 @@ IFORGIT/GITQSH CMDLINE('mkdir /testsite001;cd /testsite001;git init') DSPSTDOUT(
 
 ## Sample command sequence to perform a code commit of changed files to the git repository from /testsite001 IFS git repository directory
 
-This example can be run one or more times per day to commit individual source member changes.  It is a good idea to commit changes often to make sure you do not overwrite or lose any source changes. 
+This example can be run one or more times per day to commit individual source member changes for your IFS repository directory.  It is a good idea to commit changes often to make sure you do not overwrite or lose any source changes. 
 
 /* Add IBM Open Source Packages /QOpenSys/pkgs/bin to path for green screen job */
 /* Note: This command can be skipped if your user already has the path set. */
