@@ -10,11 +10,11 @@ The most common use case for this would be companies who have no IBM i source co
 
 iForGit is an affordable alternative to expensive version control systems because you can use your own choice of online or self-hosted repositories (Github, Gitlab, Bonobo Git Server (Windows), Bitbucket or any other Git source server) as well as their associated tools for tickets, project management, continuous integration with IBM i, other custom source management workflows and more. iForGit simply becomes the source control mechanism.
 
-The process of source control can initially be made 100% transparent for SEU and RDi based developers (using scheduled auto-commits) so they don't have to remember to commit a source version. The STRSEUGIT command can be used with PDM to edit a member with SEU and auto commit the source members automatically any time they are edited and saved with SEU.
+The process of source control can initially be made 100% transparent for SEU, RDi and VS Code based developers (using scheduled auto-commits) so they don't have to remember to commit a source version. The **STRSEUGIT** command can be used with PDM to edit a member with SEU and auto commit the source members automatically any time they are edited and saved with SEU.
 
-The SRCFRMGIT and SRCTOGIT commands also make checking out, committing or syncing source very easy from SEU, RDi or your own source build applications on IBM i.
+The **SRCFRMGIT** and **SRCTOGIT** commands also make checking out, committing or syncing source very easy from SEU, RDi or your own source build applications on IBM i.
 
-The SRCFRMSTMF and SRCTOSTMF commands also work for just simple importing and exporting of source members to the IFS for editing from the Integrated File System (IFS) and copying back to a source file.
+The **SRCFRMSTMF** and **SRCTOSTMF** commands also work for just simple importing and exporting of source members to the IFS for editing from the Integrated File System (IFS) and copying back to a source file.
 
 The initial command set provides Git editing integration, however other features such as a 5250 client, web client, continuous integration and object management commands will be added if we see demand for this.
 
