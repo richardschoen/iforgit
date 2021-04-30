@@ -26,5 +26,5 @@ IFORGIT/GITPATH
 
 /* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit"
 ```
-IFORGIT/GITQSH CMDLINE('cd /gitrepostest/testsite001;git add .;git commit -m "My Commit"') DSPSTDOUT(*YES)                                               
+IFORGIT/GITQSH CMDLINE('cd /testsite001;git add .;git commit -m "My Commit"') DSPSTDOUT(*YES)                                               
 ```
