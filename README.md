@@ -18,7 +18,9 @@ The SRCFRMSTMF and SRCTOSTMF commands also work for just simple importing and ex
 
 The initial command set provides Git editing integration, however other features such as a 5250 client, web client, continuous integration and object management commands will be added if we see demand for this.
 
+# iForGit web site
 Check out the http://iforgit.com site above and request a demo if you think it fits your IBM i source management needs.
 
+# Questions or issues
 If you have any questions or issues to report, please use this repository. This site is also where source examples for using iForgit will be posted as documents.
 
