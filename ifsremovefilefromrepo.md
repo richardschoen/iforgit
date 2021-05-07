@@ -3,7 +3,7 @@ This document illustrates a sample for removing an existing source member from a
 
 This step **DOES NOT remove the member from the associated IBM i source file** if the source member happens to live in an IBM i source file as well. The source member will still need to be deleted from the IBM if the source member is no longer needed.
 
-## Sample command sequence to delete a single source member form a repository
+## Sample CL command sequence to delete a single source member form a repository
 
 This example deletes an individual source member named: creates an IFS repository named: **/testsite001/QCLSRC/sample001.clp**
 
