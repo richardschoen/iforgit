@@ -16,10 +16,12 @@ The **SRCFRMGIT** and **SRCTOGIT** commands also make checking out, committing o
 
 The **SRCFRMSTMF** and **SRCTOSTMF** commands also work for just simple importing and exporting of source members to the IFS for editing from the Integrated File System (IFS) and copying back to a source file.
 
+The **GITCMD** and **GITQSH** command can also be used to run general git commands over an IFS git repository from a traditional IBM i job stram if you're managing traditional PC-style git repositories in the Integrated File System (IFS)
+
 The initial command set provides Git editing integration, however other features such as a 5250 client, web client, continuous integration and object management commands will be added if we see demand for this.
 
 # iForGit web site
-Check out the http://iforgit.com site above and request a demo if you think it fits your IBM i source management needs.
+Check out the http://iforgit.com site above and request a demo if you think it might fit your IBM i source management needs.
 
 # Other helpful git links
 
