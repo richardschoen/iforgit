@@ -23,7 +23,7 @@ Check out the http://iforgit.com site above and request a demo if you think it f
 
 # Other helpful git links
 
-Git documentation
+Git documentation\
 https://git-scm.com/docs
 
 # Questions or issues
