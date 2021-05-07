@@ -7,7 +7,8 @@ This step **DOES NOT remove the member from the associated IBM i source file** i
 
 This example deletes an individual source member named: creates an IFS repository named: **/testsite001/QCLSRC/sample001.clp**
 
-Add IBM Open Source Packages /QOpenSys/pkgs/bin to path for green screen job 
+Add IBM Open Source Packages /QOpenSys/pkgs/bin to path for green screen job
+
 Note: This command can be skipped if your user already has the path set.     
 ```
 IFORGIT/GITPATH          
