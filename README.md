@@ -20,6 +20,12 @@ The **GITCMD** and **GITQSH** command can also be used to run general git comman
 
 The initial command set provides Git editing integration, however other features such as a 5250 client, web client, continuous integration and object management commands will be added if we see demand for this.
 
+# iForGit Wiki Page for KB Articles
+https://github.com/richardschoen/iforgit/wiki
+
+# iForgit Issues Page to Report Issues
+https://github.com/richardschoen/iforgit/issues
+
 # iForGit web site
 Check out the http://iforgit.com site above and request a demo if you think it might fit your IBM i source management needs.
 
