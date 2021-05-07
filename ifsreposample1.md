@@ -35,4 +35,4 @@ IFORGIT/GITPATH
 /* using the GITQSH command to run the QShell commands. Display the log on screen. */
 ```
 IFORGIT/GITQSH CMDLINE('cd /testsite001;git add .;git commit -m "My Commit"') DSPSTDOUT(*YES)                                               
-```
+``` 
