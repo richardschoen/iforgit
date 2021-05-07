@@ -21,6 +21,11 @@ The initial command set provides Git editing integration, however other features
 # iForGit web site
 Check out the http://iforgit.com site above and request a demo if you think it fits your IBM i source management needs.
 
+# Other helpful git links
+
+Git documentation
+https://git-scm.com/docs
+
 # Questions or issues
 If you have any questions or issues to report, please use this repository or email support: info@mobigogo.net. This site is also where source examples for using iForgit will be posted as documents.
 
