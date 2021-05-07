@@ -23,7 +23,7 @@ The initial command set provides Git editing integration, however other features
 # iForGit Wiki Page for KB Articles
 https://github.com/richardschoen/iforgit/wiki
 
-# iForgit Issues Page to Report Issues
+# iForGit Issues Page to Report Issues
 https://github.com/richardschoen/iforgit/issues
 
 # iForGit web site
