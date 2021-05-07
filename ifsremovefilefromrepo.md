@@ -23,3 +23,7 @@ The above command changes to the git repository directory where the IFS source m
 
 For more info on the ```git rm``` command, check out the following link: https://git-scm.com/docs/git-rm
  
+## Purging a file permanantly from a repository
+Distributed version control isn't designed to allow folks to delete every instance of a file. But, if you run into a case where you need to expunge a file in git, here is an example of how to did it.\
+https://chrisshort.net/permanently-remove-any-record-of-a-file-from-git/
+
