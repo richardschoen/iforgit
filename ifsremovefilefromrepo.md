@@ -22,3 +22,4 @@ IFORGIT/GITQSH CMDLINE('cd /testsite001/QCLSRC;git rm sample001.clp;git add .;gi
 The above command changes to the git repository directory where the IFS source member lives, then issues the ```git rm``` command to mark the file for deletion from the repository. Then the ```git add .``` and ```git commit``` commands are executed to commit the changes to the repository. 
 
 For more info on the ```git rm``` command, check out the following link: https://git-scm.com/docs/git-rm
+ 
