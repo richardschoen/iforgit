@@ -20,7 +20,7 @@ The ```GITCMD``` and ```GITQSH``` command can also be used to run general git co
 
 The initial command set provides Git editing integration, however other features such as a 5250 client, web client, continuous integration and object management commands will be added if we see demand for this.
 
-# iForGit Documentation Sites
+# iForGit Documentation Site
 https://www.mobigogo.net/files/docs/iforgit
 
 # iForGit Wiki Page for KB Articles
