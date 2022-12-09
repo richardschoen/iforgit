@@ -18,10 +18,20 @@ The ```SRCFRMSTMF``` and ```SRCTOSTMF``` commands also work for just simple impo
 
 The ```GITCMD``` and ```GITQSH``` command can also be used to run general git commands over an IFS git repository from a traditional IBM i job stram if you're managing traditional PC-style git repositories in the Integrated File System (IFS)
 
+The ```SRCGITCMD``` command can be used to do view or check out old versions of a source member using the the SRCGITCMD CL command itself in a process or interactively as a PDM option or RDI user action:  
+Perform a ```git log``` command to see how many times a member has been committed and determine the git commit hash for checking out the member from your git repository.  
+Perform a ```git blame``` command to show a consolodated view of the selected source member commits to determine what older version you may want to view or restore.
+Perform a ```git diff``` command for a selected hash to see what has changed.  
+Perform a ```git show``` command for a selected hash to show that version of the source member.  
+Perform a ```git checkout``` command to check out a selected older version of a source member to a selected source physical file for viewing or working with it via PDM or RDI.  
+
 The initial command set provides Git editing integration, however other features such as a 5250 client, web client, continuous integration and object management commands will be added if we see demand for this.
 
 # iForGit Documentation Site
 https://www.mobigogo.net/files/docs/iforgit
+
+
+
 
 # iForGit Wiki Page for KB Articles
 https://github.com/richardschoen/iforgit/wiki
