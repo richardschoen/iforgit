@@ -51,6 +51,14 @@ If you have any questions or issues to report, please use this repository or ema
 
 # iForgit CL Commands
 
+# SRCTOGIT - Export Member to Git Repo DIrectory
+This CL command can be used to export/commit source member changes to the associated git repository.  
+
+# SRCFRMGIT - Import Member from Git Repo DIrectory
+This CL command can be used to import most recent commit versionfrom the associated git repository.  
+
+If you want to import a specific version based on its commit hash, you can use the SRCGITCMD option with *CHECKOUT as the option and specify a destination source file and member.  
+
 # SRCGITCMD - Run Git Cmd Against Repo Mbr  
 This CL command can be used to view older git versions or check out an individual source member to a source physical file for viewing/editing.
 
