@@ -50,3 +50,57 @@ https://git-scm.com/docs
 # Questions or issues
 If you have any questions or issues to report, please use this repository or email support: info@mobigogo.net. This site is also where source examples for using iForgit will be posted as documents.
 
+# iForgit CL Commands
+
+# Using the SRCGITCMD CL command to view older git versions or check out an individual source member to a source physical file for viewing/editing.
+
+The following example checks out a copy of the selecte source member to a source file named TMPSOURCE in library QTEMP. The source member is then viewed via SEU. 
+
+ ``` 
+      IFORGIT/SRCGITCMD SRCFILE(RJSDEVMB/SRCGIT)           
+      SRCMBR(AAAAAAAXC)                  
+      IFSREPODIR(*LIBREPODTAARA)         
+      SRCOPTION(*CHECKOUT)               
+      SRCHASH(' ')                       
+      DSPSTDOUT(*NO)                     
+      DSPCHKOUT(*BROWSE)                 
+```
+
+# SRCGITCMD command parms
+
+**Overview** - This CL command command to view older git versions or check out an individual source member to a source physical file for viewing/editing.
+
+```
+**SRCFILE** - The source file to work with via the associated iForGit git repository. 
+
+**SRCMBR** - The source mmmber to work with via the associated iForGit git repository. 
+
+**IFSREPODIR** - The destination git repo IFS directory. This directory contains the path to the library's git directory associated with the library. Default - *LIBREPODTAARA points to the GITREPODIR data are in the source library specified on the SRCFILE parameter.
+
+**SRCOPTION** - This is the git option to perform on the selected source member.  
+*SHOW      
+*BLAME     
+*DIFF      
+*LOG       
+*CHECKOUT  
+
+**SRCHASH - Source version hash to check out, view of compare. Use *BLAME or *LOG to determine available hash versions. Or you can use any of the git command options in PASE/SSH if you like the git to determine the hash version for a commit or source member.
+
+**DEBUGQSSH** - Prompt GITQSH command to see the full git command line that gets generated. Only use this option interacively from a 5250 session for debugging purposes. Default-*NO
+ 
+**DSPSTDOUT** - Display the outfile contents. Nice when debugging. 
+
+**LOGSTDOUT** - Place STDOUT log entries into the current jobs job log. Use this if you want the log info in the IBM i joblog. All STDOUT entries are written as CPF message: **QSS9898**
+
+**PRTSTDOUT** - Print STDOUT to a spool file. Use this if you want a spool file of the log output.
+
+**DLTSTDOUT** - This option insures that the STDOUT IFS temp files get cleaned up after processing. All IFS log files get created in the /tmp/qsh directory.
+
+**DSPCHKOUT** - Display checked out source member once checkout is complete.  Default - *NONE  
+Options:  
+*NONE - Don't display the checked out source member after checkout when *CHECKOUT is is used for the SRCOPTION parameter.  
+*BROWSE - Launch the source member for browsing via the SEU editor.      
+*EDIT -  Launch the source member for editing via the SEU editor.  
+*PDM - Perform a WRKMBRPDM on the source member so it gets listed in PDM. Then PDM actions can be performed on the source member.  
+
+
