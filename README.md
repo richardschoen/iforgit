@@ -96,10 +96,10 @@ The following example checks out a copy of the selecte source member to a source
 
 **DLTSTDOUT** - This option insures that the STDOUT IFS temp files get cleaned up after processing. All IFS log files get created in the /tmp/qsh directory.
 
-**DSPCHKOUT** - Display checked out source member once checkout is complete.  Default - *NONE  
+**DSPCHKOUT** - Display checked out source member once checkout is complete if the SRCOPTION-*CHECKOUT is used to check out a git repo member.  Default - *NONE  
 
 Options:  
-```*NONE``` - Don't display the checked out source member after checkout when *CHECKOUT is used for the SRCOPTION parameter. Just create the source member, but don't view it.   
+```*NONE``` - Don't display the checked out source member after checkout when *CHECKOUT is used for the SRCOPTION parameter. Just cjeck out and create the selected source member, but don't view it.   
 ```*BROWSE``` - Open the source member for browsing via the SEU editor. If *NONE is specified for the DESTOPT parameter, the member created in QTEMP/TMPSOURCE named: TEMPSOURCE will be viewed. If *ADD/REPLACE is selected, the member specified in the DESTFILE/DESTMBR parameter will be used.  
 ```*EDIT``` -  Launch the source member for editing via the SEU editor.  If *NONE is specified for the DESTOPT parameter, the member created in QTEMP/TMPSOURCE named: TEMPSOURCE will be edited. If *ADD/REPLACE is selected, the member specified in the DESTFILE/DESTMBR parameter will be used.  
 ```*PDM``` - Perform a WRKMBRPDM command on the source member so it gets listed in PDM. Then PDM actions can be performed on the source member.  If *NONE is specified for the DESTOPT parameter, the member created in QTEMP/TMPSOURCE named: TEMPSOURCE will be listed via WRKPBMPDM. If *ADD/REPLACE is selected, the member specified in the DESTFILE/DESTMBR parameter will be used.  
