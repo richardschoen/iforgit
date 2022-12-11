@@ -1,5 +1,4 @@
-# iforgit
-Welcome to iForGit - Git Client for IBM i Source Physical Files
+# Welcome to iForGit - Git Client for IBM i Source Physical Files
 
 http://www.iforgit.com  
 http://www.mobigogo.net/files/docs/iforgit
@@ -70,7 +69,6 @@ The following example checks out a copy of the selecte source member to a source
 
 **Overview** - This CL command command to view older git versions or check out an individual source member to a source physical file for viewing/editing.
 
-```
 **SRCFILE** - The source file to work with via the associated iForGit git repository. 
 
 **SRCMBR** - The source mmmber to work with via the associated iForGit git repository. 
@@ -84,7 +82,7 @@ The following example checks out a copy of the selecte source member to a source
 *LOG       
 *CHECKOUT  
 
-**SRCHASH - Source version hash to check out, view of compare. Use *BLAME or *LOG to determine available hash versions. Or you can use any of the git command options in PASE/SSH if you like the git to determine the hash version for a commit or source member.
+**SRCHASH** - Source version hash to check out, view of compare. Use *BLAME or *LOG to determine available hash versions. Or you can use any of the git command options in PASE/SSH if you like the git to determine the hash version for a commit or source member.
 
 **DEBUGQSSH** - Prompt GITQSH command to see the full git command line that gets generated. Only use this option interacively from a 5250 session for debugging purposes. Default-*NO
  
@@ -97,10 +95,23 @@ The following example checks out a copy of the selecte source member to a source
 **DLTSTDOUT** - This option insures that the STDOUT IFS temp files get cleaned up after processing. All IFS log files get created in the /tmp/qsh directory.
 
 **DSPCHKOUT** - Display checked out source member once checkout is complete.  Default - *NONE  
+
 Options:  
 *NONE - Don't display the checked out source member after checkout when *CHECKOUT is is used for the SRCOPTION parameter.  
 *BROWSE - Launch the source member for browsing via the SEU editor.      
 *EDIT -  Launch the source member for editing via the SEU editor.  
 *PDM - Perform a WRKMBRPDM on the source member so it gets listed in PDM. Then PDM actions can be performed on the source member.  
+
+**DESTFILE** - Checkout to destination source file. The source file the checked out git member placed in after it has been checked out from the git repository. If DESTOPT - *NONE is specified, the source member only gets checked out to temporary file ```QTEMP/TMPSOURCE``` with member name ```TMPSOURCE```. *NONE insures that only temporary members are generated in library QTEMP and not persisted outside of library QTEMP.  
+Default: QTEMP/TMPSOURCE
+
+**DESTMBR** - The source mmmber the checked out git member gets placed in to. Default - TMPSOURCE2
+
+**DESTOPT** - Add or replace member records in the destination source file member. Default - *NONE  
+  
+Options:
+*NONE - The source member only gets checked out to temporary file ```QTEMP/TMPSOURCE``` with member name ```TMPSOURCE```. *NONE insures that only temporary members are generated in library QTEMP and not persisted outside of library QTEMP.
+*ADD - If *ADD is specified, the source member gets auto-created in QTEMP/TMPSOURCE but then gets copied/persisted to the source file specified in the DESTFILE/DESTMBR option and records are added during the source copy. This allows a single destination source member to receive the contents of multiple versions of a git source member if desired.  
+*REPLACE - If *REPLACE is specified, the source member gets auto-created in QTEMP/TMPSOURCE but then gets copied/persisted to the source file specified in the DESTFILE/DESTMBR option and records are replaced during the source copy. This allows a single destination source member to receive the contents of a single git source member.  
 
 
