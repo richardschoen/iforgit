@@ -19,7 +19,7 @@ The ```GITCMD``` and ```GITQSH``` command can also be used to run general git co
 
 The ```SRCGITCMD``` command can be used to view or check out old versions of a source member using the the SRCGITCMD CL command itself in a process or interactively as a PDM option or RDI user action. The following options are currently supported:   
 Perform a ```git log``` command to see how many times a member has been committed and determine the git commit hash for checking out the member from your git repository.  
-Perform a ```git blame``` command to show a consolodated view of the selected source member commits to determine what older version you may want to view or restore.
+Perform a ```git blame``` command to show a consolidated view of the selected source member commits to determine what older version you may want to view or restore.
 Perform a ```git diff``` command for a selected hash to see what has changed.  
 Perform a ```git show``` command for a selected hash to show that version of the source member.  
 Perform a ```git checkout``` command to check out a selected older version of a source member to a selected source physical file for viewing or working with it via PDM or RDI.  
