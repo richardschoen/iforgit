@@ -93,9 +93,7 @@ The following example checks out a copy of the selecte source member to a source
 
 ```*SHOW``` - This option displays the entire source file contents for a specific commit level. You must specify a member commit hash value or *MOSTRECENT in the SRCHASH parameter to show the most recent version file version.  
 
-```*DIFF``` - This option does a diff based on the most recent version compared with the selected hash version. You must specify a member commit hash value or 
-
-```*MOSTRECENT``` in the SRCHASH parameter to show the most recent version file version.  
+```*DIFF``` - This option does a diff based on the most recent version compared with the selected hash version. You must specify a member commit hash value or ```*MOSTRECENT``` in the SRCHASH parameter to show the most recent version file version.  
 
 ```*LOG```  -  Display the commit log along with the commit hash values for each commit of the source member. The folloing log values are displayed: commit hash, author info who performed the commit, commit date/time and comment. The full commit hash or the first 8 characters of the hash can be copied for use with the *CHECKOUT option to check out a source member version based on its commit hash value.  
 
