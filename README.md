@@ -26,7 +26,8 @@ Perform a ```git checkout``` command to check out a selected older version of a 
 
 The initial command set provides Git editing integration, however other features such as a 5250 client, web client, continuous integration and object management commands will be added if we see demand for this.
 
-# iForGit Documentation Site
+# iForGit Documentation Sitecommand to check out a selected older version of a source member to a selected source physical file for viewing or working with it via PDM or RDI.  
+
 https://www.mobigogo.net/files/docs/iforgit
 
 
@@ -80,17 +81,25 @@ The following example checks out a copy of the selecte source member to a source
 
 **SRCFILE** - The source file to work with via the associated iForGit git repository. 
 
-**SRCMBR** - The source mmmber to work with via the associated iForGit git repository. 
+**SRCMBR** - The source member to work with via the associated iForGit git repository. 
 
 **IFSREPODIR** - The destination git repo IFS directory. This directory contains the path to the library's git directory associated with the library. Default - *LIBREPODTAARA points to the GITREPODIR data are in the source library specified on the SRCFILE parameter.
 
-**SRCOPTION** - This is the git option to perform on the selected source member.  
+**SRCOPTION** - This is the git option to perform on the selected source member. 
+
 ```*BLAME``` - This option displays the entire source member change history in a consolidated view along with the short commit hash value and author name. This is good for getting a quick look at the commit history for a source member and knowing who performed each commit.  
+
 ```*BLAMELONG``` - This option displays the entire source member change history in a consolidated view along with the full commit hash value and author name. This is good for getting a quick look at the commit history for a source member and knowing who performed each commit.  
-```*SHOW``` - This option displays the entire source file contents for a specific commit level. You must specify a member commit hash value or *MOSTRECENT in the SRCHASH parameter to show the most recent version file version.
-```*DIFF``` - This option does a diff based on the most recent version compared with the selected hash version. You must specify a member commit hash value or ```*MOSTRECENT``` in the SRCHASH parameter to show the most recent version file version.
-```*LOG```  -  Display the commit log along with the commit hash values for each commit of the source member. The folloing log values are displayed: commit hash, author info who performed the commit, commit date/time and comment. The full commit hash or the first 8 characters of the hash can be copied for use with the *CHECKOUT option to check out a source member version based on its commit hash value. 
-```*CHECKOUT``` - Check out a selected commit version of a source member. You must specify a member commit hash value or blanks to check out most recent version in the SRCHASH parameter. The selected git version source file will get automatically populated into the following source member in library QTEMP for each user: QTEMP/TMPSOURCE. Member: TMPSOURCE
+
+```*SHOW``` - This option displays the entire source file contents for a specific commit level. You must specify a member commit hash value or *MOSTRECENT in the SRCHASH parameter to show the most recent version file version.  
+
+```*DIFF``` - This option does a diff based on the most recent version compared with the selected hash version. You must specify a member commit hash value or 
+
+```*MOSTRECENT``` in the SRCHASH parameter to show the most recent version file version.  
+
+```*LOG```  -  Display the commit log along with the commit hash values for each commit of the source member. The folloing log values are displayed: commit hash, author info who performed the commit, commit date/time and comment. The full commit hash or the first 8 characters of the hash can be copied for use with the *CHECKOUT option to check out a source member version based on its commit hash value.  
+
+```*CHECKOUT``` - Check out a selected commit version of a source member. You must specify a member commit hash value or blanks to check out most recent version in the SRCHASH parameter. The selected git version source file will get automatically populated into the following source member in library QTEMP for each user: QTEMP/TMPSOURCE. Member: TMPSOURCE  
 
 **SRCHASH** - Source version hash to check out, view of compare. Use *BLAME or *LOG to determine available hash versions. Or you can use any of the git command options in PASE/SSH if you like the git to determine the hash version for a commit or source member.
 
@@ -108,8 +117,11 @@ The following example checks out a copy of the selecte source member to a source
 
 Options:  
 ```*NONE``` - Don't display the checked out source member after checkout when *CHECKOUT is used for the SRCOPTION parameter. Just cjeck out and create the selected source member, but don't view it.   
+
 ```*BROWSE``` - Open the source member for browsing via the SEU editor. If *NONE is specified for the DESTOPT parameter, the member created in QTEMP/TMPSOURCE named: TEMPSOURCE will be viewed. If *ADD/REPLACE is selected, the member specified in the DESTFILE/DESTMBR parameter will be used.  
+
 ```*EDIT``` -  Launch the source member for editing via the SEU editor.  If *NONE is specified for the DESTOPT parameter, the member created in QTEMP/TMPSOURCE named: TEMPSOURCE will be edited. If *ADD/REPLACE is selected, the member specified in the DESTFILE/DESTMBR parameter will be used.  
+
 ```*PDM``` - Perform a WRKMBRPDM command on the source member so it gets listed in PDM. Then PDM actions can be performed on the source member.  If *NONE is specified for the DESTOPT parameter, the member created in QTEMP/TMPSOURCE named: TEMPSOURCE will be listed via WRKPBMPDM. If *ADD/REPLACE is selected, the member specified in the DESTFILE/DESTMBR parameter will be used.  
 
 **DESTFILE** - Checkout to destination source file. This is source file the checked out git member placed in after it has been checked out from the git repository if DESTOPT-*ADD/*REPLACE is selected. If DESTOPT - *NONE is specified, the source member only gets checked out to temporary file ```QTEMP/TMPSOURCE``` name ```TMPSOURCE```. *NONE insures that only temporary members are generated in library QTEMP and not persisted outside of library QTEMP.  
@@ -121,9 +133,10 @@ This option is useful if you want to persist a checked out source member in a so
 
 **DESTOPT** - Add or replace member records in the destination source file member. Default - *NONE  
   
-Options:  
 ```*NONE``` - The source member only gets checked out to temporary file ```QTEMP/TMPSOURCE``` with member name ```TMPSOURCE```. *NONE insures that only temporary members are generated in library QTEMP and not persisted outside of library QTEMP.  
+
 ```*ADD``` - If *ADD is specified, the source member gets auto-created in QTEMP/TMPSOURCE but then gets copied/persisted to the source file specified in the DESTFILE/DESTMBR option and records are added during the source copy. This allows a single destination source member to receive the contents of multiple versions of a git source member if desired.   
+
 ```*REPLACE``` - If *REPLACE is specified, the source member gets auto-created in QTEMP/TMPSOURCE but then gets copied/persisted to the source file specified in the DESTFILE/DESTMBR option and records are replaced during the source copy. This allows a single destination source member to receive the contents of a single git source member.    
 
 
