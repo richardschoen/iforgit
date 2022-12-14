@@ -1,4 +1,6 @@
-# Welcome to iForGit - Git Client for IBM i Source Physical Files
+# Start Managing IBM i Source Members with Git in 10 Minutes
+
+Welcome to iForGit - Git Client for IBM i Source Physical Files
 
 http://www.iforgit.com  
 http://www.mobigogo.net/files/docs/iforgit
