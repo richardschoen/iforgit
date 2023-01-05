@@ -1,0 +1,12 @@
+## PDM User Defined Options for iForGit
+
+# GB - Git Blame  
+
+```aaa```
+
+```IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) 
+SRCOPTION(*BLAME) SRCHASH(*MOSTRECENT) DSPSTDOUT(*YES)```
+  
+  
+  
+  
