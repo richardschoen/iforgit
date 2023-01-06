@@ -4,7 +4,7 @@ The following are sample PDM User Defined Options that can be used with the iFor
 You can use the sample PDM option names provided or create your own as desired.  
 
 # Exporting and Import Source Member Changes from a Git Repository 
-The ```SRCTOGIT``` command is used to commit member changes to a git repository.  It's the priomary command most developers will use to commit changes for a source member to the selected library's git repository.
+The ```SRCTOGIT``` command is used to commit member changes to a git repository.  This is the primary command most developers will use to commit changes for a source member to the selected library's git repository from PDM, RDI or VS Code. 
 
 The ```SRCFRMGIT``` command can get back the most recent comcmint from a repository.  
 
@@ -31,7 +31,7 @@ SRCTYPE('&T') SRCDATSEQ(*NO) VALIDREPO(*YES) COMMITOPT(*COMMIT)
 ```
 
 # Granular Git Member Processing with CL command SRCGITCMD
-The ```SRCGITCMD``` command can be used to view or check out old versions of a source member using the the SRCGITCMD CL command itself in a process or interactively as a PDM option or RDI user action. Perform tasks such as Viewing Git History, Performing Diff or Blame operations and Checking Out/Restoring an Old Versions to a library for viewing or editing.
+The ```SRCGITCMD``` command can be used to view or check out specific old versions of a source member using the the SRCGITCMD CL command itself in a process or interactively as a PDM option or RDI user action. Perform tasks such as Viewing Git History, Performing Diff or Blame operations and Checking Out/Restoring an Old Versions to a library for viewing or editing.
 
 ## Option - GL - Perform a Git Log on Source Member
 Perform a git log command to see how many times a member has been committed and determine the git commit hash for checking out a selected member version from your git repository. 
