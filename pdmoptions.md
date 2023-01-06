@@ -8,7 +8,7 @@ The ```SRCTOGIT``` command is used to commit member changes to a git repository.
 
 The ```SRCFRMGIT``` command can get back the most recent comcmint from a repository.  
 
-## GE - Export Source Member to Git 
+## Option GE - Export Source Member to Git 
 Use this option to send and commit current source member version to the git repository.
 
 Option *COMMIT will just commit to the IFS repository.  
@@ -20,7 +20,7 @@ IFORGIT/SRCTOGIT SRCFILE(&L/&F) SRCMBR(&N) SRCHEADER(*YES) SRCDATSEQ(*NO) REPLAC
 EDITOPT(*NONE) VALIDREPO(*YES) IFSMKDIR(*YES) INITREPO(*YES) COMMITOPT(*COMMIT) COMMENT(*DATEUSER)  
 ```
 
-## GI - Import Source Member from Git Repository
+## Option GI - Import Source Member from Git Repository
 Use this option to import most recent commit back to the library source member and overlay the existing source member. It's a great way to recover an entire source member if something was messed up during editing.   
 
 Note: Use the ```SRCGITCMD``` command with the *CHECKOUT option to  check out a specific source member version commit based on its source hash instead of just grabbing the most reent version.  
