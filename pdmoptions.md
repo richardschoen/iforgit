@@ -34,7 +34,7 @@ SRCTYPE('&T') SRCDATSEQ(*NO) VALIDREPO(*YES) COMMITOPT(*COMMIT)
 The ```SRCGITCMD``` command can be used to view or check out specific old versions of a source member using the the SRCGITCMD CL command itself in a process or interactively as a PDM option or RDI user action. Perform tasks such as Viewing Git History, Performing Diff or Blame operations and Checking Out/Restoring an Old Versions to a library for viewing or editing.
 
 ## Option - GL - Perform a Git Log on Source Member
-Perform a git log command to see how many times a member has been committed and determine the git commit hash for checking out a selected member version from your git repository. 
+Perform a git log command to see how many times a member has been committed and determine the git commit hash for checking out a selected member version from your git repository with the *BLAME option.
 
 Command: ```IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*LOG) DSPSTDOUT(*YES)```
 
