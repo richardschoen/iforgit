@@ -41,7 +41,7 @@ Command: ```IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAAR
 ## Option GC - Perform Git Checkout and View of Source Member
 Perform a ```git checkout``` command to check out a selected older version of a source member to a selected source physical file for viewing or working with it via PDM or RDI. By default the source member gets checked out to file: ```QTEMP/TMPSOURCE``` member: ```TMPSOURCE``` for being viewed via SEU and is displayed via SEU after checkout.   
 
-If you want to select a specific git hash to check out, run the GL option first to determine which hash version you want. Or determine the hash from your git repository and then prompt for the SRCGITCOMD using F4 to enter the specific hash or partial hash to retrieve from the repo. Blanks in SRCHASH will get the most recent commit version and display it.  
+If you want to select a specific git hash to check out, run the GL option first to determine which hash version you want. Or determine the hash from your git repository and then prompt for the SRCGITCOMD using F4 to enter the specific hash or partial hash to retrieve from the repo. Blanks in SRCHASH will get the most recent commit version and display it.   
 
 Note: This command can also be used to checkout the selected version and restore to the original source location or another specific work library iF the ```DESTFILE/DESTMBR``` parameters are specified. 
 
