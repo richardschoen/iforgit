@@ -5,8 +5,14 @@ Implement Git for your Classic IBM i Source Version Control in Minutes
 
 ## Welcome to iForGit - Git Client for IBM i Source Physical Files  
 
+iForGit Home Page
 http://www.iforgit.com  
+
+Visit the iForGit Documentation
 http://www.mobigogo.net/files/docs/iforgit
+
+Request an iForGit Demo  
+https://www.mobigogo.net/files/docs/iforgit/ibmilibraryinstallandlicensing.htm
 
 ## Overview
 Git is the most popular source control versioning tool available for developers today. Git has been available natively on IBM i for IFS source management for several years. The biggest challenge with using Git for traditional IBM i developers has been the lack of seamless integration and management of SEU, PDM and source physical files with a Git repository for classic 5250 based source version control. RDi developers have tried iProjects and other methods to manage source in the IFS, but the result is often a complex and frustrating edit, compile and commit workflow experience that doesn’t feel natural because of the many manual steps.  
