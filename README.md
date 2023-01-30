@@ -198,7 +198,7 @@ IFORGIT/LIBSRCEXP LIBRARY(MYLIB)
           JOBMSGQFUL(*WRAP)               
 ```
 
-# Initializing or refreshing git repository with all source members - SAMPLE
+# Initializing or refreshing git repository with all source members for a library - SAMPLE
 This example call to LIBSRCEXP illustrates how to export copies of all source members in a library to a git repository and auto-create the repository when setting up a repo for the first time. This command can also be run at the end of each month in case any source changes fall out of the 7 day rolling commit window and you didn't run the LIBSRCEXP with ```*ROLLING7``` every day for some reason. ```*ALL``` will catch up the git repository for any changes that may have been previously missed if you missed your daily commit schedule.   
 
 The LIBSRCEXP command can be placed on the job scheduler to run one or more times per day to passively capture source member changes to git. Developers don't have to initially change their existing edit, compile processes until they are ready to start doing individual source changes commts after editing to start maintaining a more granular source member change history.   
