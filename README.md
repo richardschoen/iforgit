@@ -174,4 +174,54 @@ This option is useful if you want to persist a checked out source member in a so
 
 ```*REPLACE``` - If *REPLACE is specified, the source member gets auto-created in QTEMP/TMPSOURCE but then gets copied/persisted to the source file specified in the DESTFILE/DESTMBR option and records are replaced during the source copy. This allows a single destination source member to receive the contents of a single git source member.    
 
+# Automatic Rolling 7 Day Commits for a library - SAMPLE
+This example illustrates how to do a passive rolling 7 day commit of source member changes.   
+
+This can be placed on the job scheduler to run one or more times per day to passively capture source member changes to git. Developers don't have to change their existing edit, compile process at all initially.   
+
+Source member comments will be timestamped with the IBM i job data and user ID who ran the job.   
+
+```
+IFORGIT/LIBSRCEXP LIBRARY(MYLIB)                  
+          FILE(*ALL)                      
+          STARTDATE(*LAST7)               
+          ENDDATE(*STARTDATE)             
+          IFSREPODIR(*LIBREPODTAARA)      
+          SRCHEADER(*YES)                 
+          REPLACE(*YES)                   
+          VALIDREPO(*YES)                 
+          IFSMKDIR(*YES)                  
+          INITREPO(*YES)                  
+          COMMITOPT(*COMMITSYNC)          
+          COMMENT(*DATEUSER)              
+          AUTHORITY(*INDIR)               
+          JOBMSGQFUL(*WRAP)               
+```
+
+# Initializing or refreshing git repository with all source members - SAMPLE
+This example illustrates how to export copies of all source members to a git repository and auto-create the repository when setting up a repo for the first time. This command can also be run at the end of each month in case any source changes fall out of the 7 day rolling commit window and you didn't run the LIBSRCEXP with *ROLLING7 for some reason. It will catch up the git repository for any changes tat may have been previously missed if you broke you daily commit schedule.   
+
+This can be placed on the job scheduler to run one or more times per day to passively capture source member changes to git. Developers don't have to change their existing edit, compile process at all initially.     
+  
+  
+Source member comments will be timestamped with the IBM i job data and user ID who ran the job.    
+   
+```
+IFORGIT/LIBSRCEXP LIBRARY(MYLIB)                  
+          FILE(*ALL)                      
+          STARTDATE(*ALL)               
+          ENDDATE(*STARTDATE)             
+          IFSREPODIR(*LIBREPODTAARA)      
+          SRCHEADER(*YES)                 
+          REPLACE(*YES)                   
+          VALIDREPO(*YES)                 
+          IFSMKDIR(*YES)                  
+          INITREPO(*YES)                  
+          COMMITOPT(*COMMITSYNC)          
+          COMMENT(*DATEUSER)              
+          AUTHORITY(*INDIR)               
+          JOBMSGQFUL(*WRAP)               
+```
+
+
 
