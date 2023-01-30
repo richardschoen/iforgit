@@ -175,11 +175,11 @@ This option is useful if you want to persist a checked out source member in a so
 ```*REPLACE``` - If *REPLACE is specified, the source member gets auto-created in QTEMP/TMPSOURCE but then gets copied/persisted to the source file specified in the DESTFILE/DESTMBR option and records are replaced during the source copy. This allows a single destination source member to receive the contents of a single git source member.    
 
 # Automatic Rolling 7 Day Source Change Commits for a library - SAMPLE
-This example call to the LIBSRCEXP command illustrates how to do a passive rolling 7 day commit of source member changes. This is a great way to auto-commit any outstanding member changes daily if developers miss or don't do any commits during the day. Change commits should be captured as often as possible to keep ongoing change history current in case of the need to roll back changes. Individual member commits are usually done with the SRCTOGIT command which is used to commit changes for an individual source member to a git repository.
+This example call to the LIBSRCEXP command illustrates how to do a passive rolling 7 day commit of source member changes for a library. This is a great way to auto-commit any outstanding member changes daily if developers miss or don't do any commits during the day. Change commits should be captured as often as possible to keep ongoing change history current in case of the need to roll back changes. Individual member commits are usually done by each developer using the SRCTOGIT command which is used to commit changes for an individual source member to a git repository.
 
-The LIBSRCEXP command can be placed on the job scheduler to run one or more times per day to passively capture source member changes to git. Developers don't have to change their existing edit, compile processes at all initially.   
+The LIBSRCEXP command can be placed on the job scheduler to run one or more times per day to passively capture source member changes to git. Developers don't have to initially change their existing edit, compile processes until they are ready to start doing individual source changes commts after editing to start maintaining a more granular source member change history.   
 
-Source member comments will be timestamped with the IBM i job data and user ID who ran the job.   
+Source member comments will be timestamped with the IBM i job data and user ID who ran the job unless you enter your own custom comment.
 
 ```
 IFORGIT/LIBSRCEXP LIBRARY(MYLIB)                  
@@ -199,13 +199,11 @@ IFORGIT/LIBSRCEXP LIBRARY(MYLIB)
 ```
 
 # Initializing or refreshing git repository with all source members - SAMPLE
-This example call to LIBSRCEXP illustrates how to export copies of all source members to a git repository and auto-create the repository when setting up a repo for the first time. This command can also be run at the end of each month in case any source changes fall out of the 7 day rolling commit window and you didn't run the LIBSRCEXP with ```*ROLLING7``` for some reason. ```*ALL``` will catch up the git repository for any changes that may have been previously missed if you broke your daily commit schedule.   
+This example call to LIBSRCEXP illustrates how to export copies of all source members in a library to a git repository and auto-create the repository when setting up a repo for the first time. This command can also be run at the end of each month in case any source changes fall out of the 7 day rolling commit window and you didn't run the LIBSRCEXP with ```*ROLLING7``` every day for some reason. ```*ALL``` will catch up the git repository for any changes that may have been previously missed if you missed your daily commit schedule.   
 
-This example call to the LIBSRCEXP command illustrates how to do a passive rolling 7 day commit of source member changes. This is a great way to auto-commit any outstanding member changes daily if developers miss or don't do any commits during the day. Change commits should be captured as often as possible to keep ongoing change history current in case of the need to roll back changes. Individual member commits are usually done with the SRCTOGIT command which is used to commit changes for an individual source member to a git repository.  
+The LIBSRCEXP command can be placed on the job scheduler to run one or more times per day to passively capture source member changes to git. Developers don't have to initially change their existing edit, compile processes until they are ready to start doing individual source changes commts after editing to start maintaining a more granular source member change history.   
 
-The LIBSRCEXP command can be placed on the job scheduler to run one or more times per day to passively capture source member changes to git. Developers don't have to change their existing edit, compile processes at all initially.   
-
-Source member comments will be timestamped with the IBM i job data and user ID who ran the job.   
+Source member comments will be timestamped with the IBM i job data and user ID who ran the job unless you enter your own custom comment.
    
 ```
 IFORGIT/LIBSRCEXP LIBRARY(MYLIB)                  
