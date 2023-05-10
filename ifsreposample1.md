@@ -12,13 +12,13 @@ This example creates an IFS repository named: /testsite001. A repository only ne
 /* Add IBM Open Source Packages /QOpenSys/pkgs/bin to path for green screen job */
 /* Note: This command can be skipped if your user already has the path set.     */
 ```
-IFORGIT/GITPATH          
+IFORGIT/GITPATH
 ```
 
 /* Create IFS directory and initialize new git repository in the IFS */
 /* using the GITQSH command to run the QShell commands. Display the log on screen. */
 ```
-IFORGIT/GITQSH CMDLINE('mkdir /testsite001;cd /testsite001;git init') DSPSTDOUT(*YES)                                   
+IFORGIT/GITQSH CMDLINE('mkdir /testsite001;cd /testsite001;git init') DSPSTDOUT(*YES)
 ```               
 
 ## Sample command sequence to perform a code commit of changed files to the git repository from /testsite001 IFS git repository directory
@@ -34,7 +34,7 @@ IFORGIT/GITPATH
 /* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit"  */
 /* using the GITQSH command to run the QShell commands. Display the log info on screen. */
 ```
-IFORGIT/GITQSH CMDLINE('cd /testsite001;git add .;git commit -m "My Commit"') DSPSTDOUT(*YES)                                               
+IFORGIT/GITQSH CMDLINE('cd /testsite001;git add .;git commit -m "My Commit"') DSPSTDOUT(*YES)
 ``` 
 
 /* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit"  */
