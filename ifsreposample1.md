@@ -32,7 +32,7 @@ IFORGIT/GITPATH
 ```
 
 /* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit"  */
-/* using the GITQSH command to run the QShell commands. Display the log info on screen. */
+/* using the GITQSH command to run the QShell commands. Display the log info on screen. */ 
 ```
 IFORGIT/GITQSH CMDLINE('cd /testsite001;git add .;git commit -m "My Commit"') DSPSTDOUT(*YES)
 ``` 
