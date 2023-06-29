@@ -8,12 +8,12 @@ What should you do if you get a merge conflict error ?
 ## The short answer
 Edit your source member from the source file with SEU, RDI or VS Code and make at least one change or correction to the source member to get it in the state you want. Then re-commit the source to git via ```SRCTOGIT``` with ```*COMMITSYNC```.   
 
-Running ```SRCTOGIT/*COMMITSYNC``` will commit the source member updates locally in the IBM i source file, into the local IFS git repository and then will pull and push the local IFS source copy to merge remote changes with our repository. This hopefully should result in a successful commit.  
+Running ```SRCTOGIT/*COMMITSYNC``` will commit the source member updates locally in the IBM i source file, commit the source member into the local IFS git repository and then will pull and push the local IFS source copy to merge remote changes with our repository. This hopefully should result in a successful commit.  
 
 ## The longer version  
 
 ## Example of a merge conflict.
-Let's just say that ran the ```SRCTOGIT``` command from PDM, RDI or VS Code with the ```*COMMITSYNC``` option and got something like the following error in your job log or terminal session (DSPJOBLOG command on 5250):   
+Let's just say that you ran PDM option GE to run the ```SRCTOGIT``` command from PDM, RDI or VS Code with the ```*COMMITSYNC``` option and got something like the following error in your job log or terminal session (DSPJOBLOG command on 5250):   
 ```
 ------------------------------.                                         
 Begin Stdout Git.                                                       
@@ -43,16 +43,16 @@ Errors occurred while exporting source member to the IFS for git. Check
   the job log.                                                         
 ```
 
-When this happens we need to resolve the merge conflict and then re-commit the source member to get things back on track.    
+When this happens you need to resolve the merge conflict and then re-commit the source member to get things back on track.    
 
 ## What should you do to fix the merge problem ?
 The first thing to do is to review the IFS version of the source member that was just pulled from GitHub during the last ```SRCTOGIT``` with ```*COMMITSYNC```.
 
 The IFS version most likely has the marked up changes that were in conflict after the merge conflict happened. 
 
-The IFS version of the source is most likely NOT reflected in your IBM i source file yet. So you need to review the corresponding version of the source in the source physical file.    
+The IFS version of the source is most likely NOT reflected in your IBM i source file yet. So next you need to review the corresponding version of the source in the source physical file.    
 
-Open the source member from your source physical file for editing via SEU, RDI or VS Code and make the desired changes that you want to preserve in the git repository for this source member.    
+Open the source member from your source physical file for editing via SEU, RDI or VS Code and make all the desired source changes that you want to preserve in the git repository for this source member.    
 
 Then save the source member and use the ```PDM GE``` option, or an RDI or VS Code action to run the ```SRCTOGIT``` command again with ```*COMMITSYNC```.   
 
