@@ -17,16 +17,16 @@ Let's just say that ran the SRCTOGIT command from PDM, RDI or VS Code with the *
 Begin Stdout Git.                                                       
 ------------------------------.                                         
 remote: Enumerating objects: 7, done..                                  
-remote: Counting objects:  14% (1/7)        █remote: Counting objects:  
-  28% (2/7)        █remote: Counting objects:  42% (3/7)        █remote:
-  Counting objects:  57% (4/7)        █remote: Counting objects:  71%   
-  (5/7)        █remote: Counting objects:  85% (6/7)        █remote:    
-  Counting objects: 100% (7/7)        █remote: Counting objects: 100%   
+remote: Counting objects:  14% (1/7)        remote: Counting objects:  
+  28% (2/7)        remote: Counting objects:  42% (3/7)        remote:
+  Counting objects:  57% (4/7)        remote: Counting objects:  71%   
+  (5/7)        remote: Counting objects:  85% (6/7)        remote:    
+  Counting objects: 100% (7/7)        remote: Counting objects: 100%   
   (7/7), done..                                                         
-remote: Compressing objects:  25% (1/4)        █remote: Compressing     
-  objects:  50% (2/4)        █remote: Compressing objects:  75% (3/4)   
-    █remote: Compressing objects: 100% (4/4)        █remote: Compressing
-   objects:  75% (3/4)█Unpacking objects: 100% (4/4)█Unpacking objects: 
+remote: Compressing objects:  25% (1/4)        remote: Compressing     
+  objects:  50% (2/4)        remote: Compressing objects:  75% (3/4)   
+    remote: Compressing objects: 100% (4/4)        remote: Compressing
+   objects:  75% (3/4)Unpacking objects: 100% (4/4)Unpacking objects: 
    100% (4/4), 802 bytes | 16.00 KiB/s, done..                          
  From ssh://github.com:/richardschoen/GITTEST123.                       
  751cc24..a922280  master     -> origin/master.                         
