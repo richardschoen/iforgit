@@ -5,6 +5,8 @@ Implement Git for your Classic IBM i Source Version Control in Minutes
 
 ## Welcome to iForGit - Git Client for IBM i Source Physical Files  
 
+iForGit Information 
+
 iForGit Home Page  
 https://www.iforgit.com  
 
