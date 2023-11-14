@@ -24,7 +24,7 @@ iForGit solves the problem of awkward IBM i Git source management with a native 
 
 IBM i developers can learn to use iForGit within minutes or source version commits can be fully automated so developers initially have zero learning curve.  
 
-## Optionally use iForGit with other commercial or custom IBM i source/object build solutions
+## Optionally use iForGit to enhance other commercial or custom IBM i source/object build solutions
 For more complete source management and automated build processes, iForGit commands can be used in conjunction with open and commercial IBM i enterprise source and project management toolsets if their git support is lacking or non-existent. ```(Aldon, Turnover, Arcad, MDCMS, etc)```
 
 iForGit can also augment a custom source control/build solution if a development team has already implemented their own custom source management solution that doesn't integrate to git. 
