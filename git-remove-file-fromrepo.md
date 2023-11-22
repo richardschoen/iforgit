@@ -22,12 +22,12 @@ Remove the file from our git cache. (Actual file in the IFS: /gitrepos/myresposi
 ```git -rm --cached SOURCE/FILE001.```
 
 Commit the removal change to the repository.   
-git commit -m "Removed Files FILE001."
+```git commit -m "Removed File FILE001."```   
 
-Push the change to our remote repository.    
+Push the change to our remote repository. (Gitbucket, GitHub, Bitbucker, Azure Devops, etc)    
 ```git push```
 
-Remove the file from the file system.   
+Remove the file from the file system. (If you no longer want the file)  
 ```rm SOURCE/FILE001.```
 
-Once your file with the period at the end is eliminated from the repository, you should now be able to clone your repository successfully.
+Once the file with the period at the end has been eliminated from the repository, you should now be able to clone your repository successfully.
