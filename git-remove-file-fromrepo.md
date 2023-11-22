@@ -8,7 +8,7 @@ You may have accidentally checked in a file name that ends with a period. Ex: ``
 
 Now when you clone your repository to a PC for use with a git client, you get errors and the repo won't check out. How can this be fixed ?   
 
-## Deleting/removing a file from a git repository
+## Deleting/removing the bad file from a git repository
 If you google: ```remove file from git repository``` there are lots of articles, but I will give you a quick list that works with an IBM i based git repository.    
 
 For this example we will remove a file in subdirectory (source file) ```SOURCE``` file name: ```FILE001.``` from our git repository named ```myrepository```.   
