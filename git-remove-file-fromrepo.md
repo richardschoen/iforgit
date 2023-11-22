@@ -3,7 +3,7 @@ This article shows how to remove a file from a git repository.
 
 Normally you might leave an old file in your git repository for for history tracking, but there will be times you might want to remove a file from your git repository altogether.
 
-## Git has a hard time when cloning a repo that contains a file name that ends with a period 
+## Scenario: Git has a hard time when cloning a repo that contains a file name that ends with a period 
 You may have accidentally checked in a file name that ends with a period. Ex: ```FILE001.```   
 
 Now when you clone your repository to a PC for use with a git client, you get errors and the repo won't check out. How can this be fixed ?   
