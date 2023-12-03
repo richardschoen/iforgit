@@ -3,6 +3,10 @@ IBM i Git Source Management Made Easy
 
 Implement Git for your Classic IBM i Source Version Control in Minutes  
 
+## Coming Soon
+Interactive Git Log for viewing and restoring old versions   
+![image](https://github.com/richardschoen/iforgit/assets/9791508/4b994286-3d1b-4f63-8b54-5362c876835c)
+
 ## Try out iForGit on PUB400
 Click the link which will take you to a short how-to tutorial for testing on PUB400.
 https://github.com/richardschoen/iforgit/blob/master/demo_with_pub400.md
