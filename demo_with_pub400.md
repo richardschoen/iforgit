@@ -227,8 +227,9 @@ If you view the source member it will display along with the source header metad
 ```
 
 ### Viewing the git change log for a source member using  the ```GL``` PDM option
-The git change log tracks each committed source member version in a git repository and marks it with a value called a git hash.   
-Ex: git commit hash version code: ```8901f7835c92d27349e8af529c1704ea063112ce```
+The git change log tracks each committed source member version in a git repository and marks it with a value called a git hash. Git will also recognize the first 8 characters of a hash value when trying to check out or otherwise work with an old version.   
+Ex: full git commit hash version code: ```8901f7835c92d27349e8af529c1704ea063112ce```     
+Ex: 8 character git commit hash version code: ```8901f783```    
 
 If you want to see the git log, run the ```GL``` option against source member ```TEST001C``` source member from a 5250 session.    
 
