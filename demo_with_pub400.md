@@ -1,10 +1,21 @@
 # Demo iForGit Source File Management with a PUB400 Account
-You can demo iForGit on PUB400 user account using a local IFS based git repository in your home directory on PUB400.    
+You can demo the iForGit software for managing IBM i source members in git by using a PUB400 user account and a local PUB400 IFS based git repository in your home directory on PUB400.    
 
-This 
+This allows you to test the iForGit functionality without the set up of a GitHub or other external repository first.  
 
-## Steps to set up a test scenario on PUB400
-For this example we will use a demo PUB400 user of: ```USERID```.          
+You can set up a PUB400 account here:   
+https://pub400.com
+
+For demoing you will:   
+- Export all your library source members to a git reposuitory.
+- Export individual source member changes to a repository.
+- Import the last commit for a selected source member from your git repository and replace existing source member.
+- View the git log for a source member.
+- Use a git hash value from the git log to view a specific version of a source member.
+- Use the git blame command to view a consolidated list of all changes by user name.
+
+## Steps to set up your test scenario on PUB400
+For this example we will use a PUB400 user of: ```USERID```.          
 And we will use the user's PUB400 sample library name of: ```USERID1```
 
 ```
@@ -12,21 +23,30 @@ Subtitute your own PUB400 user profile and library name into all following comma
 where USERID is used for user id and USERID1 is used for library name.
 ```   
 
-### Determine your home directory on the PUB400 system.    
+### Log in to PUB400 and change your job CCSID to 37 if from the United States    
+This needs to be done for each 5250 login for anyone connecting from the U.S. with CCSID 37.   
 
-Run the following command with your user profle:   
+**On your own IBM i this should not be needed.**   
+
+Log in to a 5250 session and run the following command to set your job CCSID:   
+```CHGJOB CCSID(37)```
+
+### Determine your home directory on the PUB400 system.    
+From a 5250 command line, run the following command with your user profle:   
 ```DSPUSRPRF USRPRF(USERID) TYPE(*BASIC)```   
 
 Page through the results and note the **Home directory** setting value.   
 Ex:  ```/home/USERID```
 
-### Create the main top level IFS directory structure for your git repos
+### Create the main top level IFS directory structure for your git repositories (one time setup)
 
 ```
 MKDIR DIR('/home/USERID') DTAAUT(*RWX) OBJAUT(*ALL)
 MKDIR DIR('/home/USERID/gitrepos') DTAAUT(*RWX) OBJAUT(*ALL)
 ```
-As a general rules if you create all your repos under the same master IFS folder such as ```/home/USERID/gitrepos``` you can back up all of your git repositories from the IFS with a single backup command such as ```SAV```.
+As a general rule if you create all your repos under the same master IFS folder such as ```/home/USERID/gitrepos``` you can back up all of your local git repositories from the IFS with a single backup command such as ```SAV```.   
+
+From a git structure perspecitive, each source library will have its own git repository associated with the library.   
 
 ### Set your global git user information (one time for each user)
 Each user needs needs to log in and set a git user value set so git can use that info when logging new repository commits. This setting only needs to be done once per user profile after thay have logged in.  
@@ -65,6 +85,8 @@ IFORGIT/SETLIBREPO LIBRARY(USERID1)
 
 **The USERID directory will auto-create when you do your first git export export.**   
 
+## Steps to test iForGit against your own source members
+These steps will be used to export some source to a git repository and exercise the iForGit CL commands for versioning source members.
 
 
 
