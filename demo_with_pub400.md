@@ -199,13 +199,13 @@ If you want to restore an entire source member from its last source commit and r
 
 If the restore worked as expected you'll see a message like the following at the bottom of the 5250 screen:   
 ```
-/home/richards/gitrepos/richards1/QCLSRC/TEST001C.CLP source member imported to RICHARDS1/QCLSRC(TEST001C).                   
+/home/userid/gitrepos/userid1/QCLSRC/TEST001C.CLP source member imported to USERID1/QCLSRC(TEST001C).                   
 ```
 
 If you view the source member it will display along with the source header metadata information (optional) which gets stored in git along with the source member as a source header:   
 ```
 /*------------------------------------------------------------*/      
-/* @@LIBRARY: RICHARDS1                                       */      
+/* @@LIBRARY: USERID1                                         */      
 /* @@FILE: QCLSRC                                             */      
 /* @@MEMBER: TEST001C                                         */      
 /* @@TYPE: CLP                                                */      
@@ -261,7 +261,7 @@ From the command prompt, paste the selected hash code in the Source hash field a
  Type choices, press Enter.                                                     
                                                                                 
  Source file  . . . . . . . . . . SRCFILE      > QCLSRC                         
-   Library  . . . . . . . . . . .              >   RICHARDS1                    
+   Library  . . . . . . . . . . .              > USERID1                    
  Source member  . . . . . . . . . SRCMBR       > TEST001C                       
  Destination git repo IFS dir . . IFSREPODIR   > *LIBREPODTAARA                 
  Git option . . . . . . . . . . . SRCOPTION    > *CHECKOUT                      
@@ -281,7 +281,7 @@ Press  Enter and the source member is retrieved and displayed using SEU.
  FMT **  ...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 
         *************** Beginning of data *************************************
 0001.00 /*------------------------------------------------------------*/       
-0002.00 /* @@LIBRARY: RICHARDS1                                       */       
+0002.00 /* @@LIBRARY: USERID1                                         */       
 0003.00 /* @@FILE: QCLSRC                                             */       
 0004.00 /* @@MEMBER: TEST001C                                         */       
 0005.00 /* @@TYPE: CLP                                                */       
@@ -309,33 +309,33 @@ The git blame option lets you see the composite changes made for a source member
 Use the git blame option ```GB``` against source member ```TEST001C``` and press ```Enter``` to view the composite source member change history along with hash codes.
 
 ```
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  1) /*------------------
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  2) /* @@LIBRARY: RICHAR
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  3) /* @@FILE: QCLSRC   
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  4) /* @@MEMBER: TEST001
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  5) /* @@TYPE: CLP      
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  6) /* @@TEXT: iForGit T
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  7) /*------------------
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  8)              PGM    
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  9)                     
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 10)              DCL    
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 11)                     
-8901f783 (Richard schoen 2023-12-03 01:22:12 +0000 12)              DCL    
-8901f783 (Richard schoen 2023-12-03 01:22:12 +0000 13)                     
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 14)                     
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  8)              PGM    
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  9)                     
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 10)              DCL    
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 11)                     
-8901f783 (Richard schoen 2023-12-03 01:22:12 +0000 12)              DCL    
-8901f783 (Richard schoen 2023-12-03 01:22:12 +0000 13)                     
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 14)                     
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 15)              SNDPGMM
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 16)                     
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 17)                     
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 18)              RETURN 
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 19)                     
-d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 20)              ENDPGM 
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000  1) /*------------------
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000  2) /* @@LIBRARY: USERID
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000  3) /* @@FILE: QCLSRC   
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000  4) /* @@MEMBER: TEST001
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000  5) /* @@TYPE: CLP      
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000  6) /* @@TEXT: iForGit T
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000  7) /*------------------
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000  8)              PGM    
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000  9)                     
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000 10)              DCL    
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000 11)                     
+8901f783 (FirstName LastName 2023-12-03 01:22:12 +0000 12)              DCL    
+8901f783 (FirstName LastName 2023-12-03 01:22:12 +0000 13)                     
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000 14)                     
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000  8)              PGM    
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000  9)                     
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000 10)              DCL    
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000 11)                     
+8901f783 (FirstName LastName 2023-12-03 01:22:12 +0000 12)              DCL    
+8901f783 (FirstName LastName 2023-12-03 01:22:12 +0000 13)                     
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000 14)                     
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000 15)              SNDPGMM
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000 16)                     
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000 17)                     
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000 18)              RETURN 
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000 19)                     
+d33b3296 (FirstName LastName 2023-12-03 01:06:54 +0000 20)              ENDPGM 
 ```
 
 Once the source member has been displayed, you can use the edit file (EDTF) function keys to window left or right to see more info for each source member.   
