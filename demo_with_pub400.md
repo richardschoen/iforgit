@@ -247,7 +247,7 @@ Date:   Sun Dec 3 01:06:54 2023 +0000
     Committed-20231203-010652533-USERUD - SRCTOGIT              
 ```
  
-You can copy the commit hash for the selected member you want to view.   
+You can copy the entire commit hash for the selected member you want to view. Or just copy the first 8 characters as git checkout will recognize that value as well as the entire hash.   
 
 We will view the selected member in the next section via the ```GC``` PDM option (git checkout).
 
@@ -256,7 +256,7 @@ The git checkout option lets you check out a selected version of a source member
 
 Using a git hash code you saw for the ```TEST001C``` source member we listed in the git log example, run the ```GC``` option against source member ```TEST001C``` and press ```F4```
 
-From the command prompt, paste the selected hash code in the Source hash field as shown:       
+From the command prompt, paste the entire selected hash code or first 8 characters of the hash code in the Source hash field as shown:       
 ```
                     Run Git Cmd Against Repo Mbr (SRCGITCMD)                    
                                                                                 
