@@ -11,7 +11,7 @@ For demoing you will:
 - Export individual source member changes to a repository.
 - Import the last commit for a selected source member from your git repository and replace existing source member.
 - View the git log for a source member.
-- Use a git hash value from the git log to view a specific version of a source member.
+- Use a git hash value from the git log to view/checkout a specific version of a source member.
 - Use the git blame command to view a consolidated list of all changes by user name.
 
 ## Steps to set up your test scenario on PUB400
