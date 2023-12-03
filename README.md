@@ -12,7 +12,7 @@ A few months ago I created a FREE Windows based PDM replacement utility.
 
 This is a Windows replacement for PDM that integrates with any editor such as VS Code, Notepad++, Notepad, etc.   
 
-It also integrates with the iForGit software for managing source member versioning.
+It also integrates with the iForGit software for managing source member versioning and you can use existing PDM options.   
 
 You can download a copy of thes Windows based PDM utility here:   
 https://github.com/richardschoen/workwithibmipdm
