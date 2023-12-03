@@ -7,8 +7,17 @@ Implement Git for your Classic IBM i Source Version Control in Minutes
 Click the link which will take you to a short how-to tutorial for testing on PUB400.
 https://github.com/richardschoen/iforgit/blob/master/demo_with_pub400.md
 
-## Welcome to iForGit - Git Client for IBM i Source Physical Files  
+## Try our FREE Windows based PDM replacement
+A few months ago I created a FREE Windows based PDM replacement utility.
 
+This is a Windows replacement for PDM that integrates with any editor such as VS Code, Notepad++, Notepad, etc.   
+
+It also integrates with the iForGit software for managing source member versioning.
+
+You can download a copy of thes Windows based PDM utility here:   
+https://github.com/richardschoen/workwithibmipdm
+
+## Welcome to iForGit - Git Client for IBM i Source Physical Files  
 iForGit Information Document (PDF)   
 <a href="https://github.com/richardschoen/iforgit/raw/master/iForGitInfo2023Q3.pdf">View iForGit Information Document</a>
 
