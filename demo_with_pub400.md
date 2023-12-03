@@ -297,79 +297,41 @@ Press  Enter and the source member is retrieved and displayed using SEU.
         ****************** End of data ****************************************
 ```
 
+### Viewing the overall change history for selected source member version using the ```GB``` PDM option
+The git blame option lets you see the composite changes made for a source member.
 
+Use the git blame option ```GB``` against source member ```TEST001C``` and press ```Enter``` to view the composite source member change history along with hash codes.
 
-
-
-change log tracks each committed source member version in a git repository and marks it with a value called a git hash.   
-Ex git commit hash version code: ```8901f7835c92d27349e8af529c1704ea063112ce```
-
-If you want to see the git log, run the ```GL``` option against source member ```TEST001C``` source member from a 5250 session.    
-
-When the log option completes it will display as follows:    
 ```
-commit 8901f7835c92d27349e8af529c1704ea063112ce (HEAD -> master)  
-Author: First Last <userid@test.com>                
-Date:   Sun Dec 3 01:22:12 2023 +0000                             
-                                                                  
-    Committed-20231203-012211947-USERID - SRCTOGIT              
-                                                                  
-commit d33b32961b721e6efefc170a27ed79bd9988acb1                   
-Author: First Last <userid@test.com>                
-Date:   Sun Dec 3 01:06:54 2023 +0000                             
-                                                                  
-    Committed-20231203-010652533-USERUD - SRCTOGIT              
-```
- 
-You can copy the commit hash for the selkected member you want to view.   
-
-We will view the selected member in the next section via the ```GC``` PDM option (git checkout).
-
-
-
-
-
-
-
-
-Normally you would edit a source member, but sometimes you might need to restore the last good member from a source repository.   
-
-If you want to restore an entire source member from its last source commit and replace the source file member, use the ```GI``` PDM option to run the SRCFRMGIT command to restore the source member.
-
-If the restore worked as expected you'll see a message like the following at the bottom of the 5250 screen:   
-```
-/home/richards/gitrepos/richards1/QCLSRC/TEST001C.CLP source member imported to RICHARDS1/QCLSRC(TEST001C).                   
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  1) /*------------------
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  2) /* @@LIBRARY: RICHAR
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  3) /* @@FILE: QCLSRC   
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  4) /* @@MEMBER: TEST001
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  5) /* @@TYPE: CLP      
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  6) /* @@TEXT: iForGit T
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  7) /*------------------
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  8)              PGM    
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  9)                     
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 10)              DCL    
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 11)                     
+8901f783 (Richard schoen 2023-12-03 01:22:12 +0000 12)              DCL    
+8901f783 (Richard schoen 2023-12-03 01:22:12 +0000 13)                     
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 14)                     
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  8)              PGM    
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000  9)                     
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 10)              DCL    
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 11)                     
+8901f783 (Richard schoen 2023-12-03 01:22:12 +0000 12)              DCL    
+8901f783 (Richard schoen 2023-12-03 01:22:12 +0000 13)                     
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 14)                     
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 15)              SNDPGMM
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 16)                     
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 17)                     
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 18)              RETURN 
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 19)                     
+d33b3296 (Richard schoen 2023-12-03 01:06:54 +0000 20)              ENDPGM 
 ```
 
-If you view the source member it will display along with the source header metadata information which gets stored in git along with the source member as a source header:   
-```
-/*------------------------------------------------------------*/      
-/* @@LIBRARY: RICHARDS1                                       */      
-/* @@FILE: QCLSRC                                             */      
-/* @@MEMBER: TEST001C                                         */      
-/* @@TYPE: CLP                                                */      
-/* @@TEXT: iForGit Test Member                                */      
-/*------------------------------------------------------------*/      
-             PGM                                                      
-                                                                      
-             DCL        VAR(&VALUE1) TYPE(*CHAR) LEN(100) +           
-                          VALUE('Hello iForGit')                      
-                                                                      
-             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA(&VALUE1) +
-                          MSGTYPE(*INFO)                              
-                                                                      
-             RETURN
-                                                                     
-             ENDPGM                                                   
-```
-
-
-
-
-gb
-gl
-gc
-
-
-
+Once the source member has been displayed, you can use the edit file (EDTF) function keys to window left or right to see more info for each source member.   
+```Shift-F7 (F19)``` - Window left, ```Shift-F8 (F20)``` - Window right, etc.
 
