@@ -1,7 +1,7 @@
 # Demo iForGit Source File Management with a PUB400 Account
 You can demo the iForGit software for managing IBM i source members in git by using a PUB400 user account and a local PUB400 IFS based git repository in your home directory on PUB400.    
 
-This allows you to test the iForGit functionality without the set up of a GitHub or other external repository first.  
+**This allows you to test the iForGit functionality without the set up of a GitHub or other external repository first.  **
 
 You can set up a PUB400 account here:   
 https://pub400.com
