@@ -3,6 +3,9 @@ IBM i Git Source Management Made Easy
 
 Implement Git for your Classic IBM i Source Version Control in Minutes  
 
+# Try out iForGit on PUB400
+https://github.com/richardschoen/iforgit/blob/master/demo_with_pub400.md
+
 ## Welcome to iForGit - Git Client for IBM i Source Physical Files  
 
 iForGit Information Document (PDF)   
