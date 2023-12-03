@@ -70,10 +70,9 @@ After typing the command, press ```Enter``` to run the command you should see th
  preloadIndex = false                       
 ```
 Press ```F3``` to exit if all looks OK. You can also run the SETGBLUSR command for your user again if needed.   
-
     
 ### Set your git library repo IFS directory
-The SETLIBREPO command creates a data area for the associated git repository and also enables the selected library for git.    
+The SETLIBREPO command sets a data area path for a library's associated git repository and also enables the selected library for git.    
 
 This command should be run once for each library that will be managed with iForGit and git.       
 ```
@@ -83,14 +82,106 @@ IFORGIT/SETLIBREPO LIBRARY(USERID1)
                     OPTION(*SET)                            
 ```
 
-**The USERID directory will auto-create when you do your first git export export.**   
+**The USERID1 directory will auto-create when you do your first git export export.**   
+
+### Set your PDM options file to iForGit options file
+Normally you would create your own PDM options in your own options file. Or you would create options in RDI or VS Code, but for this test we are using PDM and you can use the PDM options in file: ```IFORGIT/QAUOOPTGIT```, member: ```QAUOOPTGIT```
+
+First start PDM via the STRPDM command.
+```STRPDM```
+
+Then press ```Shift-F6 (F18)``` to ``Change Defaults``` in PDM.
+
+Change settings as follows and press ```Enter``` to save.
+```
+ Option file  . . . . . . . .   ```QAUOOPTGIT```  
+   Library  . . . . . . . . .     ```IFORGIT```   
+ Member . . . . . . . . . . .   ```QAUOOPTGIT```
+```
 
 ## Steps to test iForGit against your own source members
 These steps will be used to export some source to a git repository and exercise the iForGit CL commands for versioning source members.
 
+### Create some source physical files of your own
+Your PUB400 library should come with a set up pre-configured source files.    
+
+If source files don't exist, create a source file for ```QCLSRC``` and ```QRPGLESRC```.    
+```
+CRTSRCPF FILE(USERID1/QCLSRC) RCDLEN(120)
+CRTSRCPF FILE(USERID1/QRPPGLESRC) RCDLEN(120)
+```
+
+### Create a source member TEST001C in library USERID1/QCLSRC
+For our example we will create a CL source member named ```TEST001C``` in library: ```USERID1/QCLSRC``` with the following member text: ```iForGit Test Member```. Make sure the source type is:```CLP```.
+
+Sample code for TEST001C:
+```
+PGM                                                      
+                                                         
+DCL        VAR(&VALUE1) TYPE(*CHAR) LEN(100) +           
+             VALUE('Hello iForGit')                      
+                                                         
+SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA(&VALUE1) +
+             MSGTYPE(*INFO)                              
+                                                         
+RETURN                                                   
+                                                         
+ENDPGM                                                   
+```
+
+### Create some more source members if desired
+You can create a couple more source members using PDM, RDI or VS Code if desired.
+
+### Do initial export of source to your git repository
+The ```LIBSRCEXP``` command can be used to export all current source members to a git repository and also to capture changes on a daily basis from a scheduled job if desired.
+
+Run the LIBSRCEXP command as follow with your library:
+```
+LIBSRCEXP LIBRARY(USERID1)        
+          FILE(*ALL)                
+          STARTDATE(*ALL)           
+          IFSREPODIR(*LIBREPODTAARA)
+          SRCHEADER(*YES)           
+          REPLACE(*YES)             
+          VALIDREPO(*YES)           
+          IFSMKDIR(*YES)            
+          INITREPO(*YES)            
+          COMMITOPT(*COMMIT)        
+          COMMENT(*DATEUSER)        
+          AUTHORITY(*INDIR)         
+          JOBMSGQFUL(*WRAP)         
+```
+
+This will export all source members from the selected library to your git repository and will auto-create the ```USERID1``` directory within ```/home/USERID/gitrepos``` directory.   
+
+### Make sure your library repo directory now exists with source
+Run the following command to see you git repository directory:
+```WRKLNK OBJ('/home/USERID/gitrepos/USERID1/*') OBJTYPE(*ALL) DSPOPT(*ALL)```
+
+The directory list should look similar to the following:   
+```
+Object link            Type  
+.                      DIR   
+..                     DIR   
+.git                   DIR   
+QCLSRC                 DIR
+QRPGLESR               DIR 
+```
+
+### Make a change to TEST001C and commit the change
+From your favorite editor or PDM/SEU, add or change some lines in the  ```QCLSRC/TEST001C``` source member and then save the member changes.
+
+Now from a PDM member list for library: ```USERID1```, member:```QCLSRC/TEST001C```you will run the ```GE``` PDM option and press ```F4``` to prompt the SRCTOGIT command or simply press Enter to run the command.
+
+If the commit worked as expected you'll see a PDM message like the following at the bottom of the 5250 screen:   
+```Member USERID1/QCLSRC(TEST001C) exported/committed to /home/userid/gitrepos/userid1/QCLSRC/TEST001C.CLP in repo
+/home/userid/gitrepos/userid1.```
+
+                           
 
 
-create some source members
+
+
 
 set pdm opts
 
