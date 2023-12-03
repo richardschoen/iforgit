@@ -168,27 +168,205 @@ QCLSRC                 DIR
 QRPGLESR               DIR 
 ```
 
-### Make a change to TEST001C and commit the change
+### Make a change to TEST001C and commit the change with ```GE``` PDM option
 From your favorite editor or PDM/SEU, add or change some lines in the  ```QCLSRC/TEST001C``` source member and then save the member changes.
 
-Now from a PDM member list for library: ```USERID1```, member:```QCLSRC/TEST001C```you will run the ```GE``` PDM option and press ```F4``` to prompt the SRCTOGIT command or simply press Enter to run the command.
+Now from a PDM member list for library: ```USERID1```, member:```QCLSRC/TEST001C```you will run the ```GE``` PDM option and press ```F4``` to prompt the ```SRCTOGIT``` command or simply press Enter to run the command.
 
-If the commit worked as expected you'll see a PDM message like the following at the bottom of the 5250 screen:   
-```Member USERID1/QCLSRC(TEST001C) exported/committed to /home/userid/gitrepos/userid1/QCLSRC/TEST001C.CLP in repo
-/home/userid/gitrepos/userid1.```
+If the commit worked as expected you'll see a message like the following at the bottom of the 5250 screen:   
+```
+Member USERID1/QCLSRC(TEST001C) exported/committed to /home/userid/gitrepos/userid1/QCLSRC/TEST001C.CLP in repo
+/home/userid/gitrepos/userid1.
+```
 
-                           
+Run the ```GE``` option again against member: ```TEST001C``` and you should see the following message if no changes were made:   
+```
+Nothing to commit occurred for repo /home/userid/gitrepos/userid1. Check the job log if needed. 
+```
+
+iForGit and git are smart enough to detect if changes were made to a member so source commits will not happen unless actual changes were made to a source member.
+
+### Restoring most recent source member commit from git repository ```GI``` PDM option
+Normally you would edit a source member, but sometimes you might need to restore the last good member from a source repository.   
+
+If you want to restore an entire source member from its last source commit and replace the source file member, use the ```GI``` PDM option to run the SRCFRMGIT command to restore the source member.
+
+If the restore worked as expected you'll see a message like the following at the bottom of the 5250 screen:   
+```
+/home/richards/gitrepos/richards1/QCLSRC/TEST001C.CLP source member imported to RICHARDS1/QCLSRC(TEST001C).                   
+```
+
+If you view the source member it will display along with the source header metadata information which gets stored in git along with the source member as a source header:   
+```
+/*------------------------------------------------------------*/      
+/* @@LIBRARY: RICHARDS1                                       */      
+/* @@FILE: QCLSRC                                             */      
+/* @@MEMBER: TEST001C                                         */      
+/* @@TYPE: CLP                                                */      
+/* @@TEXT: iForGit Test Member                                */      
+/*------------------------------------------------------------*/      
+             PGM                                                      
+                                                                      
+             DCL        VAR(&VALUE1) TYPE(*CHAR) LEN(100) +           
+                          VALUE('Hello iForGit')                      
+                                                                      
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA(&VALUE1) +
+                          MSGTYPE(*INFO)                              
+                                                                      
+             RETURN
+                                                                     
+             ENDPGM                                                   
+```
+
+### Viewing the git change log for a source member using  the ```GL``` PDM option
+The git change log tracks each committed source member version in a git repository and marks it with a value called a git hash.   
+Ex git commit hash version code: ```8901f7835c92d27349e8af529c1704ea063112ce```
+
+If you want to see the git log, run the ```GL``` option against source member ```TEST001C``` source member from a 5250 session.    
+
+When the log option completes it will display as follows:    
+```
+commit 8901f7835c92d27349e8af529c1704ea063112ce (HEAD -> master)  
+Author: First Last <userid@test.com>                
+Date:   Sun Dec 3 01:22:12 2023 +0000                             
+                                                                  
+    Committed-20231203-012211947-USERID - SRCTOGIT              
+                                                                  
+commit d33b32961b721e6efefc170a27ed79bd9988acb1                   
+Author: First Last <userid@test.com>                
+Date:   Sun Dec 3 01:06:54 2023 +0000                             
+                                                                  
+    Committed-20231203-010652533-USERUD - SRCTOGIT              
+```
+ 
+You can copy the commit hash for the selkected member you want to view.   
+
+We will view the selected member in the next section via the ```GC``` PDM option (git checkout).
+
+### Viewing the selected source member version using the ```GC``` PDM option
+The git checkout option lets you check out a selected version of a source member and view it from a temporary source file in ```QTEMP/TMPSOURCE``` or restore the source member to a specified library source file and member.
+
+Using a git hash code you saw for the ```TEST001C``` source member we listed in the git log example, run the ```GC``` option against source member ```TEST001C``` and press ```F4```
+
+From the command prompt, paste the selected hash code in the Source hash field as shown:       
+```
+                    Run Git Cmd Against Repo Mbr (SRCGITCMD)                    
+                                                                                
+ Type choices, press Enter.                                                     
+                                                                                
+ Source file  . . . . . . . . . . SRCFILE      > QCLSRC                         
+   Library  . . . . . . . . . . .              >   RICHARDS1                    
+ Source member  . . . . . . . . . SRCMBR       > TEST001C                       
+ Destination git repo IFS dir . . IFSREPODIR   > *LIBREPODTAARA                 
+ Git option . . . . . . . . . . . SRCOPTION    > *CHECKOUT                      
+ Source version hash  . . . . . . SRCHASH      > '8901f7835c92d27349e8af529c1704
+ea063112ce'                                                                     
+ Prompt GITQSH cmd to debug . . . DEBUGQSH       *NO                            
+ Display Standard Output Result   DSPSTDOUT    > *NO                            
+ Log standard output to job log   LOGSTDOUT      *NO                            
+ Print Standard Output Result . . PRTSTDOUT      *NO
+```
+
+Press  Enter and the source member is retrieved and displayed using SEU.
+
+```
+ Columns . . . :    1  71           Browse                      QTEMP/TMPSOURCE
+ SEU==>                                                               TMPSOURCE
+ FMT **  ...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 
+        *************** Beginning of data *************************************
+0001.00 /*------------------------------------------------------------*/       
+0002.00 /* @@LIBRARY: RICHARDS1                                       */       
+0003.00 /* @@FILE: QCLSRC                                             */       
+0004.00 /* @@MEMBER: TEST001C                                         */       
+0005.00 /* @@TYPE: CLP                                                */       
+0006.00 /* @@TEXT: iForGit Test Member                                */       
+0007.00 /*------------------------------------------------------------*/       
+0008.00              PGM                                                       
+0009.00                                                                        
+0010.00              DCL        VAR(&VALUE1) TYPE(*CHAR) LEN(100) +            
+0011.00                           VALUE('Hello iForGit')                       
+0012.00              DCL        VAR(&VALUE2) TYPE(*CHAR) LEN(100) +            
+0013.00                           VALUE('Hello iForGit')                       
+0014.00                                                                        
+0015.00              SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA(&VALUE1) + 
+0016.00                           MSGTYPE(*INFO)
+0017.00                                                                        
+0018.00              RETURN                                                    
+0019.00                                                                        
+0020.00              ENDPGM                                                    
+        ****************** End of data ****************************************
+```
 
 
 
 
 
-set pdm opts
+change log tracks each committed source member version in a git repository and marks it with a value called a git hash.   
+Ex git commit hash version code: ```8901f7835c92d27349e8af529c1704ea063112ce```
 
-libsrcexp 
+If you want to see the git log, run the ```GL``` option against source member ```TEST001C``` source member from a 5250 session.    
 
-ge
-gi
+When the log option completes it will display as follows:    
+```
+commit 8901f7835c92d27349e8af529c1704ea063112ce (HEAD -> master)  
+Author: First Last <userid@test.com>                
+Date:   Sun Dec 3 01:22:12 2023 +0000                             
+                                                                  
+    Committed-20231203-012211947-USERID - SRCTOGIT              
+                                                                  
+commit d33b32961b721e6efefc170a27ed79bd9988acb1                   
+Author: First Last <userid@test.com>                
+Date:   Sun Dec 3 01:06:54 2023 +0000                             
+                                                                  
+    Committed-20231203-010652533-USERUD - SRCTOGIT              
+```
+ 
+You can copy the commit hash for the selkected member you want to view.   
+
+We will view the selected member in the next section via the ```GC``` PDM option (git checkout).
+
+
+
+
+
+
+
+
+Normally you would edit a source member, but sometimes you might need to restore the last good member from a source repository.   
+
+If you want to restore an entire source member from its last source commit and replace the source file member, use the ```GI``` PDM option to run the SRCFRMGIT command to restore the source member.
+
+If the restore worked as expected you'll see a message like the following at the bottom of the 5250 screen:   
+```
+/home/richards/gitrepos/richards1/QCLSRC/TEST001C.CLP source member imported to RICHARDS1/QCLSRC(TEST001C).                   
+```
+
+If you view the source member it will display along with the source header metadata information which gets stored in git along with the source member as a source header:   
+```
+/*------------------------------------------------------------*/      
+/* @@LIBRARY: RICHARDS1                                       */      
+/* @@FILE: QCLSRC                                             */      
+/* @@MEMBER: TEST001C                                         */      
+/* @@TYPE: CLP                                                */      
+/* @@TEXT: iForGit Test Member                                */      
+/*------------------------------------------------------------*/      
+             PGM                                                      
+                                                                      
+             DCL        VAR(&VALUE1) TYPE(*CHAR) LEN(100) +           
+                          VALUE('Hello iForGit')                      
+                                                                      
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA(&VALUE1) +
+                          MSGTYPE(*INFO)                              
+                                                                      
+             RETURN
+                                                                     
+             ENDPGM                                                   
+```
+
+
+
+
+gb
 gl
 gc
 
