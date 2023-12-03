@@ -1,7 +1,13 @@
 # Demo iForGit Source File Management with a PUB400 Account
-You can demo the iForGit software for managing IBM i source members in git by using a PUB400 user account and a local PUB400 IFS based git repository in your home directory on PUB400.    
+You can do a quick demo of the iForGit software for managing IBM i source members in git by using a PUB400 user account and a local PUB400 IFS based git repository in your home directory on PUB400.    
 
-**This allows you to test the iForGit functionality without the set up of a GitHub or other external repository first.  **
+**This allows you to test the base iForGit functionality without the set up of a GitHub or other external repository first.**
+
+Reach out if you want to learn more about iForGit.   
+
+iForGit Contact info:   
+https://www.iforgit.com     
+info@mobigogo.net  -or-  richard@richardschoen.net   
 
 You can set up a PUB400 account here:   
 https://pub400.com
@@ -46,10 +52,10 @@ MKDIR DIR('/home/USERID/gitrepos') DTAAUT(*RWX) OBJAUT(*ALL)
 ```
 As a general rule if you create all your repos under the same master IFS folder such as ```/home/USERID/gitrepos``` you can back up all of your local git repositories from the IFS with a single backup command such as ```SAV```.   
 
-From a git structure perspecitive, each source library will have its own git repository associated with the library.   
+From a git structure perspective, each source library will have its own git repository associated with the library.   
 
 ### Set your global git user information (one time for each user)
-Each user needs needs to log in and set a git user value set so git can use that info when logging new repository commits. This setting only needs to be done once per user profile after thay have logged in.  
+Each user needs to log in and set a git user value set so git can use that info when logging new repository commits. This setting only needs to be done once per user profile after they have logged in.  
 
 The git user info does NOT have have to be the same as your IBM i profile because it's used specifically by git so any values will do to identify your user.   
 
@@ -90,13 +96,13 @@ Normally you would create your own PDM options in your own options file. Or you 
 First start PDM via the STRPDM command.
 ```STRPDM```
 
-Then press ```Shift-F6 (F18)``` to ``Change Defaults``` in PDM.
+Then press ```Shift-F6 (F18)``` to ```Change Defaults``` in PDM.
 
 Change settings as follows and press ```Enter``` to save.
 ```
- Option file  . . . . . . . .   ```QAUOOPTGIT```  
-   Library  . . . . . . . . .     ```IFORGIT```   
- Member . . . . . . . . . . .   ```QAUOOPTGIT```
+ Option file  . . . . . . . .   QAUOOPTGIT  
+   Library  . . . . . . . . .     IFORGIT   
+ Member . . . . . . . . . . .   QAUOOPTGIT
 ```
 
 ## Steps to test iForGit against your own source members
@@ -135,7 +141,7 @@ You can create a couple more source members using PDM, RDI or VS Code if desired
 ### Do initial export of source to your git repository
 The ```LIBSRCEXP``` command can be used to export all current source members to a git repository and also to capture changes on a daily basis from a scheduled job if desired.
 
-Run the LIBSRCEXP command as follow with your library:
+Run the LIBSRCEXP command as follows with your library to export and commit all source members:
 ```
 LIBSRCEXP LIBRARY(USERID1)        
           FILE(*ALL)                
@@ -152,7 +158,7 @@ LIBSRCEXP LIBRARY(USERID1)
           JOBMSGQFUL(*WRAP)         
 ```
 
-This will export all source members from the selected library to your git repository and will auto-create the ```USERID1``` directory within ```/home/USERID/gitrepos``` directory.   
+This will export and commit all source members from the selected library to your git repository and will auto-create the ```USERID1``` directory within ```/home/USERID/gitrepos``` directory.   
 
 ### Make sure your library repo directory now exists with source
 Run the following command to see you git repository directory:
@@ -196,7 +202,7 @@ If the restore worked as expected you'll see a message like the following at the
 /home/richards/gitrepos/richards1/QCLSRC/TEST001C.CLP source member imported to RICHARDS1/QCLSRC(TEST001C).                   
 ```
 
-If you view the source member it will display along with the source header metadata information which gets stored in git along with the source member as a source header:   
+If you view the source member it will display along with the source header metadata information (optional) which gets stored in git along with the source member as a source header:   
 ```
 /*------------------------------------------------------------*/      
 /* @@LIBRARY: RICHARDS1                                       */      
@@ -220,7 +226,7 @@ If you view the source member it will display along with the source header metad
 
 ### Viewing the git change log for a source member using  the ```GL``` PDM option
 The git change log tracks each committed source member version in a git repository and marks it with a value called a git hash.   
-Ex git commit hash version code: ```8901f7835c92d27349e8af529c1704ea063112ce```
+Ex: git commit hash version code: ```8901f7835c92d27349e8af529c1704ea063112ce```
 
 If you want to see the git log, run the ```GL``` option against source member ```TEST001C``` source member from a 5250 session.    
 
@@ -239,7 +245,7 @@ Date:   Sun Dec 3 01:06:54 2023 +0000
     Committed-20231203-010652533-USERUD - SRCTOGIT              
 ```
  
-You can copy the commit hash for the selkected member you want to view.   
+You can copy the commit hash for the selected member you want to view.   
 
 We will view the selected member in the next section via the ```GC``` PDM option (git checkout).
 
