@@ -4,7 +4,7 @@ IBM i Git Source Management Made Easy
 Implement Git for your Classic IBM i Source Version Control in Minutes  
 
 ## Coming Soon
-Interactive PDM Git Log option for viewing and restoring old versions   
+Interactive PDM Git Log enhancement for viewing and restoring old versions   
 ![image](https://github.com/richardschoen/iforgit/assets/9791508/4b994286-3d1b-4f63-8b54-5362c876835c)
 
 ## Try out iForGit on PUB400
