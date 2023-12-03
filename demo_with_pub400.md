@@ -139,9 +139,11 @@ ENDPGM
 You can create a couple more source members using PDM, RDI or VS Code if desired.
 
 ### Do initial export of source to your git repository
-The ```LIBSRCEXP``` command can be used to export all current source members to a git repository and also to capture changes on a daily basis from a scheduled job if desired.
+The ```LIBSRCEXP``` command can be used to export all current source members to a git repository and also to capture changes on a daily basis from a scheduled job if desired.   
 
-Run the LIBSRCEXP command as follows with your library to export and commit all source members:
+The command will also initizalize and create a new git repository automatically during the process.    
+
+Run the LIBSRCEXP command as follows with your library to export and commit all source members:   
 ```
 LIBSRCEXP LIBRARY(USERID1)        
           FILE(*ALL)                
