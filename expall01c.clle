@@ -1,0 +1,132 @@
+/*------------------------------------------------------------*/
+/* Desc: Export all source members for selected libraries     */
+/*       Add as many libs to this as needed to this CL        */
+/*                                                            */
+/* Export all src members to local git repository for each lib*/
+/* This is good for an initial seed of a git repository.      */
+/* This is also good to refresh an existing repo by           */
+/* re-exporting all source members.                           */
+/* Make sure joblog will wrap  *WRAP or *PRTWRAP.             */
+/* Use STARTDATE *ALL to export all source members            */
+/* If *ALL used, only changed members will actually be        */
+/* committed.                                                 */
+/*------------------------------------------------------------*/
+             PGM
+
+ /*----------------------------------------------------*/
+ /* Variables                                          */
+ /*----------------------------------------------------*/
+             DCL        VAR(&LIBNAME) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&COMMENT) TYPE(*CHAR) LEN(200)
+             DCL        VAR(&QDATE) TYPE(*CHAR) LEN(6)
+             DCL        VAR(&QDATE10) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&QTIME) TYPE(*CHAR) LEN(6)
+             DCL        VAR(&SYSNAME) TYPE(*CHAR) LEN(8)
+             DCL        VAR(&NOTIFYUSER) TYPE(*CHAR) LEN(10) +
+                          VALUE(QSYSOPR)
+
+ /*----------------------------------------------------*/
+ /* Main Program                                       */
+ /*----------------------------------------------------*/
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERRORS))
+
+  /* TODO: Set &NOTIFYUSER to appropriate user other than QSYSOPR */
+  /*       if desired.                                            */
+
+  /* Change job so joblog wraps if it fills up */
+             CHGJOB     JOBMSGQFL(*WRAP)
+
+  /* Notify user of success */
+             SNDMSG     MSG('Git export program EXPALL01C starting') +
+                          TOUSR(&NOTIFYUSER)
+
+ /* Export changes to git for each library in the list */
+
+ /* TODO: Set up your list of libraries to export to git */
+ /* Export LIBRARY1 changes to git repository */
+             CHGVAR     VAR(&LIBNAME) VALUE(LIBRARY1)
+             CALLSUBR   SUBR(SUBRGITEXP)
+ /* Export LIBRARY2 changes to git repository */
+             CHGVAR     VAR(&LIBNAME) VALUE(LIBRARY2)
+             CALLSUBR   SUBR(SUBRGITEXP)
+ /* Export LIBRARY3 changes to git repository */
+             CHGVAR     VAR(&LIBNAME) VALUE(LIBRARY3)
+             CALLSUBR   SUBR(SUBRGITEXP)
+
+  /* Notify user of success */
+             SNDMSG     MSG('Git export program EXPALL01C ended +
+                          successfully.') TOUSR(&NOTIFYUSER)
+
+             RETURN
+
+ /* Handle any global errors */
+  ERRORS:
+             /* Display joblog on error to spool file so we can debug if needed */
+             DSPJOBLOG  OUTPUT(*PRINT)
+             MONMSG     MSGID(CPF0000)
+
+             /* Notify user of error */
+             SNDMSG     MSG('Git export program EXPALL01C ended with +
+                          an error. Please find the joblog spool +
+                          file to troubleshoot') TOUSR(&NOTIFYUSER)
+             MONMSG     MSGID(CPF0000)
+
+ /*----------------------------------------------------*/
+ /* End Main Program                                   */
+ /*----------------------------------------------------*/
+
+ /*----------------------------------------------------*/
+ /* Subroutine: SUBRGITEXP                             */
+ /* Export and commit all changes for selected library */
+ /*----------------------------------------------------*/
+             SUBR       SUBR(SUBRGITEXP)
+
+ /* Format date for commit comment */
+             RTVNETA    SYSNAME(&SYSNAME)
+             RTVSYSVAL  SYSVAL(QDATE) RTNVAR(&QDATE)
+             RTVSYSVAL  SYSVAL(QTIME) RTNVAR(&QTIME)
+             CVTDAT     DATE(&QDATE) TOVAR(&QDATE10) FROMFMT(*JOB) +
+                          TOFMT(*MDYY) TOSEP('/')
+
+ /* Format commit comment */
+             CHGVAR     VAR(&COMMENT) VALUE('All changed git members +
+                          for library:' |< &LIBNAME |> 'captured by +
+                          EXPALL01C on:' |> &QDATE10 |> 'Time:' |< +
+                          &QTIME |> ' System:' |< &SYSNAME)
+
+ /* Export all source members and commit.                         */
+ /* Only actual changed members will get committed by git         */
+ /* *GITADD stages all current changes for a grouped daily commit */
+             IFORGIT/LIBSRCEXP LIBRARY(&LIBNAME) FILE(*ALL) +
+                          STARTDATE(*ALL) VALIDREPO(*NO) +
+                          COMMITOPT(*GITADD)
+
+  /* Commit all changed members in a single commit */
+             IFORGIT/GITCMD LIBRARY(&LIBNAME) CMDOPTS('commit -m +
+                          "' |> &COMMENT |< '"')
+             MONMSG     MSGID(CPF0000) /* Git commit throws an error +
+                          if no members were selected for *GITADD. +
+                          We want to nicely handle this and move to +
+                          next step */
+
+  /* TODO: uncomment if pull/push syncing to remote repo  */
+  /* Pull committed changes from remote git server to merge any remote changes */
+  /*** Disabled IFORGIT/GITCMD LIBRARY(&LIBNAME) CMDOPTS('pull')    ***/
+
+  /* TODO: uncomment if pull/push syncing to remote repo  */
+  /* Push committed changes to remote git server */
+  /*** Disabled IFORGIT/GITCMD LIBRARY(&LIBNAME) CMDOPTS('push')    ***/
+
+             SNDMSG     MSG('Library' |> &LIBNAME |> 'all member +
+                          changes have been exported to git repo +
+                          successfully.') TOUSR(&NOTIFYUSER)
+
+             RTNSUBR  /* Subroutine done */
+
+             ENDSUBR
+ /*----------------------------------------------------*/
+ /* End Subroutine: SUBRGITEXP                         */
+ /*----------------------------------------------------*/
+
+             ENDPGM
+
