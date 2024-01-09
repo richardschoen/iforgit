@@ -21,7 +21,10 @@ https://stackoverflow.com/questions/73485958/how-to-correct-git-reporting-detect
 In the last line of the article it shows the following git config change which is probably the appropriate resolution.
 
 Run the following command from each users SSH session or via STRQSH one time only.  
-```git config --global safe.directory '*'```    
+```git config --global safe.directory '*'```      
+
+Or have each developer run the following CL commands:   
+```IFORGIT/GITQSH CMDLINE('git config --global --add safe.directory ''*''') DSPSTDOUT(*NO)```   
 
 After running this once for each IBM i git user they should no longer see this issue.    
                
