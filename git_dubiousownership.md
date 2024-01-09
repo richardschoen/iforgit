@@ -43,7 +43,7 @@ If you like to manually set you git configuration settings, you can also add the
         directory = *
 ```
 
-If developer happens to call the above command too many times, multiple entries can get added ot the safe.directory setting. This isn't a functional issue, but you can also remove all the safe.directory settings using the following shell command if you need to reset the setting. Or simply edit your .gitconfig file:   
+If developer happens to call the above command too many times, multiple entries can get added ot the safe.directory setting. This isn't a functional issue, but if desired you can remove all the safe.directory settings for a users .gitconfig file using the following shell command if you want to reset the setting. Or simply edit your .gitconfig file as needed:   
 
 Run the following command from each users SSH session or via STRQSH one time only to reset the safe.directory settings.  
 ```git config --global --unset-all safe.directory```   
