@@ -29,3 +29,16 @@ Or have each developer run the following CL command:
 After running this once for each IBM i git user they should no longer see this issue.    
                
 When I tested, this seemed to solve it from my test environment with V7R4. 
+
+If you like to manulally set you git configuration settings, you can also add the appropriate directive to the .gitconfig file in each user's home directory by editing the file from an SSH shell or with EDTF on IBM i.
+
+.gitconfig sample contents for an IBM i user with safe.directory value set:   
+```
+[user]
+        name = First Last
+        email = first.last@domain.com
+[core]
+        preloadIndex = false
+[safe]
+        directory = *
+```
