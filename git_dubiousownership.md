@@ -23,7 +23,7 @@ In the last line of the article it shows the following git config change which i
 Run the following command from each users SSH session or via STRQSH one time only.  
 ```git config --global safe.directory '*'```      
 
-Or have each developer run the following CL commands:   
+Or have each developer run the following CL command:   
 ```IFORGIT/GITQSH CMDLINE('git config --global --add safe.directory ''*''') DSPSTDOUT(*NO)```   
 
 After running this once for each IBM i git user they should no longer see this issue.    
