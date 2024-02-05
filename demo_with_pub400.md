@@ -61,7 +61,7 @@ The git user info does NOT have have to be the same as your IBM i profile becaus
 
 In our example we will specify your first name and last name as your git profile.
 ```
-SETGBLUSR USERNAME('YourFirstName YourLastName')                  
+IFORGIT/SETGBLUSR USERNAME('YourFirstName YourLastName')                  
           USEREMAIL('userid@test.com')      
           PRELOADIDX(*FALSE)                 
           DSPSTDOUT(*YES)
