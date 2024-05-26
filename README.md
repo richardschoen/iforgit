@@ -1,7 +1,11 @@
 # Start Managing IBM i Source Members with Git in 10 Minutes
-IBM i Git Source Management Made Easy  
+IBM i Git Classic Source Management Made Easy  
 
-Implement Git for your Classic IBM i Source Version Control in Minutes  
+Implement Git for your Classic IBM i Source Version Control in Minutes.
+
+iForGit is an affordable Git Client solution for PDM, RDI and VS Code developers who develop classic RPG, CL and COBOL source.
+
+iForGit can be used standalone for source version management or in conjunction with other solutions that do classic IBM i source control to enhance those solutions with git versioning.
 
 ## Coming Soon
 Interactive PDM Git Log enhancement for viewing and restoring old versions   
