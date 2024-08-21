@@ -22,7 +22,7 @@ This is a Windows replacement for PDM that integrates with any editor such as VS
 
 It also integrates with the iForGit software for managing source member versioning and you can use existing PDM options.   
 
-You can download a copy of thes Windows based PDM utility here:   
+You can download a copy of the Windows based PDM utility here:   
 https://github.com/richardschoen/workwithibmipdm
 
 ## Welcome to iForGit - Git Client for IBM i Source Physical Files  
