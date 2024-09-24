@@ -23,5 +23,5 @@ Once the multithreaded environment variable is present, your git commands .
 
 In the above scenario I was using STRQSH because the customer didn't have a working SSH server where I could log in via SSH.   
 
-If I had been able to log in via SSh there would not have been any problems.  
+If I had been able to log in via SSH there would not have been any problems.  
 
