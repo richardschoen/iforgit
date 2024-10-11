@@ -33,3 +33,29 @@ Prompt first - ```Check/enable this option to prompt before running action CL co
 Show action - ```Check/enable this option to make sure action is not hidden.```
 
 Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
+
+## Git Log Member
+Retrieve the git log information that lists version information for the selected source member to the user's named source file in library '''IFORGITTMP.  Source member is: GITLOG.TXT
+IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*LOG) SRCHASH(*MOSTRECENT) DSPSTDOUT(*NO) DESTFILE(*IFORGITMP) IFORGITTMP(*LOG) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)
+
+## Git Blame Member
+IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*BLAME) SRCHASH(*MOSTRECENT) DSPSTDOUT(*NO) DESTFILE(*IFORGITMP) IFORGITTMP(*BLAME) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)
+
+## Git Checkout Selected Member
+IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*CHECKOUT) SRCHASH(' ') DSPSTDOUT(*NO) DESTFILE(QTEMP/*IFORGITMP) DESTMBR(&N) DESTOPT(*REPLACE) IFORGITTMP(GITCHKOUT) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)
+
+# Set up IFORGITTMP library to receive temporary source members
+You can manually set up the IFORGITTMP library if you like. Otherwise it will get auto-created by SRCTOGIT or LIBSRCEXP processing.   
+
+ ### Create the IFORGITTMP library if not found (The library may have already been auto-created by the SRCTOGIT commands)
+ CRTLIB LIB(IFORGITTMP) TEXT('iForGit Temp Work Library (Do Not Delete)')    
+
+ ### Create named source physical file in IFORGITTMP for each user ID that will use iForGit (If it hasn't been auto-created by SRCTOGIT)
+ ```CRTSRCPF FILE(IFORGITTMP/RICHARD) RCDLEN(240) TEXT('iForGit Temp Source File (Do Not Delete)')```   
+                                                                          
+
+## Create source member filter for selected library:
+
+
+
+
