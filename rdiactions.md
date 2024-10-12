@@ -1,7 +1,7 @@
 # RDI User Actions for Managing Source with Git and iForGit   
-The following are sample RDI actions that can be used with the iForGit commands to manage a git repository of source members from RDI.
+The following are sample RDI actions that can be used with the iForGit commands to manage a git repository of source members from within RDI by using custom User Actions.
 
-You can use these sample RDI actions provided or create your own as desired.  
+You can use these sample RDI actions provided to commit source changes, check history or retrieve a copy of an old source version. 
 
 ## Commit source member to Git Repo-SRCTOGIT 
 Commit the selected source member to a git repository using the SRCTOGIT CL command.  RDI will prompt the user for the CL command unless you uncheck the option to prompt first. 
@@ -36,6 +36,20 @@ Defined Types = ```ALL``` unless you want to limit to only selected source membe
 
 ## Git Log Member
 Retrieve the git log information that lists version information for the selected source member to the user's named source file in library '''IFORGITTMP.  Source member is: GITLOG.TXT
+
+Action Name: ```Get Most Recent Source Member from Git-SRCFRMGIT```    
+
+Comment: ```Import source from git repository```   
+
+Command: ```IFORGIT/SRCFRMGIT IFSREPODIR(*LIBREPODTAARA) SRCFILE(&L/&F) SRCMBR(&N) SRCTYPE(&T) SRCHEADER(*YES) SRCDATSEQ(*NO) REPLACE(*YES) EDITOPT(*NONE) VALIDREPO(*YES) COMMITOPT(*COMMIT) COMMENT(*DATEUSER)```    
+
+Prompt first - ```Check/enable this option to prompt before running action CL command```
+
+Show action - ```Check/enable this option to make sure action is not hidden.```
+
+Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
+
+
 IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*LOG) SRCHASH(*MOSTRECENT) DSPSTDOUT(*NO) DESTFILE(*IFORGITMP) IFORGITTMP(*LOG) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)
 
 ## Git Blame Member
