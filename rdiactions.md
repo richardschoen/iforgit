@@ -24,7 +24,7 @@ Click on Work with members to create a new filter, set library to IFORGITTMP and
 The IFORGITTMP filter is where you will go to view temporary information for iForGit source    
 ![image](https://github.com/user-attachments/assets/b532f191-4e85-47d4-8970-3cb129ed364b)
 
-The following files can get created by the appropriate user actions:   
+The following source members will get created in IFORGITTMP by the appropriate user actions:     
 Git blame results for a source member after running Git Blame user action - ```gitblame.txt```  
 Git log results for a source member after running Git Log user action - ```gitlog.txt```   
 Git checkout results for a source member after running a Git checkout action - ```gitchkout.txt```    
