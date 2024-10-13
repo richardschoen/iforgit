@@ -99,7 +99,7 @@ Once retreived, you can open the GITLOG.TXT member, find the git version hash fo
 
 Action Name: ```Git Log Member```    
 
-Comment: ```Retrieve Git Log Info for Source Member```   
+Comment: ```Retrieve git log info for source member to GITLOG.TXT in IFORGITTMP```   
 
 Command Type: ```Normal Command```    
 
@@ -122,7 +122,7 @@ Once retreived, you can open the GITBLAME.TXT member, find the short (8 characte
 
 Action Name: ```Git Blame Member```    
 
-Comment: ```Retrieve Git Blame Info for Source Member```   
+Comment: ```Retrieve git blame info for source member to GITBLAME.TXT in IFORGITTMP```   
 
 Command Type: ```Normal Command```    
 
@@ -145,7 +145,7 @@ After the temporary source version member has been checked out, you can open the
 
 Action Name: ```Git Checkout Selected Member```    
 
-Comment: ```Check out selected version for Source Member to IFORGITTMP library```   
+Comment: ```Check out selected version of source member to IFORGITTMP library```   
 
 Command Type: ```Normal Command```    
 
