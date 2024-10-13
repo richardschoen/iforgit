@@ -5,7 +5,7 @@ You can use these sample RDI actions provided to commit source changes, retreive
 
 These actions should also work with VS Code as well. Will do a VS Code specific article soon.   
 
-**Note: If you're using GitHub or another external web based source code provider, often custom user actions such as git log and git blame or checkout aren't needed from within RDi because changes can be viewed in a web browser and copy/pasted from the web based user interface. But the RDi actions can allow you to do all your source versioning and retrieval directly from within RDi.
+**Note:** If you're using GitHub or another external web based source code provider, often custom user actions such as git log and git blame or checkout aren't needed from within RDi because changes can be viewed in a web browser and copy/pasted from the web based user interface. But the RDi actions can allow you to do all your source versioning and retrieval directly from within RDi.
 
 ## One Time Set up IFORGITTMP library to receive temporary source members
 iForGit uses a temporary library to hold results from git commands like: git log, git blame and git checkout. iForGit will auto-create a source file in the IFORGITTMP library to hold temporary git results and temporary checked out source members for each IBM i user profile.    
@@ -15,13 +15,13 @@ The temprary git results can be easily accessed from within the RDi Remote Explo
 ### Create the IFORGITTMP library if not found (The library may have already been auto-created by the LIBSRCEXP and SRCTOGIT commands)
 ```CRTLIB LIB(IFORGITTMP) TEXT('iForGit Temp Work Library (Do Not Delete)')```       
 
-**Note: If the library already exists, nothing special is needed.    
+**Note:** If the library already exists, nothing special is needed.    
 
 ### Create a named source physical file in IFORGITTMP for each user ID  
 Create a named source physical file in library IFORGITTMP for each user ID that will be using iForGit with RDi (If it hasn't been auto-created by LIBSRCEXP or SRCTOGIT commands).    
  ```CRTSRCPF FILE(IFORGITTMP/RICHARD) RCDLEN(240) TEXT('iForGit Temp Source File (Do Not Delete)')```   
 
-**Note: If the source file for the user id already exists in library IFORGITTMP, nothing special is needed.    
+**Note:** If the source file for the user id already exists in library IFORGITTMP, nothing special is needed.    
 
 ### Create RDi source member filter for IFORGITTMP library and user source file
 As described above you will want to create a source member user filter to point to your user ID specific source file in library IFORGITTMP.   
@@ -74,7 +74,7 @@ Selected Types = ```ALL``` unless you want to limit to only selected source memb
 ### Get Most Recent Source Member from Git-SRCFRMGIT
 Get the most recently committed version of this source member from the associated git repository using the SRCFRMGIT CL command.  RDi will prompt the user for the CL command unless you uncheck the option to prompt first.    
 
-**Note: The existing source member in the regular source library will get overwritten with the source member from your Git repository. So be sure you are OK replacing the source member in the IBM i library with yiur last git committed version.    
+**Note:** The existing source member in the regular source library will get overwritten with the source member from your Git repository. So be sure you are OK replacing the source member in the IBM i library with yiur last git committed version.    
 
 Action Name: ```Get Most Recent Source Member from Git-SRCFRMGIT```    
 
@@ -118,7 +118,7 @@ Retrieve the git blame information for a source member. Git blame will list a so
 
 Once retreived, you can open the GITBLAME.TXT member, find the short (8 character) git version hash prefix for a selected source commit entry and ```copy the git hash``` so it can be ```pasted``` into the source version hash parameter when you do a git checkout as listed below.   
 
-**Note: In GITBLAME.TXT you will only have a partial 8 character hash version. In GITLOG.TXT you will have the long version of a source version hash. Both will work to be able to check out a source member version. The 8 character hash is just more convenient to copy/paste as needed. You can also just copy the first 8 characters from a long source hash and that will work as well when checking out and getting a source member version.    
+**Note:** In GITBLAME.TXT you will only have a partial 8 character hash version. In GITLOG.TXT you will have the long version of a source version hash. Both will work to be able to check out a source member version. The 8 character hash is just more convenient to copy/paste as needed. You can also just copy the first 8 characters from a long source hash and that will work as well when checking out and getting a source member version.    
 
 Action Name: ```Git Blame Member```    
 
@@ -142,6 +142,8 @@ Checkout/get a copy of the selected source member verion from the git repository
 When prompted to check out the selected source member, first paste the version hash into the ```source version hash``` parameter and then click OK to start the checkout. The selected source member will be checked out to the user's source file in ```IFORGITTMP```. The checked out source member name will match the original source member name unless you change the ```DESTMBR``` parameter to something else.  Sometimes you might find it useful to rename a source member when it's checked out out to ```IFORGITTMP```   
 
 After the temporary source version member has been checked out, you can open the source member from the source file in ```IFORGITTMP``` and review the code or copy and paste source from the open member to the current source you're working on in your development IBM i environnment.     
+
+**Note:** If you want to preserve the checked out source member for later use, it should be copied from the user source file in ```IFORGITTMP``` to another library.   
 
 Action Name: ```Git Checkout Selected Member```    
 
