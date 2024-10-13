@@ -33,10 +33,10 @@ The IFORGITTMP filter is where you will go to view temporary information for iFo
 ![image](https://github.com/user-attachments/assets/b532f191-4e85-47d4-8970-3cb129ed364b)   
 
 
-The following source member names are created in the user temporary source file in IFORGITTMP by the appropriate user actions:     
-```Git blame results``` for a source member after running Git Blame user action get written to  - ```GITBLAME.TXT```  
-```Git log results``` for a source member after running Git Log user action get written to - ```GITLOG.TXT```   
-```Git checkout results``` for a source member after running a Git checkout action get written to - ```GITCHKOUT.TXT```    
+The following output source member names are created in the user temporary source file in IFORGITTMP by the appropriate user actions:     
+```Git blame results``` for a source member after running Git Blame user action data gets written to source member - ```GITBLAME.TXT```  
+```Git log results``` for a source member after running Git Log user action gets written to source member - ```GITLOG.TXT```   
+```Git checkout results``` for a source member after running a Git checkout action get written to source member - ```GITCHKOUT.TXT```    
 ```Source member checkout``` - A temporary checked out source member is usually named after the ```original source member name```.    
 
 ## Creating or Editing RDi user actions
