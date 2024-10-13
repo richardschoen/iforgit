@@ -5,14 +5,14 @@ You can use these sample RDI actions provided to commit source changes, check hi
 
 These actions should also work with VS Code as well. Will do a VS Code specific article soon.   
 
-## Set up IFORGITTMP library to receive temporary source members
+## One Time Set up IFORGITTMP library to receive temporary source members
 iForGit uses a temporary library to hold results from git commands like: git log, git blame and git checkout. iForGit will auto-create a source file in the IFORGITTMP library to hold temporary git results and temporary checked out source members for each IBM i user profile. The results can then be easily accessed from within the RDi Remote Explorer source member list by creating a user filter to the user specific source file in library IFORGITTMP.  You can manually set up the IFORGITTMP library if you like before creating user actions. Otherwise it will get auto-created by SRCTOGIT or LIBSRCEXP processing.   
 
 ### Create the IFORGITTMP library if not found (The library may have already been auto-created by the SRCTOGIT commands)
 ```CRTLIB LIB(IFORGITTMP) TEXT('iForGit Temp Work Library (Do Not Delete)')```       
 
 ### Create a named source physical file in IFORGITTMP for each user ID  
-Create a named source physical file in library IFORGITTMP for each user ID that will be using iForGit with RDi (If it hasn't been auto-created by SRCTOGIT).
+Create a named source physical file in library IFORGITTMP for each user ID that will be using iForGit with RDi (If it hasn't been auto-created by SRCTOGIT).    
  ```CRTSRCPF FILE(IFORGITTMP/RICHARD) RCDLEN(240) TEXT('iForGit Temp Source File (Do Not Delete)')```                                          
 ### Create RDi source member filter for selected library:
 As described above you will want to create a source member user filter to point to your user ID specific source file in library IFORGITTMP.   
