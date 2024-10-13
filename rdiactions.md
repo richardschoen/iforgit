@@ -47,13 +47,17 @@ Action Name: ```Commit Source Member to Git Repo-SRCTOGIT```
 
 Comment: ```Export source to git repository```   
 
+Command Type: ```Normal Command```   
+
 Command: ```IFORGIT/SRCTOGIT SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCHEADER(*YES) SRCDATSEQ(*NO) REPLACE(*YES) EDITOPT(*NONE) VALIDREPO(*YES) IFSMKDIR(*YES) INITREPO(*YES) COMMITOPT(*COMMIT) COMMENT(*DATEUSER)```    
 
-Prompt first - ```Check/enable this option to prompt before running action CL command```
+Prompt first - ```Check/enable this option to prompt before running action CL command```   
 
-Show action - ```Check/enable this option to make sure action is not hidden.```
+Show action - ```Check/enable this option to make sure action is not hidden.```    
 
 Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
+
+Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
 
 
 ### Get Most Recent Source Member from Git-SRCFRMGIT
@@ -63,6 +67,8 @@ Action Name: ```Get Most Recent Source Member from Git-SRCFRMGIT```
 
 Comment: ```Import source from git repository```   
 
+Command Type: ```Normal Command```    
+
 Command: ```IFORGIT/SRCFRMGIT IFSREPODIR(*LIBREPODTAARA) SRCFILE(&L/&F) SRCMBR(&N) SRCTYPE(&T) SRCHEADER(*YES) SRCDATSEQ(*NO) REPLACE(*YES) EDITOPT(*NONE) VALIDREPO(*YES) COMMITOPT(*COMMIT) COMMENT(*DATEUSER)```    
 
 Prompt first - ```Check/enable this option to prompt before running action CL command```
@@ -70,6 +76,8 @@ Prompt first - ```Check/enable this option to prompt before running action CL co
 Show action - ```Check/enable this option to make sure action is not hidden.```
 
 Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
+
+Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
 
 ### Git Log Member
 Retrieve the git log information that lists version information for the selected source member to the user's named source file in library '''IFORGITTMP.  Source member is: GITLOG.TXT
@@ -78,6 +86,8 @@ Action Name: ```Get Most Recent Source Member from Git-SRCFRMGIT```
 
 Comment: ```Import source from git repository```   
 
+Command Type: ```Normal Command```    
+
 Command: ```IFORGIT/SRCFRMGIT IFSREPODIR(*LIBREPODTAARA) SRCFILE(&L/&F) SRCMBR(&N) SRCTYPE(&T) SRCHEADER(*YES) SRCDATSEQ(*NO) REPLACE(*YES) EDITOPT(*NONE) VALIDREPO(*YES) COMMITOPT(*COMMIT) COMMENT(*DATEUSER)```    
 
 Prompt first - ```Check/enable this option to prompt before running action CL command```
@@ -85,6 +95,8 @@ Prompt first - ```Check/enable this option to prompt before running action CL co
 Show action - ```Check/enable this option to make sure action is not hidden.```
 
 Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
+
+Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
 
 
 IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*LOG) SRCHASH(*MOSTRECENT) DSPSTDOUT(*NO) DESTFILE(*IFORGITMP) IFORGITTMP(*LOG) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)
