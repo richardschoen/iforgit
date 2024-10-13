@@ -71,15 +71,14 @@ Defined Types = ```ALL``` unless you want to limit to only selected source membe
 
 Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
 
-
 ### Get Most Recent Source Member from Git-SRCFRMGIT
 Get the most recently committed version of this source member from the associated git repository using the SRCFRMGIT CL command.  RDi will prompt the user for the CL command unless you uncheck the option to prompt first.    
 
-The existing source member in the source library will get overwritten with the source member from your Git repositoty.   
+**Note: The existing source member in the regular source library will get overwritten with the source member from your Git repository. So be sure you are OK replacing the source member in the IBM i library with yiur last git committed version.    
 
 Action Name: ```Get Most Recent Source Member from Git-SRCFRMGIT```    
 
-Comment: ```Get and import source from git repository```   
+Comment: ```Get and import most recent version of source from git repository```   
 
 Command Type: ```Normal Command```    
 
@@ -119,7 +118,7 @@ Retrieve the git blame information for a source member. Git blame will list a so
 
 Once retreived, you can open the GITBLAME.TXT member, find the short (8 character) git version hash prefix for a selected source commit entry and ```copy the git hash``` so it can be ```pasted``` into the source version hash parameter when you do a git checkout as listed below.   
 
-**Note: In GITBLAME.TXT you will only have a partial 8 character hash version. In GITLOG.TXT you will have the long version of a source version hash. Both will work to be able to check out a source member version. The 8 character hash is just more convenient to copy/paste as needed.     
+**Note: In GITBLAME.TXT you will only have a partial 8 character hash version. In GITLOG.TXT you will have the long version of a source version hash. Both will work to be able to check out a source member version. The 8 character hash is just more convenient to copy/paste as needed. You can also just copy the first 8 characters from a long source hash and that will work as well when checking out and getting a source member version.    
 
 Action Name: ```Git Blame Member```    
 
@@ -138,15 +137,15 @@ Defined Types = ```ALL``` unless you want to limit to only selected source membe
 Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
 
 ## Git Checkout Selected Member
-Checkout/get a copy of the selected source member verion from the git repository. You need to determine the version hash value by first doing a ```git blame``` or ```git Log``` operation, viewing the results as described above and copying the selected source version hash into the clipboard.      
+Checkout/get a copy of the selected source member verion from the git repository. You need to determine the version hash (long one or 8 character one) value by first doing a ```git blame``` or ```git Log``` operation, viewing the results as described above and copying the selected source version hash into the clipboard.      
 
-When prompted to check out the selected source member, first paste the version hash into the ```source version hash``` parameter and then click OK to start the checkout. The selected source member will be checked out to the user's source file in ```IFORGITTMP```. The checked out source member name will match the original source member name unless you change the DESTMBR parameter to something else.  Sometimes you might find it useful to rename a source member when it's checkout out to ```IFORGITTMP```
+When prompted to check out the selected source member, first paste the version hash into the ```source version hash``` parameter and then click OK to start the checkout. The selected source member will be checked out to the user's source file in ```IFORGITTMP```. The checked out source member name will match the original source member name unless you change the ```DESTMBR``` parameter to something else.  Sometimes you might find it useful to rename a source member when it's checked out out to ```IFORGITTMP```   
 
-After the temporary source version member has been checked out, you can open the source member and review the code or copy and paste source from the open member to the current source you're working on in your development IBM i environnment.     
+After the temporary source version member has been checked out, you can open the source member from the source file in ```IFORGITTMP``` and review the code or copy and paste source from the open member to the current source you're working on in your development IBM i environnment.     
 
 Action Name: ```Git Checkout Selected Member```    
 
-Comment: ```Checkout selected version for Source Member```   
+Comment: ```Check out selected version for Source Member to IFORGITTMP library```   
 
 Command Type: ```Normal Command```    
 
