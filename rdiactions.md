@@ -80,15 +80,16 @@ Defined Types = ```ALL``` unless you want to limit to only selected source membe
 Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
 
 ### Git Log Member
-Retrieve the git log information that lists version information for the selected source member to the user's named source file in library '''IFORGITTMP.  Source member is: GITLOG.TXT
+Retrieve the git log information for a source member. that lists version information for the selected source member to the user's named source file in library '''IFORGITTMP.  Source member is: GITLOG.TXT
 
-Action Name: ```Get Most Recent Source Member from Git-SRCFRMGIT```    
+Action Name: ```Git Log Member```    
 
-Comment: ```Import source from git repository```   
+Comment: ```Retrieve Git Log Info for Source Member```   
 
 Command Type: ```Normal Command```    
 
-Command: ```IFORGIT/SRCFRMGIT IFSREPODIR(*LIBREPODTAARA) SRCFILE(&L/&F) SRCMBR(&N) SRCTYPE(&T) SRCHEADER(*YES) SRCDATSEQ(*NO) REPLACE(*YES) EDITOPT(*NONE) VALIDREPO(*YES) COMMITOPT(*COMMIT) COMMENT(*DATEUSER)```    
+Command: ```IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*LOG) SRCHASH(*MOSTRECENT) DSPSTDOUT(*NO) DESTFILE(*IFORGITMP) IFORGITTMP(*LOG) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)
+```    
 
 Prompt first - ```Check/enable this option to prompt before running action CL command```
 
@@ -98,20 +99,44 @@ Defined Types = ```ALL``` unless you want to limit to only selected source membe
 
 Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
 
-
-IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*LOG) SRCHASH(*MOSTRECENT) DSPSTDOUT(*NO) DESTFILE(*IFORGITMP) IFORGITTMP(*LOG) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)
-
 ## Git Blame Member
-IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*BLAME) SRCHASH(*MOSTRECENT) DSPSTDOUT(*NO) DESTFILE(*IFORGITMP) IFORGITTMP(*BLAME) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)
+Retrieve the git blame information for a source member. Git blame will list a source member contents along with all lines and change version information for each line to a source member in '''IFORGITTMP.  Temporary source member is: GITBLAME.TXT
+
+Action Name: ```Git Blame Member```    
+
+Comment: ```Retrieve Git Blame Info for Source Member```   
+
+Command Type: ```Normal Command```    
+
+Command: ```IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*BLAME) SRCHASH(*MOSTRECENT) DSPSTDOUT(*NO) DESTFILE(*IFORGITMP) IFORGITTMP(*BLAME) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)
+```    
+
+Prompt first - ```Check/enable this option to prompt before running action CL command```
+
+Show action - ```Check/enable this option to make sure action is not hidden.```
+
+Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
+
+Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
 
 ## Git Checkout Selected Member
-IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*CHECKOUT) SRCHASH(' ') DSPSTDOUT(*NO) DESTFILE(QTEMP/*IFORGITMP) DESTMBR(&N) DESTOPT(*REPLACE) IFORGITTMP(GITCHKOUT) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)
+Checkout/get a copy of the selected source member verion from git repository. You need to determine the version hash value by first doing a Git Blame or Git Log operation and viewing the results.    
 
+The selected source member will be checked out to the user source file in ```IFORGITTMP```. Temporary source member name will match the original source member name unless you change the DESTMBR parameter.     
 
+Action Name: ```Git Checkout Selected Member```    
 
+Comment: ```Checkout selected version for Source Member```   
 
+Command Type: ```Normal Command```    
 
+Command: ```IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*CHECKOUT) SRCHASH(' ') DSPSTDOUT(*NO) DESTFILE(QTEMP/*IFORGITMP) DESTMBR(&N) DESTOPT(*REPLACE) IFORGITTMP(GITCHKOUT) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)
+```    
 
+Prompt first - ```Check/enable this option to prompt before running action CL command```
 
+Show action - ```Check/enable this option to make sure action is not hidden.```
 
+Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
 
+Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
