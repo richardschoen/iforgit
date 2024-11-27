@@ -13,14 +13,14 @@ The simple source checkin command **MBRCHKI** can be used to check in and copy a
 ## iForgit Simple Source Management CL Commands
 
 ### MBRARC - Take source member archive snapshot to source archive file
-This CL command can be used to quickly grab a snapshot copy of any source member and place it into the source archive source file IFORGIT/GITSRCARC using an automatically named source member.
+This CL command can be used to quickly grab a snapshot copy of any source member and place it into the source archive source file IFORGIT/GITSRCARC or other custom archive source file using an automatically named source member.
 
 This is a good way to quickly snapshot a source member without having to copy and rename it to something meaningful.  
 
-Snapshot archive copies are auto-named (Mxxxxxxxxx) and created in the GITSRCARC source physical file located in the IFORGIT or other library. An audit log entry is also placed into the GITSRCARCP file in the IFORGIT library. 
+Snapshot archive copies are auto-named (Mxxxxxxxxx) and created in the GITSRCARC source physical file located in the IFORGIT or other library. An audit log entry is also placed into the GITSRCARCP file in the IFORGIT library. The archive source member text also holds the original source member information.    
 
 #### MBRARC usage examples  
-The following example snapshots a source member named MYSOURCE1 to the IFORGIT/GITSRCARC table from QGPL/QRPGLESRC. The source member name in the archive is automatically created. 
+The following example snapshots a source member named MYSOURCE1 to the IFORGIT/GITSRCARC table from QGPL/QRPGLESRC. The source member name in the archive is automatically created. The generated archive member name is shown on the command line after processing the archive snapshot.
 
 ``` 
 IFORGIT/MBRARC SRCFILE(QGPL/QRPGLESRC)    
@@ -32,7 +32,7 @@ IFORGIT/MBRARC SRCFILE(QGPL/QRPGLESRC)
 
 **SRCFILE** - The source file to capture source member from. 
 
-**SRCMBR** - The source member to capture to the archive IFORGIT/GITSRCARC archive source file. 
+**SRCMBR** - The source member to capture to the archive source file. 
 
 **ARCSRCFILE** - The archive source file to capture source member to. ```*DEFAULT``` captures the source members to the IFORGIT/GITSRCARC archive source file with a unique member name. Ex: ```M000000001```.   
 The source file value can be changed if desired to place GITSRCARC in a different library by changing the ```DFTARCFILE``` and ```DFTARCLIB``` data area values and creating the new archive source file in the appropriate library via the CRTSRCPF command. 
@@ -41,12 +41,12 @@ The source file value can be changed if desired to place GITSRCARC in a differen
 ### MBRCHKO - Check out source member from production source location to developer library
 This CL command can be used to make a copy of a production source member to a developer library for development.
 
-A copy of the original source member is created in a developer library in the selected source physical file. 
+A copy of the original source member is created in a developer library in the selected source physical file.  
 
 Optionally the production source member can be removed from the original library location during development if you don't want anyone else using the source member while it's being edited.
 
 #### MBRCHKO usage examples  
-The following example checks out a source member named MBR001R from source file MYSOURCE1/QRPGLESRC to a developer library: DEVSOURCE1/QRPGLESRC. Since ARCHIVE is set to *YES the source member is archived and the member name in the archive is automatically created. Since replace is *NO, the destination source member will not be replaced if it exists. And the production copy is not removed from its original location because RMVPRDCOPY is *NO.
+The following example checks out a source member named MBR001R from source file MYSOURCE1/QRPGLESRC to a developer source file: DEVSOURCE1/QRPGLESRC. Since ARCHIVE is set to *YES the source member is archived and the member name in the archive is automatically created. Since replace is *NO, the destination source member will not be replaced if it exists. And the production copy is not removed from its original location because RMVPRDCOPY is *NO.
 
  ```
  IFORGIT/MBRCHKO SRCFILE(MYSOURCE1/QRPGLESRC)         
@@ -66,7 +66,7 @@ The following example checks out a source member named MBR001R from source file 
 
 **SRCMBR** - The source member name to check out. 
 
-**TOSRCFILE** - The source file to copy source member to during checkout. This source file will usually be located in a develop library or shared development library. 
+**TOSRCFILE** - The developer/development source file to copy source member to during checkout. This source file will usually be located in a develop library or shared development library. 
 
 **TOSRCMBR** - The source member name when checked out. Usually this name should be the same as the SRCMBR value. 
 
@@ -86,9 +86,9 @@ Should the command skip copying the destination development source member if it 
 **RMVPRDCPY** - Remove source member from prod.  
 Should the command remove the source member from the production source file and library after successfuly checked out to the developer library.  
 
-```*NO``` - Don't remove the prod source member after checkout to dev location. This means multiple people can check out the same source member to work on it. However the soruce archive will make sure backup copies are captured in case of developer conflict during checkin.  
+```*NO``` - Don't remove the prod source member after checkout to dev location. This means multiple people can check out the same source member to work on it. However the source archive will make sure backup copies are captured in case of developer conflict during checkin.  
 
-```*YES``` - Remove the source member from the prod source file after successful checkout. This means a developer can check out the master version of a source member and place it into the development library so they have it exclusively for editing until they check it back in to the source library. 
+```*YES``` - Remove the source member from the prod source file after successful checkout. This means a developer can check out the master version of a source member and place it into the development library so they have it exclusively for editing until they check it back in to the source library. And the production member gets removed after a successfuly checkout copy.
 
 **ARCHIVE** - Copy to archive source file 
 Should an archive version of the prod and dev source members get created before checkout ? 
