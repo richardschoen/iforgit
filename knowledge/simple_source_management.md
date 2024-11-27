@@ -1,5 +1,15 @@
 # iForGit Simple Source Management CL Commands
-This document is a shortcut getting started document for using the simple source management commands in iForGit.
+This document is a shortcut getting started document for using the simple source management commands in iForGit. The simple source managemenr commands can be used to do local source checkouts between libraries for development purposes with or without using Git commands. Sometimes it's easier for a development team to start with something like simple source checkout/checkin and creating snapshots prior to implementing Git for version control. 
+
+#### Source checkout - MBRCHKO
+The simple source checkout command **MBRCHKO** can be used to check out and copy a source member from a production source location to a developer library. The original production source member can optionally be removed from the production source while being worked on in the developer library as well if desired to keep other developers from making changes to a source member while it's being worked on. A snapshot of the original source member is made prior to checkout. And if the destination source member is replaced during checkout it also gets snapshotted before checkout. Snapshot archive copies are stored in the GITSRCARC source physical file located in the IFORGITDTA or other library.
+
+#### Source checkin - MBRCHKI
+The simple source checkin command **MBRCHKI** can be used to check in and copy a source member from a development source location to the production library. The development source member can optionally be removed from the development source after being worked on in the developer library after it's been checked in to production if further work will be done on the source. A snapshot of the original source member is made prior to checkout. And if the destination source member is replaced during checkout it also gets snapshotted before checkout. Snapshot archive copies are stored in the GITSRCARC source physical file located in the IFORGITDTA or other library.
+
+
+
+
 
 ## iForgit Simple Source Management CL Commands
 
@@ -87,14 +97,14 @@ Should an archive version of the prod and dev source members get created before 
 
 **ARCSRCFILE** - The archive source file to capture source member to. *DEFAULT captures the source members to the IFORGIT/GITSRCARC archive source file with a unique member name. Ex: ```M000000001```
 
-# MBRCHKI - Check in source member from developer source location to production library
+### MBRCHKI - Check in source member from developer source location to production library
 This CL command can be used to make a copy of a production source member to a developer library for development.
 
 A copy of the original source member is created in a developer library in the selected source physical file. 
 
 Optionally the production source member can be removed from the original library location during development if you don't want anyone else using the source member while it's being edited.
 
-# MBRCHKI usage examples  
+#### MBRCHKI usage examples  
 The following example checks out a source member named MYSOURCE1 from QGPL/QRPGLESRC to a developer library:  the IFORGIT/GITSRCARC table from QGPL/QRPGLESRC. The source member name in the archive is automatically created. 
 
  ```
@@ -108,7 +118,7 @@ IFORGIT/MBRCHKI SRCFILE(MYSOURCE1/QRPGLESRC)
                 ARCHIVE(*YES)                  
 ```
 
-# MBRCHKI command parms  
+#### MBRCHKI command parms  
 
 **SRCFILE** - The development source file to check in source member from. 
 
