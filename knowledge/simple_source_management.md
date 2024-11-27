@@ -52,7 +52,7 @@ The following example checks out a source member named MBR001R from source file 
  IFORGIT/MBRCHKO SRCFILE(MYSOURCE1/QRPGLESRC)         
                  SRCMBR(MBR001R)                         
                  TOSRCFILE(DEVSOURCE1/QRPGLESRC)       
-                 TOSRCMBR(HELLO)                       
+                 TOSRCMBR(*SAME)                       
                  REPLACE(*NO)                          
                  SKIPEXIST(*NO)                        
                  RMVPRDCOPY(*NO)                       
@@ -68,7 +68,7 @@ The following example checks out a source member named MBR001R from source file 
 
 **TOSRCFILE** - The developer/development source file to copy source member to during checkout. This source file will usually be located in a develop library or shared development library. 
 
-**TOSRCMBR** - The source member name when checked out. Usually this name should be the same as the SRCMBR value. 
+**TOSRCMBR** - The source member name when checked out. Usually this name should be *SAME or the same as the SRCMBR value unless you want to change the source member during checkout.
 
 **REPLACE** - Replace the destination development source member if it exists.   
 Should the command replace the destination development source member if it exists ?    
@@ -110,13 +110,13 @@ A copy of the original source member is created in a developer library in the se
 Optionally the production source member can be removed from the original library location during development if you don't want anyone else using the source member while it's being edited.
 
 #### MBRCHKI usage examples  
-The following example checks out a source member named MYSOURCE1 from QGPL/QRPGLESRC to a developer library:  the IFORGIT/GITSRCARC table from QGPL/QRPGLESRC. The source member name in the archive is automatically created. 
+The following example checks out a source member named MBR001R from source file DEVSOURCE1/QRPGLESRC to a production source file: MYSOURCE1/QRPGLESRC. Since ARCHIVE is set to *YES the source member is archived and the member name in the archive is automatically created. Since replace is *NO, the destination source member will not be replaced if it exists. And the develpoment copy is not removed from its location because RMVPRDCOPY is *NO.
 
  ```
 IFORGIT/MBRCHKI SRCFILE(DEVSOURCE1/QRPGLESRC)  
-                SRCMBR(HELLO)                  
+                SRCMBR(MBR001R)                  
                 TOSRCFILE(MYSOURCE1/QRPGLESRC)
-                TOSRCMBR(HELLO)                
+                TOSRCMBR(*SAME)                
                 REPLACE(*NO)                   
                 RMVDEVCOPY(*NO)                
                 ARCSRCFILE(*DEFAULT)           
@@ -127,39 +127,32 @@ IFORGIT/MBRCHKI SRCFILE(DEVSOURCE1/QRPGLESRC)
 
 **SRCFILE** - The development source file to check in source member from. 
 
-**SRCMBR** - The source member to to check in. 
+**SRCMBR** - The source member to check in. 
 
-**TOSRCFILE** - The source file to copy source member to during checkout. This source file will usually be located in a develop library. 
+**TOSRCFILE** - The production source file to copy source member to during checkin. This source file will usually be located in a production library. 
 
-**TOSRCMBR** - The source member name when checked out. Usually this name should be the same as the SRCMBR value. 
+**TOSRCMBR** - The source member name when checked in. Usually this name should be *SAME or the same as the SRCMBR value unless you want to change the source member during checkin.
 
-**REPLACE** - Replace the destination development source member if it exists. 
-Should the command replace the destination development source member if it exists ?    
-*NO - Do not allow an existing destination source member to be overwritten. This will stop the check out if the destination member exists.   
+**REPLACE** - Replace the destination production source member if it exists. 
+Should the command replace the destination production source member if it exists ?    
+```*NO``` - Do not allow an existing destination source member to be overwritten. This will stop the check out if the destination member exists.   
 
-*YES - Replace the destination source member if it's already checked out to the developer location. This will overwrite the destination source member with the current copy from production. You can potentially lose changes in your development library.
+```*YES``` - Replace the destination source member in the production location. This will overwrite the destination production source member with the current copy from development. You can potentially lose changes in your production library.
 
-**SKIPEXIST** - Skip existing dev source mbrs. 
-Should the command skip copying the destination development source member if it exists ?    
+**RMVDEVCPY** - Remove source member from development location.  
+Should the command remove the source member from the development source file and library after successfuly checked in to the production library. 
 
-*NO - Don't skip copying the source member. It must always be copied and/or replaced.
+```*NO``` - Don't remove the dev source member after checkin to prod location. 
 
-*YES - Skip copying the production source member if it exists. This option allows you to complete the checkout process without actually copying the source member if it already exists in the developer library. This is good to use if you somehow already have a copy of the source in your dev library and perhaps want to get a snapshot of the prod version of the source and maybe you want to remove the prod version so it can't be accessed from the prod library until it's checked back in.
-
-**RMVPRDCPY** - Remove source member from prod.  
-Should the command remove the source member from the production source file and library after successfuly checked out to the developer library. 
-
-*NO - Don't remove the prod source member after checkout to dev location. This means multiple people can check out the same source member to work on it. However the soruce archive will make sure backup copies are captured in case of developer conflict during checkin.  
-
-*YES - Remove the source member from the prod source file after successful checkout. This means each developer can check out the master version of a source member and place it into the development library until they check it back in to the source library. 
+```*YES``` - Remove the source member from the dev source file after successful checkin. 
 
 **ARCHIVE** - Copy to archive source file 
-Should an archive version of the prod and dev source members get created before checkout ? 
+Should an archive version of the prod and dev source members get created before checkin ? 
 
-*NO - Don't create an archive source copy before checkout.    
+```*NO``` - Don't create an archive source copy before checkin.    
 ❗If you select this option, no archive copy of your source member gets created, so you have no source member backup.
 
-*YES - Create an archive source copy before checkout. If you select this option, an archive of an existing production and dev source member gets created for archive/backup purposes. 
+```*YES``` - Create an archive source copy before checkin. If you select this option, an archive of an existing production and dev source member gets created for archive/backup purposes. 
 
 **ARCSRCFILE** - The archive source file to capture source member to. ```*DEFAULT``` captures the source members to the IFORGIT/GITSRCARC archive source file with a unique member name. Ex: ```M000000001```.   
 The source file value can be changed if desired to place GITSRCARC in a different library by changing the ```DFTARCFILE``` and ```DFTARCLIB``` data area values and creating the new archive source file in the appropriate library via the CRTSRCPF command. 
