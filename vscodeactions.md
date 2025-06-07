@@ -22,13 +22,7 @@ Create a named source physical file in library IFORGITTMP for each user ID that 
 **Note:** If the source file for the user id already exists in library IFORGITTMP, nothing special is needed.    
 
 ### Create VS Code filter for IFORGITTMP library and user source file
-As described above you will want to create a source member user filter to point to your user ID specific source file in library IFORGITTMP.   
-
-Click on Work with members to create a new filter, set library to IFORGITTMP and File to your user ID. Then click Next and Finish.    
-![image](https://github.com/user-attachments/assets/8dc73e00-b587-4139-9b93-324cd39895b9)
-
-The IFORGITTMP filter is where you will go to view temporary information for iForGit source    
-![image](https://github.com/user-attachments/assets/b532f191-4e85-47d4-8970-3cb129ed364b)   
+As described above you will want to create a source member user filter to point to your user ID specific source file in library IFORGITTMP or display all source files if you want.
 
 The following output source member names are created in the user temporary source file in IFORGITTMP by the appropriate user actions:     
 ```Git blame results``` for a source member after running Git Blame user action data gets written to source member - ```GITBLAME.TXT```  
@@ -43,7 +37,7 @@ Open the ```Work with Actions``` Dialog.
 You can create the following user actions.   
 
 ## iForGit User Actions
-These are sample user actions that we provide for you to be able to work entirely in VS COde to commit source changes, check on source versions and retreive copies of older source members if needed from a git repository.    
+These are sample user actions that we provide for you to be able to work entirely in VS Code to commit source changes, check on source versions and retreive copies of older source members if needed from a git repository.    
 
 ### Commit source member to Git Repo-SRCTOGIT 
 Commit the selected source member to a git repository using the SRCTOGIT CL command.  RDi will prompt the user for the SRCTOGIF CL command unless you uncheck the option to prompt first.    
@@ -88,19 +82,15 @@ Once retreived, you can open the GITLOG.TXT member, find the git version hash fo
 
 Action Name: ```Git Log Member```    
 
-Comment: ```Retrieve git log info for source member to GITLOG.TXT in IFORGITTMP```   
+Command: ```? IFORGIT/SRCGITCMD SRCFILE(&OPENLIB/&OPENSPF) SRCMBR(&OPENMBR) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*LOG) SRCHASH(*MOSTRECENT) DSPSTDOUT(*NO) DESTFILE(*IFORGITMP) IFORGITTMP(*LOG) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&USERNAME)```    
 
-Command Type: ```Normal Command```    
+Extensions:```GLOBAL```. Or you can limit to selected source member types like: RPG, CLP, etc.   
 
-Command: ```IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*LOG) SRCHASH(*MOSTRECENT) DSPSTDOUT(*NO) DESTFILE(*IFORGITMP) IFORGITTMP(*LOG) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)```    
+Type:```Member```   
 
-Prompt first - ```Check/enable this option to prompt before running action CL command```
+Environment:```ILE```   
 
-Show action - ```Check/enable this option to make sure action is not hidden.```
-
-Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
-
-Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
+Refresh:```No```   
 
 ## Git Blame Member
 Retrieve the git blame information for a source member. Git blame will list a source member contents along with all lines and change version information for each line to source member ```GITBLAME.TXT``` in the users's named source file in '''IFORGITTMP```.    
@@ -111,19 +101,15 @@ Once retreived, you can open the GITBLAME.TXT member, find the short (8 characte
 
 Action Name: ```Git Blame Member```    
 
-Comment: ```Retrieve git blame info for source member to GITBLAME.TXT in IFORGITTMP```   
+Command: ```? IFORGIT/SRCGITCMD SRCFILE(&OPENLIB/&OPENSPF) SRCMBR(&OPENMBR) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*BLAME) SRCHASH(*MOSTRECENT) DSPSTDOUT(*NO) DESTFILE(*IFORGITMP) IFORGITTMP(*BLAME) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&USERNAME)```    
 
-Command Type: ```Normal Command```    
+Extensions:```GLOBAL```. Or you can limit to selected source member types like: RPG, CLP, etc.   
 
-Command: ```IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*BLAME) SRCHASH(*MOSTRECENT) DSPSTDOUT(*NO) DESTFILE(*IFORGITMP) IFORGITTMP(*BLAME) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)```    
+Type:```Member```   
 
-Prompt first - ```Check/enable this option to prompt before running action CL command```
+Environment:```ILE```   
 
-Show action - ```Check/enable this option to make sure action is not hidden.```
-
-Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
-
-Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
+Refresh:```No```   
 
 ## Git Checkout Selected Member
 Checkout/get a copy of the selected source member verion from the git repository. You need to determine the version hash (long one or 8 character one) value by first doing a ```git blame``` or ```git Log``` operation, viewing the results as described above and copying the selected source version hash into the clipboard.      
@@ -136,16 +122,12 @@ After the temporary source version member has been checked out, you can open the
 
 Action Name: ```Git Checkout Selected Member```    
 
-Comment: ```Check out selected version of source member to IFORGITTMP library```   
+Command: ```? IFORGIT/SRCGITCMD  SRCHASH(' ') SRCFILE(&OPENLIB/&OPENSPF) SRCMBR(&OPENMBR) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*CHECKOUT) DSPSTDOUT(*NO) DESTFILE(QTEMP/*IFORGITMP) DESTMBR(&OPENMBR) DESTOPT(*REPLACE) IFORGITTMP(GITCHKOUT) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&USERNAME)```    
 
-Command Type: ```Normal Command```    
+Extensions:```GLOBAL```. Or you can limit to selected source member types like: RPG, CLP, etc.   
 
-Command: ```IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*CHECKOUT) SRCHASH(' ') DSPSTDOUT(*NO) DESTFILE(QTEMP/*IFORGITMP) DESTMBR(&N) DESTOPT(*REPLACE) IFORGITTMP(GITCHKOUT) WRITETOTMP(*YES) TMPDESTOPT(*IFORGITMP) TMPDESTUSR(&U)```    
+Type:```Member```   
 
-Prompt first - ```Check/enable this option to prompt before running action CL command```
+Environment:```ILE```   
 
-Show action - ```Check/enable this option to make sure action is not hidden.```
-
-Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
-
-Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
+Refresh:```No```   
