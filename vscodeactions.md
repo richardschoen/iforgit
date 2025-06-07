@@ -34,10 +34,30 @@ The following output source member names are created in the user temporary sourc
 
 Open the ```Work with Actions``` Dialog.   
 
-You can create the following user actions.   
+![image](https://github.com/user-attachments/assets/eb8d354f-1878-4e64-a830-6eb719997346)
+
+You can create the any of the following user actions or your own custom user actions. 
+
 
 ## iForGit User Actions
 These are sample user actions that we provide for you to be able to work entirely in VS Code to commit source changes, check on source versions and retreive copies of older source members if needed from a git repository.    
+
+Simply right-click a source member and ```Run Action```. Then select the action you want to run and you will be prompted if hte action starts with a question mark. ```?```  
+
+### Archive member snapshot to source file - (MRCARC)
+If you're not ready to start fully using Git for version control yet, you can start capturing source versions by using the ```MBRARC``` command to capture a copy of a source member to an archive source member in source file ```IFORGIT/GITSRCARC```. Members are named uniquely such as: ```M000000000``` and the version number is incremented.  Member desc contains original source metadata info for originating Library, File, Member name and user who created the snapshot. Ex: ```Arch:GITTEST123/QRPGLESRC(MONOSTDOU3)-RICHARD``` Full archive source metadata info is written to the file: ```IFORGIT/GITSRCARCP``` for auditing purposes. 
+
+Action Name: ```iForGit - Archive member snapshot to source file - (MRCARC)```    
+
+Command to run: ```?IFORGIT/MBRARC SRCFILE(&OPENLIB/&OPENSPF) SRCMBR(&OPENMBR) ARCSRCFILE(*DEFAULT)```   
+
+Extensions:```GLOBAL```. Or you can limit to selected source member types like: RPG, CLP, etc.   
+
+Type:```Member```   
+
+Environment:```ILE```   
+
+Refresh:```No```   
 
 ### Commit source member to Git Repo-SRCTOGIT 
 Commit the selected source member to a git repository using the SRCTOGIT CL command.  RDi will prompt the user for the SRCTOGIF CL command unless you uncheck the option to prompt first.    
@@ -56,12 +76,11 @@ Environment:```ILE```
 
 Refresh:```No```   
 
-### Get Most Recent Source Member from Git-SRCFRMGIT
+### Get/Restore Most Recent Source Member from Git-SRCFRMGIT
 Get the most recently committed version of this source member from the associated git repository using the SRCFRMGIT CL command.  RDi will prompt the user for the CL command unless you uncheck the option to prompt first.    
 
-**Note:** The existing source member in the regular source library will get overwritten with the source member from your Git repository. So be sure you are OK replacing the source member in the IBM i library with yiur last git committed version.    
-
-Action Name: ```Restore Most Recent Source Member from Git-(SRCFRMGIT)```    
+**Note:** The existing source member in the regular source library will get overwritten with the source member from your Git repository. So be sure you are OK replacing the source member in the IBM i library with yiur last git committed version.   
+Action Name: ```Get/Restore Most Recent Source Member from Git-(SRCFRMGIT)```    
 
 Command Type: ```Normal Command```    
 
@@ -112,7 +131,7 @@ Environment:```ILE```
 Refresh:```No```   
 
 ## Git Checkout Selected Member
-Checkout/get a copy of the selected source member verion from the git repository. You need to determine the version hash (long one or 8 character one) value by first doing a ```git blame``` or ```git Log``` operation, viewing the results as described above and copying the selected source version hash into the clipboard.      
+Checkout/Get a copy of the selected source member verion from the git repository. You need to determine the version hash (long one or 8 character one) value by first doing a ```git blame``` or ```git Log``` operation, viewing the results as described above and copying the selected source version hash into the clipboard.      
 
 When prompted to check out the selected source member, first paste the version hash into the ```source version hash``` parameter and then click OK to start the checkout. The selected source member will be checked out to the user's source file in ```IFORGITTMP```. The checked out source member name will match the original source member name unless you change the ```DESTMBR``` parameter to something else.  Sometimes you might find it useful to rename a source member when it's checked out out to ```IFORGITTMP```   
 
