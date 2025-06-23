@@ -166,9 +166,9 @@ Selected Types = ```ALL``` unless you want to limit to only selected source memb
 ### Simple source management source member archive snapshot   
 Perform a source member archive/backup snapshot to archive source file.     
 
-Action Name: ```Create archive source member snapshot-MBRARC```     
+Action Name: ```Archive source member backup snapshot-MBRARC```     
 
-Comment: ```Create snapshot copy of source member```   
+Comment: ```Create archive/backup snapshot copy of source member```   
 
 Command Type: ```Normal Command```   
 
