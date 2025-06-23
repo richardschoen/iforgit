@@ -160,3 +160,62 @@ Show action - ```Check/enable this option to make sure action is not hidden.```
 Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
 
 Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
+
+# Simple Source Management Commands  
+
+### Simple source management source member archive snapshot   
+Perform a source member archive/backup snapshot to archive source file.     
+
+Action Name: ```Create archive source member snapshot-MBRARC```     
+
+Comment: ```Create snapshot copy of source member```   
+
+Command Type: ```Normal Command```   
+
+Command: ```IFORGIT/MBRARC SRCFILE(&L/&F) SRCMBR(&N) ARCSRCFILE(*DEFAULT)```   
+
+Prompt first - ```Check/enable this option to prompt before running action CL command```   
+
+Show action - ```Check/enable this option to make sure action is not hidden.```    
+
+Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
+
+Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
+
+### Simple source management check out source member from production to development
+Perform a source member snapshot and checkout from production source library to development library source member for development.     
+
+Action Name: ```Check out source member from prod to dev-MBRCHKO```     
+
+Comment: ```Check out copy of source member from production to dev```   
+
+Command Type: ```Normal Command```   
+
+Command: ```IFORGIT/MBRCHKO SRCFILE(&L/&F) SRCMBR(&N) TOSRCFILE(&L/&F) TOSRCMBR(&N) REPLACE(*NO) SKIPEXIST(*NO) RMVPRDCOPY(*NO)```      
+
+Prompt first - ```Check/enable this option to prompt before running action CL command```   
+
+Show action - ```Check/enable this option to make sure action is not hidden.```    
+
+Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
+
+Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
+
+### Simple source management check in source member from development to production
+Perform a source member snapshot and checkin from development source library to production library source member after changes have been completed.   
+
+Action Name: ```Check in source member from dev to prod-MBRCHKI```     
+
+Comment: ```Check in copy of source member from dev to production```   
+
+Command Type: ```Normal Command```   
+
+Command: ```IFORGIT/MBRCHKI SRCFILE(&L/&F) SRCMBR(&N) TOSRCFILE(&L/&F) TOSRCMBR(&N) REPLACE(*NO) RMVDEVCOPY(*NO)```   
+
+Prompt first - ```Check/enable this option to prompt before running action CL command```   
+
+Show action - ```Check/enable this option to make sure action is not hidden.```    
+
+Defined Types = ```ALL``` unless you want to limit to only selected source member types.   
+
+Selected Types = ```ALL``` unless you want to limit to only selected source member types.    
