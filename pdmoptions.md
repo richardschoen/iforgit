@@ -59,9 +59,26 @@ Perform a git diff command for a selected hash to do a diff based on the most re
                                                                                 
 Command: ```IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCOPTION(*DIFF) SRCHASH(*MOSTRECENT) DSPSTDOUT(*YES)```
 
-## Options GS - Perform Git Show on a Member
+## Option GS - Perform Git Show on a Member
 Perform a git show command for a selected hash to show that version of the source member. *MOSTRECENT for the SRCHASH will show the most recent commit.
 
 Command: ```IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCHASH(*MOSTRECENT) SRCOPTION(*SHOW) DSPSTDOUT(*YES)```
+
+# Simple Source Management Commands  
+
+## Option CA - Simple source management source member archive snapshot    
+Perform a source member archive/backup snapshot to archive source file.   
+
+Command: ```IFORGIT/MBRARC SRCFILE(&L/&F) SRCMBR(&N) ARCSRCFILE(*DEFAULT)```   
+
+## Option CO - Simple source management check out source member from production to development
+Perform a source member snapshot and checkout from production source library to development library source member for development.   
+
+Command: ```IFORGIT/MBRCHKO SRCFILE(&L/&F) SRCMBR(&N) TOSRCFILE(&L/&F) TOSRCMBR(&N) REPLACE(*NO) SKIPEXIST(*NO) RMVPRDCOPY(*NO)```      
+
+## Option CI - Simple source management check in source from development to production   
+Perform a source member snapshot and checkin from development source library to production library source member after changes have been completed.   
+
+Command: ```IFORGIT/MBRCHKI SRCFILE(&L/&F) SRCMBR(&N) TOSRCFILE(&L/&F) TOSRCMBR(&N) REPLACE(*NO) RMVDEVCOPY(*NO)```   
 
 
