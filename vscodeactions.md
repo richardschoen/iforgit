@@ -150,3 +150,50 @@ Type:```Member```
 Environment:```ILE```   
 
 Refresh:```No```   
+
+# Simple Source Management Commands  
+
+## Simple source management source member archive snapshot   
+Perform a source member archive/backup snapshot to archive source file.     
+
+Action Name: ```Archive source member backup snapshot-MBRARC```     
+
+Command: ```? IFORGIT/MBRARC SRCFILE(&OPENLIB/&OPENSPF) SRCMBR(&OPENMBR) ARCSRCFILE(*DEFAULT)```   
+
+Extensions:```GLOBAL```. Or you can limit to selected source member types like: RPG, CLP, etc.   
+
+Type:```Member```   
+
+Environment:```ILE```   
+
+Refresh:```No```   
+
+### Simple source management check out source member from production to development
+Perform a source member snapshot and checkout from production source library to development library source member for development.     
+
+Action Name: ```Check out source member from prod to dev-MBRCHKO```     
+
+Command: ```? IFORGIT/MBRCHKO TOSRCFILE(DEVLIB/&OPENSPF) SRCFILE(&OPENLIB/&OPENSPF) SRCMBR(&OPENMBR) TOSRCMBR(&N) REPLACE(*NO) SKIPEXIST(*NO) RMVPRDCOPY(*NO)```      
+
+Extensions:```GLOBAL```. Or you can limit to selected source member types like: RPG, CLP, etc.   
+
+Type:```Member```   
+
+Environment:```ILE```   
+
+Refresh:```No```   
+
+### Simple source management check in source member from development to production
+Perform a source member snapshot and checkin from development source library to production library source member after changes have been completed.   
+
+Action Name: ```Check in source member from dev to prod-MBRCHKI```     
+
+Command: ```? IFORGIT/MBRCHKI TOSRCFILE(PRODLIB/&OPENSPF) TOSRCMBR(*SAME) SRCFILE(&OPENLIB/&OPENSPF) SRCMBR(&OPENMBR) REPLACE(*NO) RMVDEVCOPY(*NO)```   
+
+Extensions:```GLOBAL```. Or you can limit to selected source member types like: RPG, CLP, etc.   
+
+Type:```Member```   
+
+Environment:```ILE```   
+
+Refresh:```No```   
