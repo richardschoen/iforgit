@@ -39,7 +39,7 @@ QTEMP/TMPSOURCE location and view it.
 #### Example checkout usage to QTEMP/TMPSOURCE for simple member viewing with SEU/PDM
 Check out source member HELLO to QTEMP/TMPSOURCE(TMPSOURCE).  
 We always create this source member during *CHECKOUT process.  
-When DESTOPT = *NONE, this is the member checked out to.  
+When DESTOPT = *NONE, only the temp source member is checked out to.  
 Use this to view the TMPSOURCE member from QTEMP/TMPSOURCE source file.   
 ``` 
 IFORGIT/SRCGITCMD SRCFILE(GITTEST123/QRPGLESRC)         
@@ -86,11 +86,11 @@ IFORGITTMP/CURUSER(MBRNAME) location without doing any viewing.
 access the ```IFORGITTMP/CURUSER``` source file and view any members you've checked out here.
 
 #### Example checkout usage for IFORGITTMP/CURUSER(MBRNAME) for viewing with RDI/VS Code 
-Check out source member HELLO to QTEMP/TMPSOURCE(TMPSOURCE).
-We always create this source member during *CHECKOUT process.
-Check out source member to IFORGITTMP/CURUSER(MBRNAME) as member name.
-When DESTOPT = *ADD we add/append to the IFORGITTMP/CURUSER(MBRNAME) member.
-When DESTOPT = *REPLACE we replace the IFORGITTMP/CURUSER(MBRNAME) member. 
+Check out source member HELLO to QTEMP/TMPSOURCE(TMPSOURCE).   
+We always create this source member during *CHECKOUT process.   
+Check out source member to IFORGITTMP/CURUSER(MBRNAME) as member name.   
+When DESTOPT = *ADD we add/append to the IFORGITTMP/CURUSER(MBRNAME) member.   
+When DESTOPT = *REPLACE we replace the IFORGITTMP/CURUSER(MBRNAME) member.    
 ```
 IFORGIT/SRCGITCMD SRCFILE(YOURPRDLIB/QRPGLESRC)         
                   SRCMBR(HELLO)                         
