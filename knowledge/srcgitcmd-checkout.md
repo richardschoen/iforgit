@@ -26,16 +26,19 @@ The important command options for this command variation are:
 DESTFILE(*IFORGITMP)
 DESTOPT(*NONE)
 DSPCHKOUT(*BROWSE)
+SRCHASH(' ')        
 ```
-They tell the command we simply want to check out the source member to the 
+These parameters tell the command we simply want to check out the source member to the 
 QTEMP/TMPSOURCE location and view it.
 
-### Example checkout usage for simple QTEMP/TMPSOURCE simple member viewing with SEU/PDM
+**NOTE:** Make sure to specify a git source hash version by using the ```SRCHASH``` parameter. Blanks will return the most recently committed version of a source member. 
+
+#### Example checkout usage for simple QTEMP/TMPSOURCE simple member viewing with SEU/PDM
 ```
-/* Check out source member to QTEMP/TMPSOURCE(TMPSOURCE)                    */
-/* We always create this source member during *CHECKOUT process             */
-/* When DESTOPT = *NONE, this is the member checked out to.                 */
-/* Use this to view the TMPSOURCE member from QTEMP/TMPSOURCE source file   */
+/* Check out source member HELLO to QTEMP/TMPSOURCE(TMPSOURCE) */
+/* We always create this source member during *CHECKOUT process */
+/* When DESTOPT = *NONE, this is the member checked out to. */
+/* Use this to view the TMPSOURCE member from QTEMP/TMPSOURCE source file */
 IFORGIT/SRCGITCMD SRCFILE(GITTEST123/QRPGLESRC)         
                   SRCMBR(HELLO)                         
                   IFSREPODIR(*LIBREPODTAARA)            
@@ -68,23 +71,26 @@ DESTMBR(*SRCMBR)
 DESTOPT(*REPLACE)
 DSPCHKOUT(*NONE)
 TMPDESTOPT(*IFORGITMP)                
-TMPDESTUSR(*CURRENT)                  
+TMPDESTUSR(*CURRENT)
+SRCHASH(' ')                    
 ```
-They tell the command we simply want to check out the source member to the 
+These parameters tell the command we simply want to check out the source member to the 
 IFORGITTMP/CURUSER(MBRNAME) location without doing any viewing. 
+
+**NOTE:** Make sure to specify a git source hash version by using the ```SRCHASH``` parameter. Blanks will return the most recently committed version of a source member. 
 
 **NOTE:** The developer will need to set up a source filter in RDI or VS Code to access the
 IFORGITTMP/CURUSER source file and view any members you've checked out here.
 
-### Example checkout usage for IFORGITTMP/CURUSER(MBRNAME) for viewing with RDI/VS Code 
+#### Example checkout usage for IFORGITTMP/CURUSER(MBRNAME) for viewing with RDI/VS Code 
 ```                                                      
-/* Check out source member to QTEMP/TMPSOURCE(TMPSOURCE) */
+/* Check out source member HELLO to QTEMP/TMPSOURCE(TMPSOURCE) */
 /* We always create this source member during *CHECKOUT process */ 
 /* Check out source member to IFORGITTMP/CURUSER(MBRNAME) as member name */
 /* When DESTOPT = *ADD we add/append to the IFORGITTMP/CURUSER(MBRNAME) member */
 /* When DESTOPT = *REPLACE we replace the IFORGITTMP/CURUSER(MBRNAME) member */ 
 NONE, this is the member checked out to. */
-IFORGIT/SRCGITCMD SRCFILE(GITTEST123/QRPGLESRC)         
+IFORGIT/SRCGITCMD SRCFILE(YOURPRDLIB/QRPGLESRC)         
                   SRCMBR(HELLO)                         
                   IFSREPODIR(*LIBREPODTAARA)            
                   SRCOPTION(*CHECKOUT)                  
@@ -99,22 +105,41 @@ IFORGIT/SRCGITCMD SRCFILE(GITTEST123/QRPGLESRC)
                   TMPDESTUSR(*CURRENT)                  
 ```
 
+### Checkout source version copy to selected library and member name
+The use case for this variation would be to check out a copy of a source member version to your own 
+development library or other library to work with it. You can check out and restore the 
+the source member copy under its original source member name or under a specified member name.
+
+The important command options for this command variation are: 
 ```
-/* Check out source member to QTEMP/TMPSOURCE(TMPSOURCE)                    */
-/* We always create this source member during *CHECKOUT process    */ 
-/* Check out source member to IFORGITTMP/CURUSER(MBRNAME) as member name         */
-/* When DESTOPT = *ADD we add/append to the IFORGITTMP/CURUSER(MBRNAME) member   */
-/* When DESTOPT = *REPLACE we replace the IFORGITTMP/CURUSER(MBRNAME) member    */ 
-IFORGIT/SRCGITCMD SRCFILE(GITTEST123/QRPGLESRC)     
+DESTFILE(YOURDEVLIB/QRPGLESRC)  
+DESTMBR(*SRCMBR)           
+DESTOPT(*REPLACE)
+DSPCHKOUT(*NONE)
+TMPDESTOPT(*IFORGITMP)                
+TMPDESTUSR(*CURRENT)
+SRCHASH(' ')        
+```
+These parameters tell the command we simply want to check out the source member to the 
+specified source file and member name. ```YOURDEVLIB``` can be whatever library you want to use.
+
+#### Example checkout usage to your selected development or work library 
+```
+/* Check out source member HELLO to QTEMP/TMPSOURCE(TMPSOURCE). */
+/* We always create this source member during *CHECKOUT process. */ 
+/* Check out source member to dev lib YOURPRDLIB/QRPGLESRC(HELLO) as member name.*/
+/* When DESTOPT = *ADD we add/append to the IFORGITTMP/CURUSER(MBRNAME) member. */
+/* When DESTOPT = *REPLACE we replace the IFORGITTMP/CURUSER(MBRNAME) member. */ 
+IFORGIT/SRCGITCMD SRCFILE(YOURPRDLIB/QRPGLESRC)     
                   SRCMBR(HELLO)                     
                   IFSREPODIR(*LIBREPODTAARA)        
                   SRCOPTION(*CHECKOUT)              
                   SRCHASH(' ')                      
                   DSPSTDOUT(*NO)                    
-                  DSPCHKOUT(*BROWSE)                
-                  DESTFILE(JUNK/QRPGLESRC)          
-                  DESTMBR(HELLO)                    
-                  DESTOPT(*ADD)                     
+                  DSPCHKOUT(*NONE)                
+                  DESTFILE(YOURDEVLIB/QRPGLESRC)          
+                  DESTMBR(*SRCMBR)                    
+                  DESTOPT(*REPLACE)                     
                   WRITETOTMP(*YES)                  
                   TMPDESTOPT(*IFORGITMP)            
                   TMPDESTUSR(*CURRENT)              
