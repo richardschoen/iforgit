@@ -87,13 +87,13 @@ IFORGITTMP/CURUSER(MBRNAME) location without doing any viewing.
 IFORGITTMP/CURUSER source file and view any members you've checked out here.
 
 #### Example checkout usage for IFORGITTMP/CURUSER(MBRNAME) for viewing with RDI/VS Code 
-```                                                      
-/* Check out source member HELLO to QTEMP/TMPSOURCE(TMPSOURCE) */
-/* We always create this source member during *CHECKOUT process */ 
-/* Check out source member to IFORGITTMP/CURUSER(MBRNAME) as member name */
-/* When DESTOPT = *ADD we add/append to the IFORGITTMP/CURUSER(MBRNAME) member */
-/* When DESTOPT = *REPLACE we replace the IFORGITTMP/CURUSER(MBRNAME) member */ 
-NONE, this is the member checked out to. */
+```
+Check out source member HELLO to QTEMP/TMPSOURCE(TMPSOURCE).
+We always create this source member during *CHECKOUT process.
+Check out source member to IFORGITTMP/CURUSER(MBRNAME) as member name.
+When DESTOPT = *ADD we add/append to the IFORGITTMP/CURUSER(MBRNAME) member.
+When DESTOPT = *REPLACE we replace the IFORGITTMP/CURUSER(MBRNAME) member. 
+```
 IFORGIT/SRCGITCMD SRCFILE(YOURPRDLIB/QRPGLESRC)         
                   SRCMBR(HELLO)                         
                   IFSREPODIR(*LIBREPODTAARA)            
@@ -128,12 +128,12 @@ These parameters tell the command we simply want to check out the source member 
 specified source file and member name. ```YOURDEVLIB``` can be whatever library you want to use.
 
 #### Example checkout usage to your selected development or work library 
+Check out source member HELLO to QTEMP/TMPSOURCE(TMPSOURCE).   
+We always create this source member during *CHECKOUT process.    
+Check out source member to dev lib YOURPRDLIB/QRPGLESRC(HELLO) as member name.  
+When DESTOPT = *ADD we add/append to the IFORGITTMP/CURUSER(MBRNAME) member.  
+When DESTOPT = *REPLACE we replace the IFORGITTMP/CURUSER(MBRNAME) member.  
 ```
-/* Check out source member HELLO to QTEMP/TMPSOURCE(TMPSOURCE). */
-/* We always create this source member during *CHECKOUT process. */ 
-/* Check out source member to dev lib YOURPRDLIB/QRPGLESRC(HELLO) as member name.*/
-/* When DESTOPT = *ADD we add/append to the IFORGITTMP/CURUSER(MBRNAME) member. */
-/* When DESTOPT = *REPLACE we replace the IFORGITTMP/CURUSER(MBRNAME) member. */ 
 IFORGIT/SRCGITCMD SRCFILE(YOURPRDLIB/QRPGLESRC)     
                   SRCMBR(HELLO)                     
                   IFSREPODIR(*LIBREPODTAARA)        
