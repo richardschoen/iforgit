@@ -7,6 +7,11 @@ repository via CL command call or PDM option, RDI action or VS Code action. The 
 automatically checked out to a temporary source member in QTEMP for viewing. The source member can 
 be optionally restored to a selected library location as well for further work on the source member. 
 
+Use cases:  
+- Simply view a selected version of a source member from your git library repository.
+- Check out a temp copy of a selected source member version for viewing from RDI or VS Code.   
+- Check out a copy of a selected source member version to a work library under the same name or a new name.
+
 **NOTE:** The checkout option is simply grabbing a copy of the selected source member git version to a 
 source physical file for viewing or editing. The source member is not actually being checked out 
 like a library book. If desired you can check out a source member and overlay/replace an existing source member, but caution should be exercised so you don't overlay a production level source member if 
