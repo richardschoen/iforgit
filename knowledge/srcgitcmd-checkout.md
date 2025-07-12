@@ -110,7 +110,7 @@ IFORGIT/SRCGITCMD SRCFILE(YOURPRDLIB/QRPGLESRC)
 ### Checkout source version copy to selected library and member name
 The use case for this variation would be to check out a copy of a source member version to your own 
 development library or other library to work with it. You can check out and restore the 
-the source member copy under its original source member name or under a specified member name.
+source member copy under its original source member name or under a specified member name.
 
 The important command options for this command variation are: 
 ```
