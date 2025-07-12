@@ -64,14 +64,19 @@ the mamber name will be as specified on the DESTMBR parameter.
 The important command options for this command variation are: 
 ```
 DESTFILE(*IFORGITMP)
+DESTMBR(*SRCMBR)
 DESTOPT(*REPLACE)
-DSPCHKOUT(*BROWSE)
+DSPCHKOUT(*NONE)
 TMPDESTOPT(*IFORGITMP)                
 TMPDESTUSR(*CURRENT)                  
 ```
 They tell the command we simply want to check out the source member to the 
-IFORGITTMP/CURUSER(MBRNAME) location and view it.
+IFORGITTMP/CURUSER(MBRNAME) location without doing any viewing. 
 
+**NOTE:** The developer will need to set up a source filter in RDI or VS Code to access the
+IFORGITTMP/CURUSER source file and view any members you've checked out here.
+
+### Example checkout usage for IFORGITTMP/CURUSER(MBRNAME) for viewing with RDI/VS Code 
 ```                                                      
 /* Check out source member to QTEMP/TMPSOURCE(TMPSOURCE) */
 /* We always create this source member during *CHECKOUT process */ 
@@ -87,7 +92,7 @@ IFORGIT/SRCGITCMD SRCFILE(GITTEST123/QRPGLESRC)
                   DSPSTDOUT(*NO)                        
                   DSPCHKOUT(*NONE)                    
                   DESTFILE(*IFORGITMP)                  
-                  DESTMBR(HELLO)                        
+                  DESTMBR(*SRCMBR)                        
                   DESTOPT(*REPLACE)                     
                   WRITETOTMP(*YES)                      
                   TMPDESTOPT(*IFORGITMP)                
