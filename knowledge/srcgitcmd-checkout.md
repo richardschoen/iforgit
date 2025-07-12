@@ -86,7 +86,6 @@ IFORGITTMP/CURUSER(MBRNAME) location without doing any viewing.
 IFORGITTMP/CURUSER source file and view any members you've checked out here.
 
 #### Example checkout usage for IFORGITTMP/CURUSER(MBRNAME) for viewing with RDI/VS Code 
-```
 Check out source member HELLO to QTEMP/TMPSOURCE(TMPSOURCE).
 We always create this source member during *CHECKOUT process.
 Check out source member to IFORGITTMP/CURUSER(MBRNAME) as member name.
