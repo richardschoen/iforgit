@@ -13,11 +13,25 @@ like a library book. If desired you can check out a source member and overlay/re
 member, but caution should be exercised so you don't overlay a production level source member if 
 you restore to a library other than ```QTEMP``` or ```IFORGITTMP```.
 
-# Examples of using the *CHECKOUT option
+## Examples of using the SRCGITCMD *CHECKOUT option
 
-### Automatic checkout to QTEMP/TMPSOURCE(TMPSOURCE) for viewing
-This option should be used 
+### Checkout to QTEMP/TMPSOURCE(TMPSOURCE) for viewing
+This variation of the *CHECKOUT option should be used to simply checkout and 
+view a temporary copy of the source member. During checkout the source 
+member: QTEMP/TMPSOURCE(TMPSOURCE) always gets created. This temp source member 
+is used for viewing or as a source location for copying to a selected destination source member.  
 
+The important command options for this command variation are: 
+```
+DESTFILE(*IFORGITMP)
+DESTOPT(*NONE)
+DSPCHKOUT(*BROWSE)
+```
+They tell the command we simply want to check out the source member to the 
+QTEMP/TMPSOURCE location and view it.
+
+### Example checkout usage for simple QTEMP/TMSOURCE member viewing
+```
 /* Check out source member to QTEMP/TMPSOURCE(TMPSOURCE)                    */
 /* We always create this source member during *CHECKOUT process             */
 /* When DESTOPT = *NONE, this is the member checked out to.                 */
@@ -29,13 +43,33 @@ IFORGIT/SRCGITCMD SRCFILE(GITTEST123/QRPGLESRC)
                   SRCHASH(' ')                          
                   DSPSTDOUT(*NO)                        
                   DSPCHKOUT(*BROWSE)                    
-                  DESTFILE(```*IFORGITMP```)                  
+                  DESTFILE(*IFORGITMP)                  
                   DESTMBR(TMPSOURCE2)                        
-                  DESTOPT(```*NONE```)                     
+                  DESTOPT(*NONE)                     
                   WRITETOTMP(*YES)                      
                   TMPDESTOPT(*IFORGITMP)                
                   TMPDESTUSR(*CURRENT)                  
-                                                        
+```
+
+### Checkout to source member in IFORGITTMP/CURUSER(MBRNAME) for viewing
+The use case for this variation would be to check out a ctemporary copy of a member for vieiwng
+in RDI or VS Code. Since these editors can't view the checkout directly, the next best
+thing is to check it out to a consistent temporary location by user id. 
+
+This variation of the *CHECKOUT option will check out a copy of a source
+member to the IFORGITTMP library. A source file is auto-created for the current user. And 
+the mamber name will be as specified on the DESTMBR parameter.
+
+The important command options for this command variation are: 
+```
+DESTFILE(*IFORGITMP)
+DESTOPT(*REPALCE)
+DSPCHKOUT(*BROWSE)
+```
+They tell the command we simply want to check out the source member to the 
+QTEMP/TMPSOURCE location and view it.
+
+```                                                      
 /* Check out source member to QTEMP/TMPSOURCE(TMPSOURCE)                    */
 /* We always create this source member during *CHECKOUT process    */ 
 /* Check out source member to IFORGITTMP/CURUSER(MBRNAME) as member name         */
@@ -55,7 +89,9 @@ IFORGIT/SRCGITCMD SRCFILE(GITTEST123/QRPGLESRC)
                   WRITETOTMP(*YES)                      
                   TMPDESTOPT(*IFORGITMP)                
                   TMPDESTUSR(*CURRENT)                  
-                                                        
+```
+
+```
 /* Check out source member to QTEMP/TMPSOURCE(TMPSOURCE)                    */
 /* We always create this source member during *CHECKOUT process    */ 
 /* Check out source member to IFORGITTMP/CURUSER(MBRNAME) as member name         */
@@ -74,4 +110,4 @@ IFORGIT/SRCGITCMD SRCFILE(GITTEST123/QRPGLESRC)
                   WRITETOTMP(*YES)                  
                   TMPDESTOPT(*IFORGITMP)            
                   TMPDESTUSR(*CURRENT)              
-
+```
