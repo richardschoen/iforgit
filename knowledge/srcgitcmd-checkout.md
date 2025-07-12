@@ -7,10 +7,9 @@ repository via CL command call or PDM option, RDI action or VS Code action. The 
 automatically checked out to a temporary source member in QTEMP for viewing. The source member can 
 be optionally restored to a selected library location as well for further work on the source member. 
 
-**NOTE:** The checkout option is simply grabbing a copy of the selected source member version to a 
-source physical file for viewing or edtiting. The source member is not actually being checked out 
-like a library book. If desired you can check out a source member and overlay/replace an existing source 
-member, but caution should be exercised so you don't overlay a production level source member if 
+**NOTE:** The checkout option is simply grabbing a copy of the selected source member git version to a 
+source physical file for viewing or editing. The source member is not actually being checked out 
+like a library book. If desired you can check out a source member and overlay/replace an existing source member, but caution should be exercised so you don't overlay a production level source member if 
 you restore to a library other than ```QTEMP``` or ```IFORGITTMP```.
 
 ## Examples of using the SRCGITCMD *CHECKOUT option
