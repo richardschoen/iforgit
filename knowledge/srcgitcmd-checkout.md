@@ -82,7 +82,7 @@ IFORGITTMP/CURUSER(MBRNAME) location without doing any viewing.
 
 **NOTE:** Make sure to specify a git source hash version by using the ```SRCHASH``` parameter. Blanks will return the most recently committed version of a source member. 
 
-**NOTE:** The developer will need to set up a source filter in RDI or VS Code to access the
+**RDI/VS Code NOTE:** The developer will need to set up a source filter in RDI or VS Code to access the
 IFORGITTMP/CURUSER source file and view any members you've checked out here.
 
 #### Example checkout usage for IFORGITTMP/CURUSER(MBRNAME) for viewing with RDI/VS Code 
