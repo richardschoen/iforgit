@@ -1,4 +1,4 @@
-# Check out source member version using SRCGITCMD CL command
+# Check out source member version copy using SRCGITCMD CL command
 The git checkout option is a nice git way to check out a working copy of a source member 
 from a git repository for work.
 
