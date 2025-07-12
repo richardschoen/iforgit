@@ -15,7 +15,7 @@ you restore to a library other than ```QTEMP``` or ```IFORGITTMP```.
 
 ## Examples of using the SRCGITCMD *CHECKOUT option
 
-### Checkout to QTEMP/TMPSOURCE(TMPSOURCE) for viewing
+### Checkout to QTEMP/TMPSOURCE(TMPSOURCE) for simple SEU viewing
 This variation of the *CHECKOUT option should be used to simply checkout and 
 view a temporary copy of the source member. During checkout the source 
 member: QTEMP/TMPSOURCE(TMPSOURCE) always gets created. This temp source member 
@@ -30,7 +30,7 @@ DSPCHKOUT(*BROWSE)
 They tell the command we simply want to check out the source member to the 
 QTEMP/TMPSOURCE location and view it.
 
-### Example checkout usage for simple QTEMP/TMSOURCE member viewing
+### Example checkout usage for simple QTEMP/TMPSOURCE simple member viewing with SEU/PDM
 ```
 /* Check out source member to QTEMP/TMPSOURCE(TMPSOURCE)                    */
 /* We always create this source member during *CHECKOUT process             */
@@ -51,10 +51,11 @@ IFORGIT/SRCGITCMD SRCFILE(GITTEST123/QRPGLESRC)
                   TMPDESTUSR(*CURRENT)                  
 ```
 
-### Checkout to source member in IFORGITTMP/CURUSER(MBRNAME) for viewing
-The use case for this variation would be to check out a ctemporary copy of a member for vieiwng
-in RDI or VS Code. Since these editors can't view the checkout directly, the next best
-thing is to check it out to a consistent temporary location by user id. 
+### Checkout to source member in IFORGITTMP/CURUSER(MBRNAME)
+The use case for this variation would be to check out a temporary copy of a member for viewing
+or working with in RDI or VS Code. Since these editors can't view the checkout directly, 
+the next best thing is to check it out to a consistent temporary location by user id and 
+then open in RDI or VS Code to view from the IFORGITTMP/CURUSER source file location.
 
 This variation of the *CHECKOUT option will check out a copy of a source
 member to the IFORGITTMP library. A source file is auto-created for the current user. And 
@@ -63,26 +64,28 @@ the mamber name will be as specified on the DESTMBR parameter.
 The important command options for this command variation are: 
 ```
 DESTFILE(*IFORGITMP)
-DESTOPT(*REPALCE)
+DESTOPT(*REPLACE)
 DSPCHKOUT(*BROWSE)
+TMPDESTOPT(*IFORGITMP)                
+TMPDESTUSR(*CURRENT)                  
 ```
 They tell the command we simply want to check out the source member to the 
-QTEMP/TMPSOURCE location and view it.
+IFORGITTMP/CURUSER(MBRNAME) location and view it.
 
 ```                                                      
-/* Check out source member to QTEMP/TMPSOURCE(TMPSOURCE)                    */
-/* We always create this source member during *CHECKOUT process    */ 
-/* Check out source member to IFORGITTMP/CURUSER(MBRNAME) as member name         */
-/* When DESTOPT = *ADD we add/append to the IFORGITTMP/CURUSER(MBRNAME) member   */
-/* When DESTOPT = *REPLACE we replace the IFORGITTMP/CURUSER(MBRNAME) member    */ 
-NONE, this is the member checked out to.                 */
+/* Check out source member to QTEMP/TMPSOURCE(TMPSOURCE) */
+/* We always create this source member during *CHECKOUT process */ 
+/* Check out source member to IFORGITTMP/CURUSER(MBRNAME) as member name */
+/* When DESTOPT = *ADD we add/append to the IFORGITTMP/CURUSER(MBRNAME) member */
+/* When DESTOPT = *REPLACE we replace the IFORGITTMP/CURUSER(MBRNAME) member */ 
+NONE, this is the member checked out to. */
 IFORGIT/SRCGITCMD SRCFILE(GITTEST123/QRPGLESRC)         
                   SRCMBR(HELLO)                         
                   IFSREPODIR(*LIBREPODTAARA)            
                   SRCOPTION(*CHECKOUT)                  
                   SRCHASH(' ')                          
                   DSPSTDOUT(*NO)                        
-                  DSPCHKOUT(*BROWSE)                    
+                  DSPCHKOUT(*NONE)                    
                   DESTFILE(*IFORGITMP)                  
                   DESTMBR(HELLO)                        
                   DESTOPT(*REPLACE)                     
