@@ -65,7 +65,7 @@ then open in RDI or VS Code to view from the IFORGITTMP/CURUSER source file loca
 
 This variation of the *CHECKOUT option will check out a copy of a source
 member to the IFORGITTMP library. A source file is auto-created for the current user. And 
-the mamber name will be as specified on the DESTMBR parameter.
+the member name will be as specified on the DESTMBR parameter.
 
 The important command options for this command variation are: 
 ```
