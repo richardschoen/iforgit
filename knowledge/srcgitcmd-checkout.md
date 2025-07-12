@@ -37,7 +37,7 @@ QTEMP/TMPSOURCE location and view it.
 
 **NOTE:** Make sure to specify a git source hash version by using the ```SRCHASH``` parameter. Blanks will return the most recently committed version of a source member. 
 
-#### Example checkout usage for simple QTEMP/TMPSOURCE simple member viewing with SEU/PDM
+#### Example checkout usage to QTEMP/TMPSOURCE for simple member viewing with SEU/PDM
 ```
 /* Check out source member HELLO to QTEMP/TMPSOURCE(TMPSOURCE) */
 /* We always create this source member during *CHECKOUT process */
