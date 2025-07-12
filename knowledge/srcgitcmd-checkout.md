@@ -2,8 +2,7 @@
 The git checkout option is a nice git way to check out a working copy of a source member 
 from a git repository for work.
 
-The ```SRCGITCMD``` CL command *CHECKOUT option is a way to check out a git source member from a git 
-repository via CL command call or PDM option, RDI action or VS Code action. The member is 
+The ```SRCGITCMD``` CL command ```*CHECKOUT``` option is a way to check out a git source member from a git repository via CL command call or PDM option, RDI action or VS Code action. The member is 
 automatically checked out to a temporary source member in QTEMP for viewing. The source member can 
 be optionally restored to a selected library location as well for further work on the source member. 
 
