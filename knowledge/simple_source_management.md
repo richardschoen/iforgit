@@ -112,7 +112,7 @@ A copy of the original source member is created in a developer library in the se
 Optionally the production source member can be removed from the original library location during development if you don't want anyone else using the source member while it's being edited.
 
 #### MBRCHKI usage examples  
-The following example checks out a source member named MBR001R from source file DEVSOURCE1/QRPGLESRC to a production source file: MYSOURCE1/QRPGLESRC. Since ARCHIVE is set to *YES the source member is archived and the member name in the archive is automatically created. Since replace is *NO, the destination source member will not be replaced if it exists. And the develpoment copy is not removed from its location because RMVPRDCOPY is *NO.
+The following example checks out a source member named MBR001R from source file DEVSOURCE1/QRPGLESRC to a production source file: MYSOURCE1/QRPGLESRC. Since ARCHIVE is set to *YES the source member is archived and the member name in the archive is automatically created. Since replace is *NO, the destination source member will not be replaced if it exists. And the develpoment copy is not removed from its location because RMVDEVCOPY is *NO.
 
  ```
 IFORGIT/MBRCHKI SRCFILE(DEVSOURCE1/QRPGLESRC)  
