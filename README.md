@@ -210,7 +210,7 @@ This option is useful if you want to persist a checked out source member in a so
 ```*REPLACE``` - If *REPLACE is specified, the source member gets auto-created in QTEMP/TMPSOURCE but then gets copied/persisted to the source file specified in the DESTFILE/DESTMBR option and records are replaced during the source copy. This allows a single destination source member to receive the contents of a single git source member.    
 
 # SRCGITVER - Work With Git Versions for Source Member  
-This CL command can be used to interactively view older git versions and check them out for processing. The commoand has its own Git log viewing and retreival mechanism.
+This CL command can be used to interactively view older git versions and check them out for processing. The command has its own Git log viewing and retreival mechanism.
 
 # SRCGITVER usage examples  
 
