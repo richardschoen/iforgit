@@ -67,8 +67,7 @@ Command: ```IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAAR
 ## Option GV - Work With Git Versions for Source Member   
 Interactively list all versions of a selected source member using a 5250 member list application. Display the commit comments, dates and long and short 8 character version hash. The version hash is essentially the version number in a unique character format.    
 
-From the version list screen, the user can View the version, Browse the version or Restore the version to library: ```IFORGITTMP/USERID``` 
-Then they can Work with temporary restored source members in ```IFORGITTMP/USERID```.
+From the version list screen, the user can ```Opt 2 - Edit``` the version, ```Opt 5 - Browse``` the version or ```Opt 6 - Restore``` the version to library: ```IFORGITTMP/USERID```. Once a member is restored, the developer can ```Opt 7 - Work with Temporary Restored Members``` in ```IFORGITTMP/USERID```.
 
 Command: ```IFORGIT/SRCGITVER SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA)```
 
