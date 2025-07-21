@@ -13,7 +13,7 @@ Not quite ready for Git but want simple source member version management ?
 You can start with the simple source management commands and then implement the iForGit Git commands when ready. These commands are available in iForGit V1.25   
 https://github.com/richardschoen/iforgit/blob/master/knowledge/simple_source_management.md
 
-## Available Now - V1.27 - The new SRCGITVER command
+## Available Now - 7/20/2025 - V1.27 - The new SRCGITVER command
 The SRCGITVER command provides interactive PDM Git Log access for each viewing and restoring old versions   
 ![image](https://github.com/richardschoen/iforgit/assets/9791508/4b994286-3d1b-4f63-8b54-5362c876835c)
 
