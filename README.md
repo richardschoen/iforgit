@@ -137,11 +137,11 @@ This CL command can be used to view older git versions or check out an individua
 
 # SRCGITCMD usage examples  
 
-The following example checks out a copy of the selecte source member to a source file named TMPSOURCE in library QTEMP. The source member is then viewed via SEU. 
+The following example checks out a copy of the selected source member to a source file named TMPSOURCE in library QTEMP. The source member is then viewed via SEU. 
 
  ``` 
       IFORGIT/SRCGITCMD SRCFILE(RJSDEVMB/SRCGIT)           
-      SRCMBR(AAAAAAAXC)                  
+      SRCMBR(TEST001R)                  
       IFSREPODIR(*LIBREPODTAARA)         
       SRCOPTION(*CHECKOUT)               
       SRCHASH(' ')                       
@@ -208,6 +208,27 @@ This option is useful if you want to persist a checked out source member in a so
 ```*ADD``` - If *ADD is specified, the source member gets auto-created in QTEMP/TMPSOURCE but then gets copied/persisted to the source file specified in the DESTFILE/DESTMBR option and records are added during the source copy. This allows a single destination source member to receive the contents of multiple versions of a git source member if desired.   
 
 ```*REPLACE``` - If *REPLACE is specified, the source member gets auto-created in QTEMP/TMPSOURCE but then gets copied/persisted to the source file specified in the DESTFILE/DESTMBR option and records are replaced during the source copy. This allows a single destination source member to receive the contents of a single git source member.    
+
+# SRCGITVER - Work With Git Versions for Source Member  
+This CL command can be used to interactively view older git versions and check them out for processing. The commoand has its own Git log viewing and retreival mechanism.
+
+# SRCGITVER usage examples  
+
+The following example always displays a list of all versions in the Git version log for the selected source member. User can optionally View, Edit or Restore a copy to library source file: ```IFORGITTMP/USERNAME``` for editing/processing. Members are restored with a naming convention of: M<githash8> and the member text contains the source member name and the data of the Git commit for reference. The command assumes you havine PDM/SEU still installed on your IBM i system.
+
+``` 
+      IFORGIT/SRCGITCMD SRCFILE(RJSDEVMB/SRCGIT)           
+      SRCMBR(AAAAAAAXC)                  
+      IFSREPODIR(*LIBREPODTAARA)         
+```
+
+# SRCGITVER command parms  
+
+**SRCFILE** - The source file to work with via the associated iForGit git repository. 
+
+**SRCMBR** - The source member to work with via the associated iForGit git repository. 
+
+**IFSREPODIR** - The destination git repo IFS directory. This directory contains the path to the library's git directory associated with the library. Default - *LIBREPODTAARA points to the GITREPODIR data are in the source library specified on the SRCFILE parameter.
 
 # Automatic Rolling 7 Day Source Change Commits for a library - SAMPLE
 This example call to the ```LIBSRCEXP``` command illustrates how to do a passive rolling 7 day commit of source member changes for a library. This is a great way to auto-commit any outstanding member changes daily if developers miss or don't do any commits during the day. Change commits should be captured as often as possible to keep ongoing change history current in case of the need to roll back changes. Individual member commits are usually done by each developer using the SRCTOGIT command which is used to commit changes for an individual source member to a git repository.
