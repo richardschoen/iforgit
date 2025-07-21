@@ -64,6 +64,14 @@ Perform a git show command for a selected hash to show that version of the sourc
 
 Command: ```IFORGIT/SRCGITCMD SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA) SRCHASH(*MOSTRECENT) SRCOPTION(*SHOW) DSPSTDOUT(*YES)```
 
+## Option GV - Work With Git Versions for Source Member   
+Interactively list all versions of a selected source member in a 5250 application. Display the commit comments, dates and long and short 8 character version hash. The version hash is essentially the version number in a unique character format.    
+
+From the version list screen, the user can View the version, Browse the version or Restore the version to library: ```IFORGITTMP/USERID``` 
+Then they can Work with temporary restored source members in ```IFORGITTMP/USERID```.
+
+Command: ```IFORGIT/SRCGITVER SRCFILE(&L/&F) SRCMBR(&N) IFSREPODIR(*LIBREPODTAARA)```
+
 # Simple Source Management Commands  
 
 ## Option CA - Simple source management source member archive snapshot    
