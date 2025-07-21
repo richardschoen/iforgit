@@ -14,7 +14,7 @@ You can start with the simple source management commands and then implement the 
 https://github.com/richardschoen/iforgit/blob/master/knowledge/simple_source_management.md
 
 ## Available Now - 7/20/2025 - V1.27 - The new SRCGITVER command
-The SRCGITVER command provides interactive PDM Git Log access for each viewing and restoring old versions   
+The SRCGITVER command provides fast and easy interactive PDM Git Log access for viewing and restoring old source member versions. The command is especially useful if you are only storing your Git repositories ONLY in the IFS and not exporting to a remote Git repository. When using a remote repository, often developers will use a Web Browser or Desktop Git client to view the source members in a repository. SRCGITVER can be used in either scenario for quick Git history access from the green screen.
 ![image](https://github.com/richardschoen/iforgit/assets/9791508/4b994286-3d1b-4f63-8b54-5362c876835c)
 
 ## Try out iForGit on PUB400
