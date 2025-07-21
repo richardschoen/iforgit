@@ -210,11 +210,11 @@ This option is useful if you want to persist a checked out source member in a so
 ```*REPLACE``` - If *REPLACE is specified, the source member gets auto-created in QTEMP/TMPSOURCE but then gets copied/persisted to the source file specified in the DESTFILE/DESTMBR option and records are replaced during the source copy. This allows a single destination source member to receive the contents of a single git source member.    
 
 # SRCGITVER - Work With Git Versions for Source Member  
-This CL command can be used to interactively view older git versions and check them out for processing. The command has its own Git log viewing and retreival mechanism.
+This CL command can be used to interactively view older git versions and check them out for processing from a 5250 session. The command has its own 5250 Git log viewing and retreival application.
 
 # SRCGITVER usage examples  
 
-The following example always displays a list of all versions in the Git version log for the selected source member. User can optionally View, Edit or Restore a copy to library source file: ```IFORGITTMP/USERNAME``` for editing/processing. Members are restored with a naming convention of: M<githash8> and the member text contains the source member name and the data of the Git commit for reference. The command assumes you havine PDM/SEU still installed on your IBM i system.
+The following example always displays a list of all versions in the Git version log for the selected source member. User can optionally View, Edit or Restore a copy to library source file: ```IFORGITTMP/USERNAME``` for further editing/processing once the list of versions are displayed. Members are restored with a naming convention of: ```M<githash8>``` and the member text contains the source member name and the data of the Git commit for reference. The command assumes you have PDM/SEU still installed on your IBM i system.
 
 ``` 
       IFORGIT/SRCGITCMD SRCFILE(RJSDEVMB/SRCGIT)           
@@ -226,7 +226,7 @@ The following example always displays a list of all versions in the Git version 
 
 **SRCFILE** - The source file to work with via the associated iForGit git repository. 
 
-**SRCMBR** - The source member to work with via the associated iForGit git repository. 
+**SRCMBR** - The source member whose Git version history you want to work with via the associated iForGit git repository. 
 
 **IFSREPODIR** - The destination git repo IFS directory. This directory contains the path to the library's git directory associated with the library. Default - *LIBREPODTAARA points to the GITREPODIR data are in the source library specified on the SRCFILE parameter.
 
