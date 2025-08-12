@@ -31,6 +31,8 @@ This example can be run one or more times per day to commit individual source me
 IFORGIT/GITPATH          
 ```
 
+## Sample of committing IFS based repositories to a local IBM i git directory only 
+
 /* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit"  */
 /* using the GITQSH command to run the QShell commands. Display the log info on screen. */ 
 ```
@@ -47,5 +49,28 @@ IFORGIT/GITQSH CMDLINE('cd /testsite001;git add .;git commit -m "My Commit"') DS
         CMDOPTS('add .' 'commit -m "My Commit"')        
         DSPSTDOUT(*YES)                            
         LOGSTDOUT(*NO)                             
+```
+
+## Sample of committing IFS based repositories to a local IBM i git directory and then syncing to a remote git repository server 
+
+/* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit".  */
+/* After the commit, attempt to pull and merge any remote changes before pushing changes to the remote git server */
+/* using the GITQSH command to run the QShell commands. Display the log info on screen. */ 
+```
+IFORGIT/GITQSH CMDLINE('cd /testsite001;git add .;git commit -m "My Commit";git pull;git push') DSPSTDOUT(*YES)
+``` 
+
+/* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit".  */
+/* After the commit, attempt to pull and merge any remote changes before pushing changes to the remote git server */
+/* using the GITCMD CL command to run multiple git commands in sequence. Display the log info on screen. */
+```
+ GITCMD IFSREPODIR('/testsite001')
+        FROMIFSFIL(*NONE)                          
+        LIBRARY(*NONE)                             
+        CRTIFSDIR(*NO)                             
+        CMDOPTS('add .' 'commit -m "My Commit"' 'pull' 'push')        
+        DSPSTDOUT(*YES)                            
+        LOGSTDOUT(*NO)                             
 ```        
+
 
