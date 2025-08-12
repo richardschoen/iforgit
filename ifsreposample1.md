@@ -9,14 +9,14 @@ Later your team can get more advanced and start allowing each developer to have 
 
 This example creates an IFS repository named: /testsite001. A repository only needs to be created one time.
 
-/* Add IBM Open Source Packages /QOpenSys/pkgs/bin to path for green screen job */
-/* Note: This command can be skipped if your user already has the path set.     */
+/* Add IBM Open Source Packages /QOpenSys/pkgs/bin to path for green screen job */   
+/* Note: This command can be skipped if your user already has the path set.     */   
 ```
 IFORGIT/GITPATH
 ```
 
-/* Create IFS directory and initialize new git repository in the IFS */
-/* using the GITQSH command to run the QShell commands. Display the log on screen. */
+/* Create IFS directory and initialize new git repository in the IFS */   
+/* using the GITQSH command to run the QShell commands. Display the log on screen. */   
 ```
 IFORGIT/GITQSH CMDLINE('mkdir /testsite001;cd /testsite001;git init') DSPSTDOUT(*YES)
 ```               
@@ -25,22 +25,22 @@ IFORGIT/GITQSH CMDLINE('mkdir /testsite001;cd /testsite001;git init') DSPSTDOUT(
 
 This example can be run one or more times per day to commit individual source member changes for your IFS repository directory.  It is a good idea to commit changes often to make sure you do not overwrite or lose any source changes. 
 
-/* Add IBM Open Source Packages /QOpenSys/pkgs/bin to path for green screen job */
-/* Note: This command can be skipped if your user already has the path set. */
+/* Add IBM Open Source Packages /QOpenSys/pkgs/bin to path for green screen job */   
+/* Note: This command can be skipped if your user already has the path set. */   
 ```
 IFORGIT/GITPATH          
 ```
 
 ## Sample of committing IFS based repositories to a local IBM i git directory only 
 
-/* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit"  */
-/* using the GITQSH command to run the QShell commands. Display the log info on screen. */ 
+/* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit"  */   
+/* using the GITQSH command to run the QShell commands. Display the log info on screen. */    
 ```
 IFORGIT/GITQSH CMDLINE('cd /testsite001;git add .;git commit -m "My Commit"') DSPSTDOUT(*YES)
 ``` 
 
-/* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit"  */
-/* using the GITCMD CL command to run multiple git commands in sequence. Display the log info on screen. */
+/* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit"  */   
+/* using the GITCMD CL command to run multiple git commands in sequence. Display the log info on screen. */    
 ```
  GITCMD IFSREPODIR('/testsite001')
         FROMIFSFIL(*NONE)                          
@@ -53,16 +53,16 @@ IFORGIT/GITQSH CMDLINE('cd /testsite001;git add .;git commit -m "My Commit"') DS
 
 ## Sample of committing IFS based repositories to a local IBM i git directory and then syncing to a remote git repository server 
 
-/* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit".  */
-/* After the commit, attempt to pull and merge any remote changes before pushing changes to the remote git server */
-/* using the GITQSH command to run the QShell commands. Display the log info on screen. */ 
+/* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit".  */    
+/* After the commit, attempt to pull and merge any remote changes before pushing changes to the remote git server */    
+/* using the GITQSH command to run the QShell commands. Display the log info on screen. */   
 ```
 IFORGIT/GITQSH CMDLINE('cd /testsite001;git add .;git commit -m "My Commit";git pull;git push') DSPSTDOUT(*YES)
 ``` 
 
-/* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit".  */
-/* After the commit, attempt to pull and merge any remote changes before pushing changes to the remote git server */
-/* using the GITCMD CL command to run multiple git commands in sequence. Display the log info on screen. */
+/* Add all recently changed IFS files and execute a git repository commit while also setting a commit message of "My Commit".  */    
+/* After the commit, attempt to pull and merge any remote changes before pushing changes to the remote git server */    
+/* using the GITCMD CL command to run multiple git commands in sequence. Display the log info on screen. */    
 ```
  GITCMD IFSREPODIR('/testsite001')
         FROMIFSFIL(*NONE)                          
