@@ -4,6 +4,9 @@ utilize a private key stored in the user's home directory. Or a private key file
 in a shared common location so all IBM i users using iForGit can use the same SSH private key without 
 storing the key inside the ```.git/config``` file.
 
+**Note:** Even when using a shared private key, the Git config ('/home/user/.gitconfig') file for each user still 
+contains their unique user information so Git should log user info appropriately when they perform any Git commits.  
+
 This example uses GitHub, but the same technique should also work with any other SSH based 
 Git repository you want to push Git repository code changes to.
 
