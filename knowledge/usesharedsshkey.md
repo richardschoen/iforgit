@@ -11,7 +11,7 @@ This example uses GitHub, but the same technique should also work with any other
 Git repository you want to push Git repository code changes to.
 
 ## Example .git/config where each user has their own private key in their home directory for Git use with IBM i repos
-The sample git configuration below illustrates how you might set up a GitHub SSH public key for 
+The sample git repository configuration below illustrates how you might set up a GitHub SSH public key for 
 each individual Git repository user on their GitHub account and then utilize their private key file 
 without placing the key value itself into the Git repo configuration file. This example uses ```id_rsa``` as the 
 example key file name for each user. However if you want to differentiate git private keys from the user's
@@ -50,7 +50,7 @@ The entire ```.git/config``` may look as follows:
 ```
 
 ## Example .git/config where a shared SSH private key can be used to commit and push changes to GitHub from IBM i repos
-The sample git configuration below illustrates how you might set up a GitHub SSH public key for 
+The sample git repository configuration below illustrates how you might set up a GitHub SSH public key for 
 a single shared user on GitHub and then utilize a shared private key file without placing 
 the key value itself into your configuration. This example uses a shared private key file named
 ```id_github``` as the example SSH private key file name. 
