@@ -123,6 +123,9 @@ Check out the http://iforgit.com site above and request a demo if you think it m
 Git documentation\
 https://git-scm.com/docs
 
+Pro Git by Scott Chacon and Ben Straub is available to read online for free.   
+https://git-scm.com/book/en/v2
+
 # Questions or issues
 If you have any questions or issues to report, please use this repository or email support: info@mobigogo.net. This site is also where source examples for using iForgit will be posted as documents.
 
