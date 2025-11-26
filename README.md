@@ -7,6 +7,10 @@ iForGit is an affordable Git Client solution for PDM, RDI and VS Code developers
 
 iForGit can be used standalone for source version management or in conjunction with other solutions that do classic IBM i source control to enhance those solutions with git versioning.
 
+# Learn about Git with this Free e-Book
+Pro Git by Scott Chacon and Ben Straub is available to read online for free.   
+https://git-scm.com/book/en/v2
+
 # Start with Simple Source Management Commands
 Not quite ready for Git but want simple source member version management ?   
 
