@@ -66,15 +66,14 @@ CALL PGM(QWTRMVJL) PARM(X'0000002C000000005CC1D3D34040404040405CC1D3D34040
 WRKJOBLOG JOBLOGSTT(*PENDING) JOB(*ALL/*ALL/*ALL)
 ```
 
-### Clearing output queues to end jobs can also help.
+### Clearing output queues to end old jobs can also help.
+If you have output queues with lots of old spool files these can be cleared if desired and that should open up some job slots in the system job tables.  
 
 ### Check server job description for ssh to make sure it's not 4/00/*MSG or 4/00/*SECLVL
 ```
-WRKJOBD JOBD(QGPL/QDFTSVR)
--or- just
-CHGJOBD JOBD(QGPL/QDFTSVR) LOG(4 0 *NOLIST)  
+WRKJOBD JOBD(QGPL/QDFTSVR) and view the settings for QDFTSVR jobd.
 ```
-If the LOG setting was set to *MSG or *SECLVL, this job desc can cause spool files to get created or joblogs to be pending. The LOG setting should be set to ```4/00/*NOLIST``` so a joblog doesn't get generated for normal completion of git/ssh command calls.
+If the LOG setting was set to *MSG or *SECLVL, this job desc can cause spool files to get created or joblogs to be pending. The LOG setting should be set to ```4/00/*NOLIST``` so a joblog doesn't get generated for normal completion of git command calls.
 
 If you change this job desc, restart SSH server afterwards.
 ```
@@ -84,17 +83,14 @@ STRTCPSVR *SSHD
 
 ### Check server job description to make sure it's not 4/00/*MSG or 4/00/*SECLVL
 ```
-WRKJOBD JOBD(QSYS/QSRVJOB)
--or- just 
-CHGJOBD JOBD(QSYS/QSRVJOB) LOG(4 0 *NOLIST)  
-
+WRKJOBD JOBD(QSYS/QSRVJOB) and view the settings for QSRVJOB jobd.
 ```
-If the LOG setting was set to *MSG or *SECLVL, this job desc can cause spool files to get created or joblogs to be pending. The LOG setting should be set to ```4/00/*NOLIST``` so a joblog doesn't get generated for normal completion of server job command calls. (This jobd may not be related to what we need.)
+If the LOG setting was set to *MSG or *SECLVL, this job desc can cause spool files to get created or joblogs to be pending. The LOG setting should be set to ```4/00/*NOLIST``` so a joblog doesn't get generated for normal completion of server job command calls. (This particular jobd may not be related to what we need but doesn't hurt to change it if it's *MSG or *SECLVL.)
 
-### Check user job description who runs the iForGit commands to make sure it's not 4/00/*MSG or 4/00/*SECLVL
+### Check each user job description who runs the iForGit CL commands to make sure it's not 4/00/*MSG or 4/00/*SECLVL
 ```
-WRKJOBD JOBD(LIB/USERJOBLOG)   
-Ex: This example assumes user has a joblog named: USERJOBLOG in library: LIB.
+WRKJOBD JOBD(LIB/USERJOBLOG) and view the settings for the user jobd.    
+Ex: This example assumes the IBM i user has a joblog named: USERJOBLOG in library: LIB.
 ```
 If the LOG setting was set to *MSG or *SECLVL, this job desc can cause spool files to get created or joblogs to be pending. The LOG setting should be set to ```4/00/*NOLIST``` so a joblog doesn't get generated for normal completion of git/ssh command calls.
 
