@@ -1,4 +1,4 @@
-# System Job Tables Fill Up When Running LIBSRCEXP or when exporting many source members
+# System Job Tables Fill Up when running LIBSRCEXP or when exporting many source members
 On some systems job descriptions may be set up to always produce a joblog which 
 can cause a system job table issue when many QShell/PASE jobs are run in sequence.   
 
