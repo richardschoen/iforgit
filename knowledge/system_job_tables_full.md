@@ -10,7 +10,7 @@ up a job count entry even though the job may have ended and technically disappea
 
 This relates directly to iForGit because iForGit runs many instances of the ```git``` command via QShell/PASE when the ```LIBSRCEXP``` command is run against one or more libraries.    
 
-It's probably a good idea to check your max jobs system value setting and job descriptions to make sure they are not always creating a joblog. 
+It's probably a good idea to check your ```max jobs system value``` setting and ```job descriptions``` to make sure they are not always creating a joblog. 
 
 ❗If exporting a large number of source members and a job produces a joblog (if LOG value set to 4/00/*MSG or 4/00/*SECLVL), there's a chance the system job tables could fill up.
 
