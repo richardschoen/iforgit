@@ -1,19 +1,18 @@
 # Job Tables Fill Up When Running LIBSRCEXP or when exporting many source members
 On some systems job descriptions may be set up to always produce a joblog which 
-can cause a system job table issue when many QShell/PASE jobs are run in sequence.  
+can cause a system job table issue when many QShell/PASE jobs are run in sequence.   
+
 The system job tables can fill up and force a system IPL. 
 
-The IBM i system can only have a select maximum number of jobs (based on QMAXJOB system value). 
+**Cause:** The IBM i system can only have a select maximum number of jobs (based on QMAXJOB system value). 
 And when a job produces a spool file or has a joblog in *PENDING status, the job may still take 
 up a job count entry even though the job may have ended and technically disappeared.
 
-This relates directly to iForGit because iForGit runs many instances of the ```git`` command via QShell/PASE when the ```LIBSRCEXP``` command is run against one or more libraries.    
+This relates directly to iForGit because iForGit runs many instances of the ```git``` command via QShell/PASE when the ```LIBSRCEXP``` command is run against one or more libraries.    
 
 It's probably a good idea to check your max jobs system value setting and job descriptions to make sure they are not always creating a joblog. 
 
-❗If exporting a large number of source members and a job produces
-a joblog (if LOG value set to 4/00/*MSG or 4/00/*SECLVL), there's a chance the system job 
-tables could fill up.
+❗If exporting a large number of source members and a job produces a joblog (if LOG value set to 4/00/*MSG or 4/00/*SECLVL), there's a chance the system job tables could fill up.
 
 ## Checking for potential issues
 
@@ -22,8 +21,10 @@ Command to display system value for max jobs
 ```
 DSPSYSVAL SYSVAL(QMAXJOB)
 ```
-The max value this can be set to is 970000 jobs. Keep it down around 400000 is possible. 
-If you run into a system lock condition this system value can be raised to 900000 temporarily if needed.  
+The max value this can be set to a max of 970000 jobs. Keep it down around 400000 is possible. 
+If you run into a system lock condition because of the system job tables filling up, the QMAXJOB system value can be raised to 900000 temporarily if needed. 
+
+❗Avoid 970000 as possible as once this limit is reached it's possible the system won't be able to hbe IPLed.
  
 ❗Don't make any changes to this system value yet. Use ```WRKSYSVAL QMAXJOB``` to change this setting if desired. 
 
