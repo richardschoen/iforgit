@@ -1,7 +1,7 @@
 # Job Tables Fill Up When Running LIBSRCEXP or when exporting many source members
 On some systems job descriptions may be set up to always produce a joblog which 
 can cause a system job table issue when many QShell/PASE jobs are run in sequence.  
-The system job tables can fill up and force a system IPL.
+The system job tables can fill up and force a system IPL. 
 
 The IBM i system can only have a select maximum number of jobs (based on QMAXJOB system value). 
 And when a job produces a spool file or has a joblog in *PENDING status, the job may still take 
