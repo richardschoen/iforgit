@@ -55,6 +55,8 @@ WRKJOBLOG JOBLOGSTT(*PENDING) JOB(*ALL/*ALL/*ALL)
 ### Check server job description for ssh to make sure it's not 4/00/*MSG or 4/00/*SECLVL
 ```
 WRKJOBD JOBD(QGPL/QDFTSVR)
+-or- just
+CHGJOBD JOBD(QGPL/QDFTSVR) LOG(4 0 *NOLIST)  
 ```
 If the LOG setting was set to *MSG or *SECLVL, this job desc can cause spool files to get created or joblogs to be pending. The LOG setting should be set to ```4/00/*NOLIST``` so a joblog doesn't get generated for normal completion of git/ssh command calls.
 
@@ -67,6 +69,9 @@ STRTCPSVR *SSHD
 ### Check server job description to make sure it's not 4/00/*MSG or 4/00/*SECLVL
 ```
 WRKJOBD JOBD(QSYS/QSRVJOB)
+-or- just 
+CHGJOBD JOBD(QSYS/QSRVJOB) LOG(4 0 *NOLIST)  
+
 ```
 If the LOG setting was set to *MSG or *SECLVL, this job desc can cause spool files to get created or joblogs to be pending. The LOG setting should be set to ```4/00/*NOLIST``` so a joblog doesn't get generated for normal completion of server job command calls. (This jobd may not be related to what we need.)
 
