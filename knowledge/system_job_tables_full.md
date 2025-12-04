@@ -24,33 +24,35 @@ DSPSYSVAL SYSVAL(QMAXJOB)
 The max value this can be set to a max of 970000 jobs. Keep it down around 400000 is possible. 
 If you run into a system lock condition because of the system job tables filling up, the QMAXJOB system value can be raised to 900000 temporarily if needed. 
 
-❗Avoid 970000 as possible as once this limit is reached it's possible the system won't be able to hbe IPLed.
+❗Avoid 970000 if possible as once this limit is reached it's possible the system won't be able to be IPLed.
  
-❗Don't make any changes to this system value yet. Use ```WRKSYSVAL QMAXJOB``` to change this setting if desired. 
+❗You don't need to make any changes to this system value yet. Use ```WRKSYSVAL QMAXJOB``` to change this setting if desired. 
 
-**Change to 400000. You can go higher but keep it well below the max job count of 970000 in case of errors, you can up the max job count before IPLing.
+**If you do change QMAXJOB, change to 400000. You can go higher but keep it well below the max job count of 970000 in case of errors, you can up the max job count before IPLing.
 
 ### Display job tables
-Command to display job tables. If job tables fill up the system may halt.
+Command to display job tables. If ```Total``` job tables fill up to the ```Maximum``` the system may halt.
 ```
 DSPJOBTBL
 ```
-This will show how many active job table entrues may be already filled up.
+This will show how many active job table entries may be already filled up.
 
-### This command shows pending joblogs that may show after jobs run 
+### Show pending joblogs that may appear after jobs run 
 Jobs may generate spool files in pending status. The WRKJOBLOG command 
 below will show if there are any pending joblogs which can cause the
 system to halt because these take up job table entries until the job ends
-of is cleared from the system by deleting any spool files related to the job.
+or is cleared from the system by deleting any spool files related to the job.
 
 Command to show pending joblogs
 ```
 WRKJOBLOG JOBLOGSTT(*PENDING) JOB(*ALL/*ALL/*ALL)
 ```
-This may be most likely cause of job tables filling up.
+Pending joblogs may be most likely cause of job tables filling up.
 
-### Clear/remove pending job tables IBMi 
+### Article on clearing/removing pending job tables from IBM i 
 https://www.ibm.com/support/pages/node/643397  
+
+Read the above article if desired or proceed to clear the pending joblog entries below.   
 
 ### Clear pending joblog entries. 
 Per the link above, run the following program call to clean all pending joblog entries.  
