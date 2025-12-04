@@ -4,14 +4,24 @@ can cause a system job table issue when many source members are exported at once
 
 ## Checking for potential issues
 
+### Display maximum jobs allowed in system
+Command to display system value for max jobs
+```
+DSPSYSVAL SYSVAL(QMAXJOB)
+```
+The max value this can be set to is 970000 jobs. Keep it down around 400000 is possible. 
+If you run into a system lock condition this system value can be raised to 900000 temporarily if needed.  
+ 
+❗Don't make any changes to this system value yet. Use ```WRKSYSVAL QMAXJOB``` to change this setting if desired. 
+
+**Change to 400000. You can go higher but keep it well below the max job count of 970000 in case of errors, you can up the max job count before IPLing.
+
 ### Display job tables
-Command to display job tables
+Command to display job tables. If job tables fill up the system may halt.
 ```
 DSPJOBTBL
 ```
-This will show how many job table entrues may be already filled up.
-
-If job tables fill up the system may halt.
+This will show how many active job table entrues may be already filled up.
 
 ### This command shows pending joblogs that may show after jobs run 
 Jobs may generate spool files in pending status. The WRKJOBLOG command 
@@ -23,40 +33,53 @@ Command to show pending joblogs
 ```
 WRKJOBLOG JOBLOGSTT(*PENDING) JOB(*ALL/*ALL/*ALL)
 ```
+This may be most likely cause of job tables filling up.
 
-Clear/remove pending job tables IBMi 
+### Clear/remove pending job tables IBMi 
 https://www.ibm.com/support/pages/node/643397  
 
-
-Clearing output queues to end jobs can also help.
-
-Check server job description for ssh to make sure it's not 4/00/*MSG or 4/00/*SECLVL
-WRKJOBD JOBD(QGPL/QDFTSVR)
-
-This can cause spool files to get created or joblogs to be pending.
-
-If you change this job desc, restart SSH server afterwards.
-ENDTCPSVR *SSHD
-STRTCPSVR *SSHD
-
-Check server job description to make sure it's not 4/00/*MSG or 4/00/*SECLVL
-WRKJOBD JOBD(QSYS/QSRVJOB)
-
-This can cause spool files to get created or joblogs to be pending.
-
-Check user job description who runs the iForGit commands to make sure it's not 4/00/*MSG or 4/00/*SECLVL
-
-This can cause spool files to get created or joblogs to be pending.
-
-Up the max job count setting for QMAXJOB
-WRKSYSVAL QMAXJOB and change value to 400000.
-
-**Can go higher but keep it well below the max job count of 970000 in case of errors, you xan up the jax job count before IPLing.
-
-Clear the pending joblog entries. 
+### Clear pending joblog entries. 
+Per the link above, run the following program call to clean all pending joblog entries.  
+```
 CALL PGM(QWTRMVJL) PARM(X'0000002C000000005CC1D3D34040404040405CC1D3D34040
 404040405CC1D3D340405CC1D3D3404040404040' 'RJLS0100' X'0000000000000000')
+```
 
-Make sure there are no joblogs pending
+### Run WRKJOBLOG again to make sure there are no joblogs pending after running above program call.
+```
 WRKJOBLOG JOBLOGSTT(*PENDING) JOB(*ALL/*ALL/*ALL)
+```
+
+### Clearing output queues to end jobs can also help.
+
+### Check server job description for ssh to make sure it's not 4/00/*MSG or 4/00/*SECLVL
+```
+WRKJOBD JOBD(QGPL/QDFTSVR)
+```
+If the LOG setting was set to *MSG or *SECLVL, this job desc can cause spool files to get created or joblogs to be pending. The LOG setting should be set to ```4/00/*NOLIST``` so a joblog doesn't get generated for normal completion of git/ssh command calls.
+
+If you change this job desc, restart SSH server afterwards.
+```
+ENDTCPSVR *SSHD
+STRTCPSVR *SSHD
+```
+
+### Check server job description to make sure it's not 4/00/*MSG or 4/00/*SECLVL
+```
+WRKJOBD JOBD(QSYS/QSRVJOB)
+```
+If the LOG setting was set to *MSG or *SECLVL, this job desc can cause spool files to get created or joblogs to be pending. The LOG setting should be set to ```4/00/*NOLIST``` so a joblog doesn't get generated for normal completion of server job command calls. (This jobd may not be related to what we need.)
+
+### Check user job description who runs the iForGit commands to make sure it's not 4/00/*MSG or 4/00/*SECLVL
+```
+WRKJOBD JOBD(LIB/USERJOBLOG)   
+Ex: This example assumes user has a joblog named: USERJOBLOG in library: LIB.
+```
+If the LOG setting was set to *MSG or *SECLVL, this job desc can cause spool files to get created or joblogs to be pending. The LOG setting should be set to ```4/00/*NOLIST``` so a joblog doesn't get generated for normal completion of git/ssh command calls.
+
+If you change this setting, log off and log back on for any users who will run iForGit commands so the new job description settings get picked up.
+
+
+
+
 
