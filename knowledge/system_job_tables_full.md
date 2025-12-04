@@ -83,8 +83,3 @@ Ex: This example assumes user has a joblog named: USERJOBLOG in library: LIB.
 If the LOG setting was set to *MSG or *SECLVL, this job desc can cause spool files to get created or joblogs to be pending. The LOG setting should be set to ```4/00/*NOLIST``` so a joblog doesn't get generated for normal completion of git/ssh command calls.
 
 If you change this setting, log off and log back on for any users who will run iForGit commands so the new job description settings get picked up.
-
-
-
-
-
