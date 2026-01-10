@@ -36,12 +36,14 @@ Apparently on IBM i, when new IFS files are created, there is now a default of C
 create a new file in the IFS. Since Git doesn't know about CCSID it happily checks out the source member
 when the user selects to view it. And it creates the checked out source member with CCSID (1208). 
 Where the problem occurs is the CPYFRMSTMF command does not seem to like the aforementioned characters 
-when it tries to copy the source member to a temporary source member. 
+when it tries to copy the source member to a temporary source member from the IFS. CPYFRMSTMF uses 
+the following parameter which tells it to use the from IFS file CCSID during copying. **STMFCCSID(*STMF)**.
+This works 99.9% of the time as long as their are no special characters that CPYFRMSTMF interpret incorrectly during copying.
 
 It looks like there is an environment variable ```QIBM_PASE_CCSID``` that can be set at the system level 
 or job level to resolve this issue and correctly check out source from the Git repo as CCSID (1252). 
-❗My recommendation is to set this at the user job level for now until we can fix this in the SRCGITVER command.
-Setting at the system level would require review to make sure you don't cause other issues. 
+
+❗My recommendation is to set the QIBM_PASE_CCSID environment at the user job level for now until we can fix this in the SRCGITVER command. Setting at the system level would require additional review to make sure you don't cause other issues. 
 
 From an interactive 5250 job, simply run the following command one time:
 ```
@@ -54,3 +56,5 @@ ADDENVVAR ENVVAR(QIBM_PASE_CCSID)
 Once you've done this, the setting persists until you log off.    
 
 Then try viewing a source member via the SRCGITVER Opt 5=View command and it should work as expected.   
+
+We will be adding the environment variable switch to a data area in a future iForGit release which will allow the ```SRCGITCMD``` to pick up the setting from a data area or be overridden by the user as needed. 
