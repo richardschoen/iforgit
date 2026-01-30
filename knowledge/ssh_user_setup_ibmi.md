@@ -1,10 +1,14 @@
-# Create an SSH User for use with iForgit, Git, Github and Other Remote Git Repositories
-This document covers the steps to create an SSH user for use with iForGit and remote Git repositories.
+# Create IBM i SSH User info for use with SSH/SFTP login, iForgit, Git, Github and Other Remote Git Repositories
+This document covers the steps to create an SSH user to be able to connect with iForGit to remote Git repositories.
 
-SSH users and public/private keys are the only safe way to use remote git repositories with IBM i.
+The private key file can also be used to connect from a PC or Mac to your IBM i over SSH. 
+
+❗SSH users and public/private keys are the only safe way to use remote git repositories with IBM i.
 
 # Set up SSH User Example
 We will use a user name of ```SSHUSER1``` for this example.
+
+❗Ideally each user connecting to a remote Git repository should have their own unique SSH public and private key. However you can use a shared SSH key as well for connecting if you don't want to create a unique SSH key file for each user.
 
 ### Create a user profile (skip if user exists)
 ```
