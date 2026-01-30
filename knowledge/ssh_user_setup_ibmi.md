@@ -108,7 +108,7 @@ F3=Exit   F4=Prompt   F5=Refresh   F9=Retrieve   F12=Cancel   F17=Position to
 F22=Display entire field           F23=More options                           
 ```
 **id_ed25519** is the private key file. (don't give this to anyone)   
-**id_ed25519.pub** is the public key file. (This file can be used on GitHub or other remote Git repos such as Azure Devops, GitLab, Bitbucket, etc. The public key gets associated to the git user in Github or the remote repository)
+**id_ed25519.pub** is the public key file. (This file can be downloaded and uploaded/used on GitHub or other remote Git repos such as Azure Devops, GitLab, Bitbucket, etc for authentication. The public key gets associated to the git user in Github or the remote repository)
 
 
 
