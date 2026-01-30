@@ -76,7 +76,16 @@ The key's randomart image is:
 |  . .  ==*+=+o   |  
 |   . ...*===O=.  |  
 |    .o+.o*=*B*   |  
-+----[SHA256]-----+  
++----[SHA256]-----+
+```
+Run the following command to copy your public key to the authorized_keys file. This will allow SSHUSER1 to log in remotely via SSH and using the private key file: ```id_ed255419```    
+```
+cat /home/SSHUSER1/.ssh/id_ed25519 >> /home/SSHUSER1/.ssh/authorized_keys
+```
+Run the following commands to set permissions on your SSH key files and .ssh directory:
+```
+chmod 700 /home/SSHUSER1/.ssh 
+chmod 600 /home/SSHUSER1/.ssh/authorized_keys
 ```
 Press F3 to exit the QShell screen. 
 
@@ -98,7 +107,8 @@ Type options, press Enter.
                                                                               
 Opt   Object link            Type     Attribute    Text                       
       .                      DIR                                              
-      ..                     DIR                                              
+      ..                     DIR
+      authorized_keys        STMF                                         
       id_ed25519             STMF                                             
       id_ed25519.pub         STMF                                             
                                                                         Bottom
@@ -108,8 +118,9 @@ F3=Exit   F4=Prompt   F5=Refresh   F9=Retrieve   F12=Cancel   F17=Position to
 F22=Display entire field           F23=More options                           
 ```
 **id_ed25519** is the private key file. (don't give this to anyone)   
-**id_ed25519.pub** is the public key file. (This file can be downloaded and uploaded/used on GitHub or other remote Git repos such as Azure Devops, GitLab, Bitbucket, etc for authentication. The public key gets associated to the git user in Github or the remote repository)
-
+**id_ed25519.pub** is the public key file. (This file can be downloaded and uploaded/used on GitHub or other remote Git repos such as Azure Devops, GitLab, Bitbucket, etc for authentication. The public key gets associated to the git user in Github or the remote repository)    
+**authorized_keys** is an IFS copy of the public key in the user home directory. This allows them to connect to the IBM i using their private key instead of needing to enter a password if they are using an SSH terminal client such as putty or the ssh command in Windows, Linux or MacOS. 
+**Note:** This is not needed for hooking up to remote git repositories but it's good when you want secure access to the IBM i via an SSH terminal
 
 
 
