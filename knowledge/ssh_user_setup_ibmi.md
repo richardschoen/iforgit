@@ -15,19 +15,26 @@ CRTUSRPRF USRPRF(SSHUSER1) HOMEDIR('/home/SSHUSER1')
 ```
 MKDIR DIR('/home/SSHUSER1') DTAAUT(*INDIR) OBJAUT(*INDIR) 
 ```
+### Create the user home .ssh directory (skip if user home dir exists)
+```
+MKDIR DIR('/home/SSHUSER1/.ssh') DTAAUT(*INDIR) OBJAUT(*INDIR) 
+```
 
 ### Make the user owner of their home directory
 ```
-CHGOWN OBJ('/home/SSHUSER1')    
-       NEWOWN(SSHUSER1)         
-       RVKOLDAUT(*YES)          
-       SUBTREE(*ALL)
+CHGOWN OBJ('/home/SSHUSER1') NEWOWN(SSHUSER1) RVKOLDAUT(*YES) SUBTREE(*NONE)
+```
+### Make the user owner of their home .ssh directory
+```
+CHGOWN OBJ('/home/SSHUSER1/.ssh') NEWOWN(SSHUSER1) RVKOLDAUT(*YES) SUBTREE(*ALL)
 ```
 
-### Exclude public users from access to the home dir
+### Exclude *PULIBC users from access to the home and .ssh dir
 ```
-CHGAUT OBJ('/home/SSHUSER1') USER(*PUBLIC) DTAAUT(*NONE)
-CHGAUT OBJ('/home/SSHUSER1') USER(*PUBLIC) OBJAUT(*NONE)    
+CHGAUT OBJ('/home/SSHUSER1') USER(*PUBLIC) OBJAUT(*SAME) DTAAUT(*NONE)
+CHGAUT OBJ('/home/SSHUSER1') USER(*PUBLIC) OBJAUT(*NONE) DTAAUT(*SAME)
+CHGAUT OBJ('/home/SSHUSER1/.ssh') USER(*PUBLIC) OBJAUT(*SAME) DTAAUT(*NONE)
+CHGAUT OBJ('/home/SSHUSER1/.ssh') USER(*PUBLIC) OBJAUT(*NONE) DTAAUT(*SAME)
 ```
 ### Create SSH  public/private keys for user from 5250 session
 Log in as the user: SSHTEST1 and start a QShell session. 
@@ -122,6 +129,15 @@ F22=Display entire field           F23=More options
 **id_ed25519.pub** is the public key file. (This file can be downloaded and uploaded/used on GitHub or other remote Git repos such as Azure Devops, GitLab, Bitbucket, etc for authentication. The public key gets associated to the git user in Github or the remote repository)    
 **authorized_keys** is an IFS copy of the public key in the user home directory. This allows them to connect to the IBM i using their private key instead of needing to enter a password if they are using an SSH terminal client such as putty or the ssh command in Windows, Linux or MacOS. 
 **Note:** This is not needed for hooking up to remote git repositories but it's good when you want secure access to the IBM i via an SSH terminal
+
+## Results
+The SSHUSER1 user profile should be able to connect and log in to the IBM i system via an SSH terminal login if the IBM i SSH server is enabled. Once logged in the user can run PASE, qsh or bash commands.
+
+More importantly the user should be ready to be connected to a GitHub or other git repository using the information from the public key file (```id_ed25519.pub```) once it gets uploaded and associated with the GitHub or other remote repository user.
+
+
+
+
 
 
 
