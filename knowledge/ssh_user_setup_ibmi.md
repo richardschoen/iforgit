@@ -3,7 +3,7 @@ This document covers the steps to create an SSH user to be able to connect with 
 
 The private key file can also be used to connect from a PC or Mac to your IBM i over SSH. 
 
-Doing all the steps below are very important. If not done correctly, you will not be able to connect to your IBM i remotely. 
+Doing all the steps below are very important. If not done correctly, you will not be able to connect to your IBM i remotely with ssh. 
 
 ❗SSH users and public/private keys are the only safe way to use remote git repositories with IBM i.
 
