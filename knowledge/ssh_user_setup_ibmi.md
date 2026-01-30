@@ -80,10 +80,11 @@ The key's randomart image is:
 ```
 Run the following command to copy your public key to the authorized_keys file. This will allow SSHUSER1 to log in remotely via SSH and using the private key file: ```id_ed255419```    
 ```
-cat /home/SSHUSER1/.ssh/id_ed25519 >> /home/SSHUSER1/.ssh/authorized_keys
+cp /home/SSHUSER1/.ssh/id_ed25519 /home/SSHUSER1/.ssh/authorized_keys
 ```
 Run the following commands to set permissions on your SSH key files and .ssh directory:
 ```
+chmod 755 /home/SSHUSER1 
 chmod 700 /home/SSHUSER1/.ssh 
 chmod 600 /home/SSHUSER1/.ssh/authorized_keys
 ```
