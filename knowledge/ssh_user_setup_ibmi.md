@@ -138,6 +138,6 @@ F22=Display entire field           F23=More options
 **Note:** This is not needed for hooking up to remote git repositories but it's good when you want secure access to the IBM i via an SSH terminal
 
 ## Results
-The ```SSHUSER1``` user profile should be able to connect and log in to the IBM i system via an SSH terminal login using the private key file ```id_ed25519``` if the IBM i SSH server is enabled. Once logged in the user can run PASE, qsh or bash commands. The ```id_ed25519``` file should be downloaded to their PC or Mac system and properly secured for use with an sssh terminal.
+The ```SSHUSER1``` user profile should be able to connect and log in to the IBM i system via an SSH terminal login using the private key file ```id_ed25519``` if the IBM i SSH server is enabled. Once logged in the user can run PASE, qsh or bash commands. The ```id_ed25519``` file should be downloaded to their PC or Mac system and properly secured for use with an ssh terminal.
 
 More importantly the user should now be able to be connected to a GitHub or other remote git repository using the information from the public key file (```id_ed25519.pub```) once the public key file gets uploaded and associated with their GitHub or other remote repository user account.
