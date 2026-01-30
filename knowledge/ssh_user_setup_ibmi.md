@@ -3,14 +3,15 @@ This document covers the steps to create an SSH user for use with iForGit and re
 
 SSH users and public/private keys are the only safe way to use remote git repositories with IBM i.
 
-# Set up SSH User
+# Set up SSH User Example
+We will use a user name of ```SSHUSER1``` for this example.
 
-### Create a user profile
+### Create a user profile (skip if user exists)
 ```
 CRTUSRPRF USRPRF(SSHUSER1) HOMEDIR('/home/SSHUSER1') 
 ```
 
-### Create the user home directory
+### Create the user home directory (skip if user home dir exists)
 ```
 MKDIR DIR('/home/SSHUSER1') DTAAUT(*INDIR) OBJAUT(*INDIR) 
 ```
@@ -28,7 +29,7 @@ CHGOWN OBJ('/home/SSHUSER1')
 CHGAUT OBJ('/home/SSHUSER1') USER(*PUBLIC) DTAAUT(*NONE)
 CHGAUT OBJ('/home/SSHUSER1') USER(*PUBLIC) OBJAUT(*NONE)    
 ```
-### Create SSH user from 5250
+### Create SSH  public/private keys for user from 5250 session
 Log in as the user: SSHTEST1 and start a QShell session. 
 ```
 STRQSH
@@ -79,7 +80,35 @@ The key's randomart image is:
 ```
 Press F3 to exit the QShell screen. 
 
+The SSHUSER1 public and private key IFS files should now exist.   
 
+Run the following command to verify the files exist:
+```
+WRKLNK OBJ('/home/SSHUSER1/.ssh/*') DSPOPT(*ALL)
+```
+You should see something like this to confirm the SSH public a private keys exist:   
+```
+                            Work with Object Links                            
+                                                                              
+Directory  . . . . :   /home/SSHUSER1/.ssh                                    
+                                                                              
+Type options, press Enter.                                                    
+  2=Edit   3=Copy   4=Remove   5=Display   7=Rename   8=Display attributes    
+  11=Change current directory ...                                             
+                                                                              
+Opt   Object link            Type     Attribute    Text                       
+      .                      DIR                                              
+      ..                     DIR                                              
+      id_ed25519             STMF                                             
+      id_ed25519.pub         STMF                                             
+                                                                        Bottom
+Parameters or command                                                         
+===>                                                                          
+F3=Exit   F4=Prompt   F5=Refresh   F9=Retrieve   F12=Cancel   F17=Position to 
+F22=Display entire field           F23=More options                           
+```
+**id_ed25519** is the private key file. (don't give this to anyone)
+**id_ed25519.pub** is the public key file. (This file can be used on GitHub or other remote Git repos such as Azure Devops, GitLab, Bitbucket, etc. The public key gets associated to the git user in Github or the remote repository)
 
 
 
