@@ -88,7 +88,11 @@ The key's randomart image is:
 |    .o+.o*=*B*   |  
 +----[SHA256]-----+
 ```
-Run the following command to copy your public key to the authorized_keys file. This will allow SSHUSER1 to log in remotely via SSH and using the private key file: ```id_ed255419```    
+❗The shorthand version of the above SSH key generation steps that could be used for additional users is: 
+```
+ssh-keygen -f /home/SSHUSER1/.ssh/id_ed25519.ppk -t ed25519 -N ' '
+```
+Now run the following command to copy your public key to the authorized_keys file. This will allow SSHUSER1 to log in remotely via SSH and using the private key file: ```id_ed255419```    
 ```
 cp /home/SSHUSER1/.ssh/id_ed25519.pub /home/SSHUSER1/.ssh/authorized_keys
 ```
