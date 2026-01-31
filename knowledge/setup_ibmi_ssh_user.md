@@ -38,8 +38,14 @@ CHGOWN OBJ('/home/SSHUSER1/.ssh') NEWOWN(SSHUSER1) RVKOLDAUT(*YES) SUBTREE(*ALL)
 ### Exclude *PUBLIC users from access to the home and .ssh dir
 ```
 CHGAUT OBJ('/home/SSHUSER1') USER(*PUBLIC) OBJAUT(*SAME) DTAAUT(*NONE)
+```
+```
 CHGAUT OBJ('/home/SSHUSER1') USER(*PUBLIC) OBJAUT(*NONE) DTAAUT(*SAME)
+```
+```
 CHGAUT OBJ('/home/SSHUSER1/.ssh') USER(*PUBLIC) OBJAUT(*SAME) DTAAUT(*NONE)
+```
+```
 CHGAUT OBJ('/home/SSHUSER1/.ssh') USER(*PUBLIC) OBJAUT(*NONE) DTAAUT(*SAME)
 ```
 ### Create SSH  public/private keys for user from 5250 session
@@ -105,7 +111,9 @@ chmod 755 /home/SSHUSER1
 ```
 chmod 700 /home/SSHUSER1/.ssh 
 ```
+```
 chmod 600 /home/SSHUSER1/.ssh/authorized_keys
+```
 ```
 chmod 600 /home/SSHUSER1/.ssh/id_ed25519
 ```
