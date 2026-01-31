@@ -7,7 +7,7 @@ As part of the process the initial clone creates the repository on the IBM IFS f
 Follow the steps listed below to set up yor new repository on GitHub and hook up your library and clone your source files for the first time. Repeat the relevant steps for each new library repository to hook it up to Git and GitHub.
 
 ### IBM i - Create an IBM i SSH user key for each IBM i user
-Use the following link to set up an SSH public/private user key file for each user who will be committing changes to your git repositories. 
+Use the following link to set up an SSH public/private user key file for each user who will be committing changes to your git repositories.   
 ❗It might make sense to set up the first user initially to make sure you can create the user and use it with GitHub.    
 https://github.com/richardschoen/iforgit/blob/master/knowledge/setup_ibmi_ssh_user.md   
 
