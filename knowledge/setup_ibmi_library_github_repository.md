@@ -66,6 +66,11 @@ Example alternate naming: You could name your repos something like:  ```LIB001-D
 Click the ```Create Repository``` button to create the new repository. 
 <img width="168" height="54" alt="image" src="https://github.com/user-attachments/assets/f477e97f-b658-4ec2-88f9-4ca52de59e12" />
 
+You GitHub repository will look something like this: 
+
+<img width="1249" height="546" alt="image" src="https://github.com/user-attachments/assets/5dc92e71-2185-43d6-ba2c-b852af4fc854" />
+
+
 ### IBM i - Set git config user information in .gitconfig file for one time to set up each Git user
 Each IBM i user needs to log in to a 5250 session and run the ```SETGBLUSR``` command ```one time``` to create Git user settings for the user. The command creates a ```.gitconfig``` file in the user's home directory.  Ex: ```/home/sshuser1/.gitconfig```. The .gitconfig file is used to track who makes changes and Git commits. For the USERNAME, enter a first and last name. Then enter the user's email address and ```press Enter``` to save. The .gitconfig settings are independent of GitHub, the IBM i and the user's SSH key. The .gitconfig is used specifically by Git to track Git commits to know which user is committing version changes.
 ```
@@ -105,7 +110,15 @@ STRQSH
 
 The rest of the steps should be the same whether you are running from an SSH terminal or QShell. 
 
+Change to the /gitrepos directory before we clone the repository.
+```
+cd /gitrepos
+```
 
+Run the Git clone command to get the repository contents from GitHub and connect us up to GitHub.
+```
+git clone git@github.com:richardschoen/LIB001.git
+```
 
 
 
