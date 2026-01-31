@@ -58,4 +58,50 @@ Example alternate naming: You could name your repos something like:  ```LIB001-D
 <img width="769" height="594" alt="image" src="https://github.com/user-attachments/assets/dc4a5dbf-3334-4618-a5fa-51ddd0385132" />
 
 
+### Set git config user information in .gitconfig file  
+Each IBM i user needs to log in to a 5250 session and run the ```SETGBLUSR``` command one time to create Git user settings for the user. The command creates a ```.gitconfig``` file in the user's home directory.  Ex: ```/home/sshuser1/.gitconfig```. The Git config file is used to track who makes changes and Git commits.   
+```
+IFORGIT/SETGBLUSR USERNAME('Richard Schoen')      
+          USEREMAIL(richard@mobigogo.net) 
+```
+
+### Set repo for library ```LIB001```
+Run the ```SETLIBREPO``` command to connect library ```LIB001``` to the Git repository you cloned to directory ```/gitrepos/LIB001```.  This setting needs to be run one time for each library you will be committing version changes to for Git.   
+```
+IFORGIT/SETLIBREPO LIBRARY(LIB001)                  
+            IFSREPODIR('/gitrepos/LIB001')   
+            ENABLEGIT(*YES)                  
+            OPTION(*SET)                     
+```
+
+### Perform initial export of source from library ```LIB001``` to seed the git repository for the first time
+
+Change job to make sure the joblog does not full by wrapping the joblog when it's full.   
+```
+CHGJOB JOBMSGQFL(*WRAP)
+```
+Run the initial LIBSRCEXP command with *ALL option to create and initialize the repository in the IFS
+```
+ IFORGIT/LIBSRCEXP LIBRARY(LIB001)           
+                   FILE(*ALL)                
+                   STARTDATE(*ALL)           
+                   ENDDATE(*STARTDATE)       
+                   IFSREPODIR(*LIBREPODTAARA)
+                   SRCHEADER(*YES)           
+                   SRCDATSEQ(*NO)            
+                   REPLACE(*YES)             
+                   VALIDREPO(*YES)           
+                   IFSMKDIR(*YES)            
+                   INITREPO(*YES)            
+                   COMMITOPT(*COMMIT)    
+                   COMMENT(*DATEUSER)        
+                   AUTHORITY(*INDIR)         
+                   JOBMSGQFUL(*WRAP)         
+```
+
+### Do a git push to push the source to the GitHub repository
+
+### Git status ?
+
+
 
