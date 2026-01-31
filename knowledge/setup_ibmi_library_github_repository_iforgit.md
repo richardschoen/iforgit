@@ -155,7 +155,7 @@ remote: Compressing objects: 100% (3/3), done.
 remote: Total 9 (delta 0), reused 6 (delta 0), pack-reused 0 (from 0)
 Receiving objects: 100% (9/9), done.
 ```
-Your repository has cloned successfully.
+✅ Your repository has cloned successfully.
 
 Do the following to see if you can write back to the repository successfully with commits:
 
@@ -285,6 +285,8 @@ nothing to commit, working tree clean
 ************End of Data********************
 ```
 
-## Questions of problems hooking up to a GitHub repository
+✅ You are now ready to use your library with it's new GitHub repo for capturing source members with iForGit.
+
+## Questions or problems hooking up to a GitHub repository
 If you have any questions on this process, please reach out by creating a GitHub issue in this repository or send an email to: richard@mobigogo.net or richard@richardschoen.net
 
