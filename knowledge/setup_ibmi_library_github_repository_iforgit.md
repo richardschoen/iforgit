@@ -112,18 +112,7 @@ MKDIR DIR('/gitrepos') DTAAUT(*RWX) OBJAUT(*ALL)
 ❗You can also further secure this IFS directory as you see fit as long as any Git users can read/write to the IFS directory where your Git repositories are located.
 
 ### IBM i - Clone the GitHub repository to the IFS
-This step should be able to be done from an SSH terminal or from the 5250 command line. 
-
-If running from the 5250 command line, first run this command to set the QShell path to the open source binaries so QShell can find the ```git``` command.
-```
-IFORGIT/GITPATH
-```
-Then start the QShell terminal
-```
-STRQSH
-```
-
-The rest of the steps should be the same whether you are running from an SSH terminal or QShell from a 5250 session. 
+This step should be done from an SSH terminal. 
 
 Change to the /gitrepos directory before we clone the repository.
 ```
