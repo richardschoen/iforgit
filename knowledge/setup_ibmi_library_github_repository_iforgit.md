@@ -79,7 +79,7 @@ DSPF STMF('/home/SSHUSER1/.gitconfig')
 EDTF STMF('/home/SSHUSER1/.gitconfig')
 ```
 
-If iForGit isn't loaded on your IBM i yet, you can set you global git user info using the following git commands from a QShell session or SSH terminal:
+If iForGit isn't loaded on your IBM i yet, you can set the global git user info for each IBM i user profile using the following git commands from a QShell session or SSH terminal logged on with that user:
 Set the username: 
 ```
 /QOpenSys/pkgs/bin/git config --global user.name "Your Name"
