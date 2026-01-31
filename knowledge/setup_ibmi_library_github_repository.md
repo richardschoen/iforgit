@@ -66,7 +66,7 @@ Example alternate naming: You could name your repos something like:  ```LIB001-D
 Click the ```Create Repository``` button to create the new repository. 
 <img width="168" height="54" alt="image" src="https://github.com/user-attachments/assets/f477e97f-b658-4ec2-88f9-4ca52de59e12" />
 
-### IBM i - Set git config user information in .gitconfig file for each Git user
+### IBM i - Set git config user information in .gitconfig file for one time to set up each Git user
 Each IBM i user needs to log in to a 5250 session and run the ```SETGBLUSR``` command ```one time``` to create Git user settings for the user. The command creates a ```.gitconfig``` file in the user's home directory.  Ex: ```/home/sshuser1/.gitconfig```. The .gitconfig file is used to track who makes changes and Git commits. For the USERNAME, enter a first and last name. Then enter the user's email address and ```press Enter``` to save. The .gitconfig settings are independent of GitHub, the IBM i and the user's SSH key. The .gitconfig is used specifically by Git to track Git commits to know which user is committing version changes.
 ```
 IFORGIT/SETGBLUSR USERNAME('Richard Schoen')      
@@ -82,8 +82,36 @@ DSPF STMF('/home/SSHUSER1/.gitconfig')
 EDTF STMF('/home/SSHUSER1/.gitconfig')
 ```
 
-### IBM i - Set repo info for library ```LIB001```
-Run the ```SETLIBREPO``` command to connect library ```LIB001``` to the Git repository you cloned to directory ```/gitrepos/LIB001```.  This setting needs to be run one time for each library you will be committing version changes to for Git.   
+### Make sure the /gitrepos IFS folder exists (one time check)
+The ```/gitrepos``` IFS directory is used as a top level location for all library source exports. Each library will have a subdirectory within /gitrepos. For our example we will end up with ```/gitrepos/LIB001``` after the first library export.
+
+Let's make sure /gitrepos exists.
+```
+MKDIR DIR('/gitrepos') DTAAUT(*RWX) OBJAUT(*ALL) 
+```
+❗The directory will either be created or you will be told it already exists.
+
+### IBM i - Clone the GitHub repository to the IFS
+This step should be able to be done from an SSH terminal or from the 5250 command line. 
+
+If running from the 5250 command line, first run this command to set the QShell path to the open source binaries so QShell can find the ```git``` command.
+```
+IFORGIT/GITPATH
+```
+Then start the QShell terminal
+```
+STRQSH
+```
+
+The rest of the steps should be the same whether you are running from an SSH terminal or QShell. 
+
+
+
+
+
+
+### IBM i - Set local IBM i repo info for library ```LIB001```
+Run the ```SETLIBREPO``` command to connect library ```LIB001``` to the Git repository you cloned to directory ```/gitrepos/LIB001```.  This setting needs to be run ```one time``` for each library you will be committing version changes to for Git. This essentially connects your library to the correct Git repository.  
 ```
 IFORGIT/SETLIBREPO LIBRARY(LIB001)                  
             IFSREPODIR('/gitrepos/LIB001')   
@@ -92,12 +120,17 @@ IFORGIT/SETLIBREPO LIBRARY(LIB001)
 ```
 
 ### IBM i - Perform initial export of source from library ```LIB001``` to seed the git repository for the first time
+This step is used to export all (*ALL) source members from a library or just selected source physical files to the LIB001 Git repository. 
+❗Generally ```*ALL``` is the correct option unless there are source files you want to omit from the Git repository.
 
-Change job to make sure the joblog does not full by wrapping the joblog when it's full.   
+The LIBSRCEXP command will automatically perform a change job to make sure the joblog does not full by wrapping the joblog when it's full. You can also do it manually if desired to make sure your job log is set to *WRAP.
+
+This version of the LIBSRCEXP command settings is used to do an initial export of all source. The same settings can also be used to catch up a Git repository if source members haven't been regularly committed by developers or automatically on a daily basis. Usually this command is run to initialize/seed the repository with all source members and then LIBSRCEXP also be run on a daily basis with a STARTDATE of *LAST7, *LAST14 or *LAST30 to do a rolling capture of changed mambers based on their source member change dates. *LAST7 seems to be a good place to start for regular job scheduled change captures.
+
 ```
 CHGJOB JOBMSGQFL(*WRAP)
 ```
-Run the initial LIBSRCEXP command with *ALL option to create and initialize the repository in the IFS
+Run the initial LIBSRCEXP command with *ALL option to create and initialize the repository in the IFS or to update the repository if regular commits have been missed or developers are not doing individual commits. It's a good idea to run this iteration of LIBSRCEXP once per month to make sure nothing was missed. This version of the command does a local commit to the IFS based Git repository. Specify *COMMITSYNC to push the changes for each member as it gets exported.
 ```
  IFORGIT/LIBSRCEXP LIBRARY(LIB001)           
                    FILE(*ALL)                
@@ -116,7 +149,9 @@ Run the initial LIBSRCEXP command with *ALL option to create and initialize the 
                    JOBMSGQFUL(*WRAP)         
 ```
 
+
 ### Do a git push to push the source to the GitHub repository
+
 
 ### Git status ?
 
