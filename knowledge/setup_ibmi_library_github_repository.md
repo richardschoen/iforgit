@@ -14,6 +14,9 @@ Make sure to create a readme.md file so the repo has at least one file.
 -Clone the repository to /gitrepos/libraryname     
 
 ### Create SSH user key on IBM i for 
+kkkkk
+
+### Add public user key to your GitHub profile   
 Log in to your git user account, navigate to the user profile in the upper right corner. Then select ```Settings```.        
 
 <img width="296" height="434" alt="image" src="https://github.com/user-attachments/assets/33ff4e41-a9ab-4212-b31a-273e694e1672" />
@@ -25,6 +28,12 @@ Select ```SSH and GPG Keys```
 
 Click the ```New SSH Key``` button to add a new SSH public key   
 <img width="134" height="55" alt="image" src="https://github.com/user-attachments/assets/d3155e25-1c5d-4425-8c89-0744f7d037d6" />
+
+Key in a ```Title```, select ```Authentication Key``` for ```Key Type``` and paste the value from your public key file into the ```Key``` field.    
+If you created a key for your IBM i user, the value to paste in to the Key field will be from the ```id_ed25519.pub``` field.
+<img width="956" height="529" alt="image" src="https://github.com/user-attachments/assets/716a1eae-4abb-4aac-b83c-cbe602f4b384" />
+
+Click the ```Add SSH Key``` button to save the public key to the GitHub user profile.
 
 
 
