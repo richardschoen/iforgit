@@ -276,7 +276,8 @@ Everything up-to-date
 EDTF STMF('/gitrepos/LIB001/.git/config') 
 ```
 
-This is an example where we added the ```sshcommand``` line for oour repository so for each user it looks for their private SSH key in their ```/home/<userid>/.ssh/id_ed25519``` directory
+This is an example where we added the ```sshcommand``` line to our repository config so for each user Git looks for their private SSH key in their ```/home/<userid>/.ssh/id_ed25519``` directory.    
+You could also have a shared SSH key if desired and put it in a common user or other IFS directory such as: ```/home/gituser/.ssh/id_githubssh```
 ```
 [core]                                               
  repositoryformatversion = 0                         
@@ -284,9 +285,11 @@ This is an example where we added the ```sshcommand``` line for oour repository 
  bare = false                                        
  logallrefupdates = true                             
  ignorecase = true                                   
- sshcommand = ssh -i ~/.ssh/id_ed25519               
+ sshcommand = ssh -i ~/.ssh/id_ed25519
+ # The line below is an example of using a share private key for your Github repository.
+ # sshcommand = ssh -i /home/gituser/.ssh/id_githubssh               
 [remote "origin"]                                    
- url = ssh://git@github.com:/richardschoen/LIB002.git
+ url = ssh://git@github.com:/richardschoen/LIB001.git
  fetch = +refs/heads/*:refs/remotes/origin/*         
 [branch "main"]                                      
  remote = origin                                     
