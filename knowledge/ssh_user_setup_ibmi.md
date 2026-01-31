@@ -98,11 +98,13 @@ Now run the following command to copy your public key to the authorized_keys fil
 ```
 cp /home/SSHUSER1/.ssh/id_ed25519.pub /home/SSHUSER1/.ssh/authorized_keys
 ```
-Run the following commands to set permissions on your SSH key files and .ssh directory:
+Run the following commands to set appropriate permissions on your SSH key files and .ssh directory so they can be used by SSH:
 ```
 chmod 755 /home/SSHUSER1 
 chmod 700 /home/SSHUSER1/.ssh 
 chmod 600 /home/SSHUSER1/.ssh/authorized_keys
+chmod 600 /home/SSHUSER1/.ssh/id_ed25519
+chmod 600 /home/SSHUSER1/.ssh/id_ed25519.pub
 ```
 Press F3 to exit the QShell screen. 
 
