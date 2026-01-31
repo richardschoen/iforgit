@@ -39,5 +39,18 @@ If you created a key for your IBM i user, the value to paste in to the Key field
 
 Click the ```Add SSH Key``` button to save the public key to the GitHub user profile.
 
+### Create new GitHub repository for selected library
+
+This example creates a new repository named ```LIB001``` to go with IBM i library ```LIB001```.   
+
+❗ Your GitHub repository names don't have to match your library names exactly, but it's a recommended naming convention.    
+Example alternate naming: You could name your repos something like:  ```LIB001-DEV```, ```LIB001-QA```, ```LIB001-PROD``` for each system. 
+
+<img width="265" height="295" alt="image" src="https://github.com/user-attachments/assets/f834f8b0-eda4-483c-95a9-7e1bd420eb94" />
+
+
+
+<img width="769" height="594" alt="image" src="https://github.com/user-attachments/assets/dc4a5dbf-3334-4618-a5fa-51ddd0385132" />
+
 
 
