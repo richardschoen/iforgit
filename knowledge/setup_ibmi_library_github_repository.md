@@ -121,13 +121,92 @@ Change to the /gitrepos directory before we clone the repository.
 cd /gitrepos
 ```
 
-Run the Git clone command to get the repository contents from GitHub and connect us up to GitHub.
+Run the Git clone command to get the repository contents from GitHub and connect us up to GitHub. In this example, you would put your GitHub repository path where I placed ```<yourgitacctname>```. The ssh command tells the git clone process to use your SSH key file located in your /home/<userid/.ssh directory when connecting. Each user will have their own ssh private key in their /home/<userid>/.ssh directory. 
 ```
-git clone git@github.com:richardschoen/LIB001.git
+GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519" /QOpenSys/pkgs/bin/git clone ssh://git@github.com:/<yourgit acctname>/LIB001.git
+```
+My actual test example that I used against my GitHub richardschoen account:
+```
+GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519" /QOpenSys/pkgs/bin/git clone ssh://git@github.com:/richardschoen/LIB001.git              
 ```
 
+If you see the following message, type ```yes``` to continue:
+```
+The authenticity of host 'github.com (140.82.112.4)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
+Once the clone completes successfully you should see something like this:
+```
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+remote: Enumerating objects: 9, done.
+remote: Counting objects: 100% (9/9), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 9 (delta 0), reused 6 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (9/9), done.
+```
+Your repository has cloned successfully.
 
+Do the following to see if you can write back to the repository successfully with commits:
 
+Change to repository directory   
+```
+cd /gitrepos/LIB001
+```
+Append some text to the readme.md file to make a change   
+```
+echo "test" >> readme.md
+```
+
+Add and commit source member
+```
+/QOpensys/pkgs/bin/git add .
+```
+```
+/QOpensys/pkgs/bin/git commit -m "First Commit"
+```
+You should see:
+```
+[main 1ba13a6] First Commit
+ 1 file changed, 1 insertion(+)
+```
+Push changes to GitHub repository
+```
+/QOpensys/pkgs/bin/git push                    
+```
+You should see:
+```
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 282 bytes | 31.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To ssh://github.com:/richardschoen/LIB001
+   101255e..1ba13a6  main -> main
+```
+
+Do a git pull to test pulling changes from GitHub
+```
+/QOpensys/pkgs/bin/git pull
+```
+You should see:
+```
+Already up to date.
+```
+
+Check Git repository status:
+```
+/QOpensys/pkgs/bin/git status
+```
+You should see:   
+```
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+```
+
+❗You should now have a GitHub repository hooked up and connected up to your IBM i in the IFS. You are ready to add some source members to the repo.
 
 ### IBM i - Set local IBM i repo info for library ```LIB001```
 Run the ```SETLIBREPO``` command to connect library ```LIB001``` to the Git repository you cloned to directory ```/gitrepos/LIB001```.  This setting needs to be run ```one time``` for each library you will be committing version changes to for Git. This essentially connects your library to the correct Git repository.  
