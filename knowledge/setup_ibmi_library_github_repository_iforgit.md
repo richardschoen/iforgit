@@ -253,6 +253,8 @@ Run the initial LIBSRCEXP command with *ALL option to create and initialize the 
                    JOBMSGQFUL(*WRAP)         
 ```
 
+❗ If you get a Git ```dubious ownership``` error, during ```LIBSRCEXP```, use the following article to resolve it for each user who will be committing source to Git:     
+https://github.com/richardschoen/iforgit/blob/master/git_dubiousownership.md
 
 ### Do a git push to push the committed source changes to the GitHub repository
 If you used the *COMMIT option on LIBSRCEXP for efficiency, run the following git command to push all committed changes from the local IFS Git repository to your GitHub site in one single command.     
