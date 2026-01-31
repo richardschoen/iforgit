@@ -48,6 +48,12 @@ If you created a key for your IBM i user, the value to paste in to the ```Key```
 
 Click the ```Add SSH Key``` button to save the public key to the GitHub user profile.
 
+Note: You can always come back to the ```SSH and GPG keys``` area to see if you key file has actually been used as well if troubleshooting issues. This example shows our key has been successfuly used previously for cloning:
+
+<img width="956" height="149" alt="image" src="https://github.com/user-attachments/assets/186d10cb-3d72-4ad5-b061-6ad4bae0ad94" />
+
+
+
 ### GitHub - Create new GitHub repository for selected library
 
 This example creates a new repository named ```LIB001``` to go with IBM i library ```LIB001```.   
