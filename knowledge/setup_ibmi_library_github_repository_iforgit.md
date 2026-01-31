@@ -271,6 +271,28 @@ Everything up-to-date
    
 ❗ GITCMD always created an outfile named: QTEMP/STDOUTGIT in case you want to process and capture the results of a GITCMD operation.
 
+❗If you run into authentication issues on your first push, you may need to add the following line to your Git repository config file in the .git subdirectory. My example file is:  ```/gitrepos/LIB001/.git/config```. You can edit the file in an SSH terminal or use the following CL command for your repository: 
+```
+EDTF STMF('/gitrepos/LIB001/.git/config') 
+```
+
+This is an example where we added the ```sshcommand``` line for oour repository so for each user it looks for their private SSH key in their ```/home/<userid>/.ssh/id_ed25519``` directory
+```
+[core]                                               
+ repositoryformatversion = 0                         
+ filemode = true                                     
+ bare = false                                        
+ logallrefupdates = true                             
+ ignorecase = true                                   
+ sshcommand = ssh -i ~/.ssh/id_ed25519               
+[remote "origin"]                                    
+ url = ssh://git@github.com:/richardschoen/LIB002.git
+ fetch = +refs/heads/*:refs/remotes/origin/*         
+[branch "main"]                                      
+ remote = origin                                     
+ merge = refs/heads/main
+```
+❗SSH security is always interesting so you may have issues or you may not.
 
 ### Check Git repository status for library
 The Git status command can be run against your repository using the GITCMD CL command along with the status option.
@@ -290,5 +312,7 @@ nothing to commit, working tree clean
 ✅ You are now ready to use your library with it's new GitHub repo for capturing source members with iForGit.
 
 ## Questions or problems hooking up to a GitHub repository
+❗SSH security is always interesting so you may have issues or you may not.
+
 If you have any questions on this process, please reach out by creating a GitHub issue in this repository or send an email to: richard@mobigogo.net or richard@richardschoen.net
 
