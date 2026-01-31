@@ -43,7 +43,7 @@ CHGAUT OBJ('/home/SSHUSER1/.ssh') USER(*PUBLIC) OBJAUT(*SAME) DTAAUT(*NONE)
 CHGAUT OBJ('/home/SSHUSER1/.ssh') USER(*PUBLIC) OBJAUT(*NONE) DTAAUT(*SAME)
 ```
 ### Create SSH  public/private keys for user from 5250 session
-Log in as the user: SSHTEST1 and start a QShell session. 
+Log in as the user: SSHUSER1 and start a QShell session. 
 ```
 STRQSH
 ```
