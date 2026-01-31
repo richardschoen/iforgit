@@ -1,4 +1,4 @@
-# Set up a new IBM i Library Repository in GitHub, Cloning and Initializing from your IBM i Library
+# Set up a new IBM i Library Repository in GitHub, Cloning and Initializing from your IBM i Library with iForGit
 This document describes the process of creating a new library repository in GitHub and then cloning it to your IBM i system to be used with iForGit.
 
 As part of the process the initial clone creates the repository on the IBM IFS file system and connects it to GitHub via SSH. Then we connect the new repository to an IBM i library so changes can be made, committed and then pushed to the remote GitHub repository on a regular basis.
