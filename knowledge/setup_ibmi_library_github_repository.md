@@ -1,4 +1,4 @@
-# Set up IBM i Library Repository in GitHub
+# Set up IBM i Library Repository in GitHub, Cloning and Initializing from your IBM i Library
 This document describes the process of creating a new library repository in GitHub and then cloning it to uout IBM i system to be used with iForGit.
 
 ## Steps 
@@ -12,6 +12,11 @@ You can also set up for just a single user if you plan to share an SSH key. Shar
 Make sure to create a readme.md file so the repo has at least one file.    
 
 -Clone the repository to /gitrepos/libraryname     
+
+-Initialize with LIBSRCEXP *ALL.   
+
+-Perform daily updates to repositories on a scheduled basis with LIBSRCEXP *LAST7.   
+
 
 ### Create an IBM i SSH user key for each IBM i user
 
