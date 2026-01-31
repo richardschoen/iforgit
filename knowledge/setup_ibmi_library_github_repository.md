@@ -103,6 +103,15 @@ Set the email address:
 /QOpenSys/pkgs/bin/git config --global user.email "your_email@example.com"
 ```
 
+You can also use the ```IFORGIT/GITQSHEXEC``` command to set the git user info from a 5250 session. This command is a generalized command that can be used to run QShell/PASE commands from a 5250 session, program or batch job.
+Set the username:
+```
+IFORGIT/GITQSHEXEC CMDLINE('/QOpenSys/pkgs/bin/git config --global user.name "Your Name"') DSPSTDOUT(*YES)                ```
+Set the email address:
+```
+IFORGIT/GITQSHEXEC CMDLINE('/QOpenSys/pkgs/bin/git config --global user.email "your_email@example.com') DSPSTDOUT(*YES)   
+```
+
 ❗Make sure you complete this step to set the Git user info before attempting to clone a repository or commit changes back to a Git repository. This identifies each user to Git.
 
 ### Make sure the /gitrepos IFS folder exists (one time check)
