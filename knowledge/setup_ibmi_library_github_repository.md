@@ -14,4 +14,7 @@ Make sure to create a readme.md file so the repo has at least one file.
 -Clone the repository to /gitrepos/libraryname     
 
 ### Create SSH user key on IBM i for 
+Log in to your git user account, navigate to the profile in the uppoer right corner. Then select Settings.
+<img width="296" height="434" alt="image" src="https://github.com/user-attachments/assets/33ff4e41-a9ab-4212-b31a-273e694e1672" />
+
 
