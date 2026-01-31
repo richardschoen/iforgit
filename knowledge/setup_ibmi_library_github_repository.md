@@ -23,5 +23,8 @@ Log in to your git user account, navigate to the user profile in the upper right
 Select ```SSH and GPG Keys```         
 <img width="294" height="394" alt="image" src="https://github.com/user-attachments/assets/5baf481d-af7f-4d62-a6ea-39d991828ce5" />
 
+Click the ```New SSH Key``` button to add a new SSH public key   
+<img width="134" height="55" alt="image" src="https://github.com/user-attachments/assets/d3155e25-1c5d-4425-8c89-0744f7d037d6" />
+
 
 
