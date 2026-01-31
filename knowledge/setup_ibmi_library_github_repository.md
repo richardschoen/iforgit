@@ -13,8 +13,12 @@ Make sure to create a readme.md file so the repo has at least one file.
 
 -Clone the repository to /gitrepos/libraryname     
 
-### Create SSH user key on IBM i for 
-kkkkk
+### Create an IBM i SSH user key for each IBM i user
+
+Use the following link to set up an SSH public/private user key file for each user who will be committing changes to your git repositories.   
+https://github.com/richardschoen/iforgit/blob/master/knowledge/ssh_user_setup_ibmi.md   
+
+The public key will be added to each GitHub user profile so the GitHub repositories can be accessed from IBM i without needing to directly log in to GitHub.
 
 ### Add public user key to your GitHub profile   
 Log in to your git user account, navigate to the user profile in the upper right corner. Then select ```Settings```.        
