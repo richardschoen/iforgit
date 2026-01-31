@@ -93,6 +93,17 @@ DSPF STMF('/home/SSHUSER1/.gitconfig')
 EDTF STMF('/home/SSHUSER1/.gitconfig')
 ```
 
+If iForGit isn't loaded on your IBM i yet, you can set you global git user info using the following git commands:
+Set the username: 
+``
+/QOpenSys/pkgs/bin/git config --global user.name "Your Name"
+```
+Set the email address:
+```
+/QOpenSys/pkgs/bin/git config --global user.email "your_email@example.com"
+```
+
+
 ### Make sure the /gitrepos IFS folder exists (one time check)
 The ```/gitrepos``` IFS directory is used as a top level location for all library source exports. Each library will have a subdirectory within /gitrepos. For our example we will end up with ```/gitrepos/LIB001``` after the first library export.
 
@@ -114,7 +125,7 @@ Then start the QShell terminal
 STRQSH
 ```
 
-The rest of the steps should be the same whether you are running from an SSH terminal or QShell. 
+The rest of the steps should be the same whether you are running from an SSH terminal or QShell from a 5250 session. 
 
 Change to the /gitrepos directory before we clone the repository.
 ```
@@ -137,7 +148,7 @@ ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
 This key is not known by any other names
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
-Once the clone completes successfully you should see something like this:
+Once the clone to the IFS completes successfully you should see something like this:
 ```
 Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
 remote: Enumerating objects: 9, done.
@@ -158,8 +169,7 @@ Append some text to the readme.md file to make a change
 ```
 echo "test" >> readme.md
 ```
-
-Add and commit source member
+Add and commit the readme.md file changes
 ```
 /QOpensys/pkgs/bin/git add .
 ```
@@ -184,7 +194,6 @@ Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
 To ssh://github.com:/richardschoen/LIB001
    101255e..1ba13a6  main -> main
 ```
-
 Do a git pull to test pulling changes from GitHub
 ```
 /QOpensys/pkgs/bin/git pull
@@ -193,7 +202,6 @@ You should see:
 ```
 Already up to date.
 ```
-
 Check Git repository status:
 ```
 /QOpensys/pkgs/bin/git status
