@@ -95,7 +95,7 @@ EDTF STMF('/home/SSHUSER1/.gitconfig')
 
 If iForGit isn't loaded on your IBM i yet, you can set you global git user info using the following git commands:
 Set the username: 
-``
+```
 /QOpenSys/pkgs/bin/git config --global user.name "Your Name"
 ```
 Set the email address:
@@ -103,6 +103,7 @@ Set the email address:
 /QOpenSys/pkgs/bin/git config --global user.email "your_email@example.com"
 ```
 
+❗Make sure you complete this step to set the Git user info before attempting to clone a repository or commit changes back to a Git repository. This identifies each user to Git.
 
 ### Make sure the /gitrepos IFS folder exists (one time check)
 The ```/gitrepos``` IFS directory is used as a top level location for all library source exports. Each library will have a subdirectory within /gitrepos. For our example we will end up with ```/gitrepos/LIB001``` after the first library export.
