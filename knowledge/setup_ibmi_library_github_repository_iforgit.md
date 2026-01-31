@@ -295,7 +295,7 @@ You could also have a shared SSH key if desired and put it in a common user or o
  remote = origin                                     
  merge = refs/heads/main
 ```
-❗SSH security is always interesting so you may have issues or you may not.
+❗SSH security is always interesting so you may have issues or you may not. See the bottom of this document for insrtuctions on how to reach out.
 
 ### Check Git repository status for library
 The Git status command can be run against your repository using the GITCMD CL command along with the status option.
@@ -315,7 +315,7 @@ nothing to commit, working tree clean
 ✅ You are now ready to use your library with it's new GitHub repo for capturing source members with iForGit.
 
 ## Questions or problems hooking up to a GitHub repository
-❗SSH security is always interesting so you may have issues or you may not.
+❗SSH security is always interesting so you may have issues or you may not. Reach out if you have issues.
 
 If you have any questions on this process, please reach out by creating a GitHub issue in this repository or send an email to: richard@mobigogo.net or richard@richardschoen.net
 
