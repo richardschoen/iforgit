@@ -227,7 +227,7 @@ nothing to commit, working tree clean
 
 ❗You should now have a GitHub repository hooked up and connected up to your IBM i in the IFS. You are ready to add some source members to the repo.
 
-### IBM i - Set local IBM i repo info for library ```LIB001```
+### IBM i - Set local IBM i repo info for library ```LIB001``` (one time per library)
 Run the ```SETLIBREPO``` command to connect library ```LIB001``` to the Git repository you cloned to directory ```/gitrepos/LIB001```.  This setting needs to be run ```one time``` for each library you will be committing version changes to for Git. This essentially connects your library to the correct Git repository.  
 ```
 IFORGIT/SETLIBREPO LIBRARY(LIB001)                  
@@ -267,10 +267,37 @@ Run the initial LIBSRCEXP command with *ALL option to create and initialize the 
 ```
 
 
-### Do a git push to push the source to the GitHub repository
+### Do a git push to push the committed source changes to the GitHub repository
+If you used the *COMMIT option on LIBSRCEXP for efficiency, run the following git command to push all committed changes from the local IFS Git repository to your GitHub site in one single command.     
+Note: Only use DSPSTDOUT(*YES) when running interactively and you want to see the command results.   
+```
+IFORGIT/GITCMD LIBRARY(LIB001) CMDOPTS(push) DSPSTDOUT(*YES)  
+```
+Example results if all changes are current in GitHub:
+```
+************Beginning of data**************
+Everything up-to-date                       
+************End of Data********************
+```
+   
+❗ GITCMD always created an outfile named: QTEMP/STDOUTGIT in case you want to process and capture the results of a GITCMD operation.
 
 
-### Git status ?
+### Check Git repository status for library
+The Git status command can be run against your repository using the GITCMD CL command along with the status option.
+```
+GITCMD LIBRARY(LIB001) CMDOPTS(status) DSPSTDOUT(*YES)
+```
+Example results:
+```
+************Beginning of data**************
+On branch main                                   
+Your branch is up to date with 'origin/main'.    
+                                                 
+nothing to commit, working tree clean            
+************End of Data********************
+```
 
-
+## Questions of problems hooking up to a GitHub repository
+If you have any questions on this process, please reach out by creating a GitHub issue in this repository or send an email to: richard@mobigogo.net or richard@richardschoen.net
 
