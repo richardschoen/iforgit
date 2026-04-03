@@ -80,7 +80,7 @@ It essentially does the following:
 WRKMBRPDM FILE(IFORGIT/GITSRCARC)  
 ```
 
-## To undo the entire setup and go back to original SEU copy commands back
+## To undo the entire setup and go back to original SEU, we will copy STRSEUORIG commands back to STRSEU
 ❗We can leave copies named STRSEUORIG in place as backups.
 
 ### Delete STRSEU commands 
