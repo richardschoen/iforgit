@@ -6,14 +6,16 @@ This is an independent auditing need external to iForGit.
 The iForGit software (V1.28 and beyond) has a CL command called ```MBRARC```. The command can snapshot a source member to 
 a source file ```IFORGIT/GITSRCARC```.
 
-When coupled with the ```STRSEUARC``` command to replace the default ```STRSEU``` command, changes made via 
-PDM and SEU can be captured independently of any Git commits. 
+When coupled with the ```STRSEUARC``` command to replace the default ```STRSEU``` command, source member 
+change made via PDM and SEU can be captured independently of any Git commits to source member snapshots. 
 
-## Uploading STRSEUARC Source Members
-The ```STRSEUARC.CMD``` and ```STRSEUARCC.CLLE``` source members should be first uploaded to the 
-file: ```IFORGIT/SOURCE``` or your own source library
+The iForGit source member snapshot file is: ```IFORGIT/GTSRCARC```. 
 
 ## Set up custom STRSEU command based on STRSEUARC command
+
+### Uploading the STRSEUARC Source Members
+The ```STRSEUARC.CMD``` and ```STRSEUARCC.CLLE``` source members should be first uploaded to the 
+file: ```IFORGIT/SOURCE``` or your own source library
 
 ### Prep for new SEU command by renaming originals (which we will use in new cmd:
 ```
