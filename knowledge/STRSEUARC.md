@@ -11,6 +11,10 @@ change made via PDM and SEU can be captured independently of any Git commits to 
 
 The iForGit source member snapshot file is: ```IFORGIT/GTSRCARC```. 
 
+Essentially the idea is replace the existing ```STRSEU``` command with a copy of ```STRSEUARC``` that takes quick snapshot copies. 
+
+❗ If needed a variation of this could be done to use the SRCTOGIT command, but for now we will use ```MBRARC``` for snapshotting source members.
+
 ## Set up custom STRSEU command based on STRSEUARC command
 
 ### Uploading the STRSEUARC Source Members
