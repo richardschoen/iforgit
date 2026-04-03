@@ -3,7 +3,7 @@ Customer has a need to determine who is making changes to source members with SE
 
 This is an independent auditing need external to iForGit.
 
-The iForGit software has a CL command called ```MBRARC```. The command can snapshot a source member to 
+The iForGit software (V1.28 and beyond) has a CL command called ```MBRARC```. The command can snapshot a source member to 
 a source file ```IFORGIT/GITSRCARC```.
 
 When coupled with the ```STRSEUARC``` command to replace the default ```STRSEU``` command, changes made via 
