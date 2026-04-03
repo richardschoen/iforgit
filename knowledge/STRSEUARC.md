@@ -14,8 +14,13 @@ The iForGit source member snapshot file is: ```IFORGIT/GTSRCARC```.
 ## Set up custom STRSEU command based on STRSEUARC command
 
 ### Uploading the STRSEUARC Source Members
-The ```STRSEUARC.CMD``` and ```STRSEUARCC.CLLE``` source members should be first uploaded to the 
-file: ```IFORGIT/SOURCE``` or your own source library
+```STRSEUARC.CMD``` 
+https://github.com/richardschoen/iforgit/blob/master/samples/STRSEUARC.CMD
+and  
+```STRSEUARCC.CLLE``` 
+https://github.com/richardschoen/iforgit/blob/master/samples/STRSEUARC.CMD
+
+source members should be first uploaded to the file: ```IFORGIT/SOURCE``` or your own source library
 
 ### Prep for new SEU command by renaming originals (which we will use in new cmd:
 ```
