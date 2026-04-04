@@ -74,15 +74,15 @@ CRTDUPOBJ OBJ(STRSEUARC)
           TOLIB(QPDA)       
           NEWOBJ(STRSEU)    
 ```
-Now when members are edited with option 2 in PDM or with STRSEU directly, a Git commit of the source member changes will be made automatically after the edit operation completes. The ```SRCTOGIT``` command is called automatically with the ```*COMMIT``` option to do a local commit to the IFS. 
+Now when members are edited with option 2 in PDM or with STRSEU directly the new version of STRSEU will be used. A Git commit of the source member changes will be made automatically after the edit operation completes. Interally the ```SRCTOGIT``` command is called automatically with the ```*COMMIT``` option to do a local commit of changes to the IFS Git repository. 
 
-❗You will still need to do a ```git pull``` and ```git push``` operation to sync changes to your remote Git repository.    
+❗You will still need to do a ```git pull``` and ```git push``` operation to sync changes to your remote Git repository if using a remote Git server such as GitHub, GitLab, etc.  
 
-## To undo the entire setup and go back to original STRSEU command, we will copy STRSEUORIG commands back to STRSEU
-❗We can leave the backup copies of STRSEU named STRSEUORIG in place as backups.
+## To undo the entire setup and go back to using the original STRSEU command, we will copy STRSEUORIG commands back to STRSEU
+❗We can leave the backup copies of STRSEU named STRSEUORIG in place as backups in QSYS and QODA.
 
 ### Delete STRSEU commands QPDA/STRSEU and QSYS/STRSEU
-(assuming you have the STRSEUORIG backup versions)   
+(assuming you have the STRSEUORIG backup versions QPDA/STRSEUORIG and QSYS/STRSEUORIG)      
 ```
 DLTCMD CMD(QPDA/STRSEU) 
 ```
