@@ -16,3 +16,6 @@
                           SPCVAL((*BLANK ' ')) PROMPT('Option')
              PARM       KWD(TEXT) TYPE(*CHAR) LEN(30) DFT(*BLANK) +
                           PROMPT('Text description')
+             PARM       KWD(PMTCOMMENT) TYPE(*CHAR) LEN(4) +
+                          RSTD(*YES) DFT(*YES) VALUES(*NO *YES) +
+                          PROMPT('Prompt user for Git comment')
