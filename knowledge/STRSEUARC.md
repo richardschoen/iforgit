@@ -23,7 +23,7 @@ and
 https://github.com/richardschoen/iforgit/blob/master/samples/STRSEUARCC.CLLE   
 source members should be first uploaded to the file: ```IFORGIT/SOURCE``` or your own source library
 
-### Prep for new SEU command by renaming originals (which we will use in new cmd:
+### Prep for new SEU command by renaming the original STRSEU commands
 ```
 RNMOBJ OBJ(QSYS/STRSEU) OBJTYPE(*CMD) NEWOBJ(STRSEUORIG)
 ```
@@ -32,7 +32,7 @@ RNMOBJ OBJ(QPDA/STRSEU) OBJTYPE(*CMD) NEWOBJ(STRSEUORIG)
 ```
 
 ### Copy the QPDA version of the STRSEUORIG command to STRSEU so we can use it temporarily while we work on building the new command
-Since we renamed the original versions of STRSEU above we need to create this version in QPDA so we can edit source members if needed before we put out replacement command in place. 
+Since we renamed the original versions of STRSEU above we need to create this version of STRSEU in QPDA so we can edit any source members via SEU if needed before we put out replacement STRSEU command in place.   
 ❗If you're using RDI or VS Code to edit the source you can probably skip this step  
 ```
 CRTDUPOBJ OBJ(STRSEUORIG)       
@@ -42,8 +42,8 @@ CRTDUPOBJ OBJ(STRSEUORIG)
           NEWOBJ(STRSEU)        
 ```
 
-### Build STRSEUAUD command and CL program in IFORGIT library:
-❗Requires the STRSEUORIG command to already exist as renamed above.
+### Build the STRSEUARC command and CL program in IFORGIT library:
+❗Requires the STRSEUORIG command to already exist as renamed above.   
 
 #### Build the STRSEUARC CL command 
 ```
@@ -62,7 +62,7 @@ CRTBNDCL PGM(IFORGIT/STRSEUARCC)
          REPLACE(*YES)               
 ```
 
-### Replace the temporary STRSEU command in QPDA with a copy of STRSEUAUD command renamed as STRSEU
+### Replace the temporary STRSEU command in QPDA with a copy of STRSEUARC command renamed as STRSEU
 
 ```
 DLTCMD CMD(QPDA/STRSEU) 
@@ -74,23 +74,15 @@ CRTDUPOBJ OBJ(STRSEUARC)
           TOLIB(QPDA)       
           NEWOBJ(STRSEU)    
 ```
-Now when members are edited with option 2 in PDM or with STRSEU directly, a snapshot of the source member will be made before and after the edit operation to source snapshot file: ```IFORGIT/GITSRCARC```
+Now when members are edited with option 2 in PDM or with STRSEU directly, a Git commit of the source member changes will be made automatically after the edit operation completes. The ```SRCTOGIT``` command is called automatically with the ```*COMMIT``` option to do a local commit to the IFS. 
 
-To view or copy source archive snapshots, do the following:
+❗You will still need to do a ```git pull``` and ```git push``` operation to sync changes to your remote Git repository.    
 
-```GO IFORGIT/IFORGITMBR``` (Simple Source Management Menu)   
+## To undo the entire setup and go back to original STRSEU command, we will copy STRSEUORIG commands back to STRSEU
+❗We can leave the backup copies of STRSEU named STRSEUORIG in place as backups.
 
-Take ```option 10.``` - Work with Archived Source in GITSRCARC
-It essentially does the following:
-```
-WRKMBRPDM FILE(IFORGIT/GITSRCARC)  
-```
-
-## To undo the entire setup and go back to original SEU, we will copy STRSEUORIG commands back to STRSEU
-❗We can leave copies named STRSEUORIG in place as backups.
-
-### Delete STRSEU commands 
-(assuming you have the STRSEUORIG backup versions)
+### Delete STRSEU commands QPDA/STRSEU and QSYS/STRSEU
+(assuming you have the STRSEUORIG backup versions)   
 ```
 DLTCMD CMD(QPDA/STRSEU) 
 ```
@@ -112,3 +104,4 @@ CRTDUPOBJ OBJ(STRSEUORIG)
           TOLIB(QSYS)       
           NEWOBJ(STRSEU)        
 ```
+Now the original STRSEU commands should be back in place. 
