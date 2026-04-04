@@ -1,15 +1,15 @@
-# Using the STRSEUARC Command to capture changes to Git from STRSEU after editing
-Customer would like to automatically capture source member changes to Git after every SEU source edit.
+# Using the STRSEUARC Command to capture changes to Git after editing source with STRSEU
+Customer would like to automatically capture source member changes to Git after every SEU source edit.   
 
-Along with the source changes they would like to prompt the user to enter an optional source member comment.
+Along with the source change being captured to Git, the commnad will interactively prompt the user to enter an optional source member comment.   
 
-In order to make this work correctly the STRSEUARC command will be copied to the QPDA library to replace the existing QPDA/STRSEU command.
+In order to make this work correctly the STRSEUARC command will be copied to the QPDA library to replace the existing QPDA/STRSEU command.   
 
-The steps look essentially like this:
-- Rename the QSYS/STRSEU command to QSYS/STRSEUORIG.
-- Rename the QPDA/STRSEU command to QPDA/STRSEUORIG.
-- Build the STRSEUARC command and STRSEUARCC CL program in the IFORGIT library.
-- Copy the IFORGIT/STRSEUARC command to QPDA/STRSEU 
+The steps look essentially like this:   
+- Rename the ```QSYS/STRSEU``` command to ```QSYS/STRSEUORIG```.   
+- Rename the ```QPDA/STRSEU``` command to ```QPDA/STRSEUORIG```.   
+- Build the ```STRSEUARC``` command and ```STRSEUARCC``` CL program in the ```IFORGIT``` library.   
+- Copy the ```IFORGIT/STRSEUARC``` command to ```QPDA/STRSEU```.     
 
 Essentially the idea is replace the existing ```STRSEU``` command with a copy of ```STRSEUARC``` that commits source changes to Git.
 
