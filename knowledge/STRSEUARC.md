@@ -23,7 +23,7 @@ and
 https://github.com/richardschoen/iforgit/blob/master/samples/STRSEUARCC.CLLE   
 source members should be first uploaded to the file: ```IFORGIT/SOURCE``` or your own source library
 
-### Prep for new SEU command by renaming the original STRSEU commands
+### Prep for the new STRSEU command by renaming the original STRSEU commands to STRSEUORIG
 ```
 RNMOBJ OBJ(QSYS/STRSEU) OBJTYPE(*CMD) NEWOBJ(STRSEUORIG)
 ```
@@ -31,8 +31,8 @@ RNMOBJ OBJ(QSYS/STRSEU) OBJTYPE(*CMD) NEWOBJ(STRSEUORIG)
 RNMOBJ OBJ(QPDA/STRSEU) OBJTYPE(*CMD) NEWOBJ(STRSEUORIG)   
 ```
 
-### Copy the QPDA version of the STRSEUORIG command to STRSEU so we can use it temporarily while we work on building the new command
-Since we renamed the original versions of STRSEU above we need to create this version of STRSEU in QPDA so we can edit any source members via SEU if needed before we put out replacement STRSEU command in place.   
+### Copy the QPDA version of the STRSEUORIG command to STRSEU so we can use it temporarily while we work on building the new STRSEUARC command
+Since we renamed the original versions of STRSEU above we need to create this version of STRSEU in QPDA temporarily so we can edit any source members via SEU if needed before we put our new replacement STRSEU command in place.   
 ❗If you're using RDI or VS Code to edit the source you can probably skip this step  
 ```
 CRTDUPOBJ OBJ(STRSEUORIG)       
@@ -43,9 +43,9 @@ CRTDUPOBJ OBJ(STRSEUORIG)
 ```
 
 ### Build the STRSEUARC command and CL program in IFORGIT library:
-❗Requires the STRSEUORIG command to already exist as renamed above.   
+❗Requires the STRSEUORIG command to already exist as created above via renaming STRSEU to STRSEUORIG.   
 
-#### Build the STRSEUARC CL command 
+#### Create the STRSEUARC CL command 
 ```
 CRTCMD CMD(IFORGIT/STRSEUARC)  
          PGM(IFORGIT/STRSEUARCC) 
@@ -54,7 +54,7 @@ CRTCMD CMD(IFORGIT/STRSEUARC)
          PRDLIB(IFORGIT)         
          REPLACE(*YES)            
 ```
-#### Build the STRSEUARCC CL Program
+#### Create the STRSEUARCC CL Program
 ```
 CRTBNDCL PGM(IFORGIT/STRSEUARCC)     
          SRCFILE(IFORGIT/SOURCE)    
