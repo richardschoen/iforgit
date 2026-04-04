@@ -1,22 +1,17 @@
-# Using the STRSEUARC Command to capture changes to from STRSEU after editing
-Customer would like to automatically capture source member changes to git after every source edit.
+# Using the STRSEUARC Command to capture changes to Git from STRSEU after editing
+Customer would like to automatically capture source member changes to Git after every SEU source edit.
 
-Along with the source changes they would like to prompt the user
-Customer has a need to determine who is making changes to source members with SEU.
+Along with the source changes they would like to prompt the user to enter an optional source member comment.
 
-This is an independent auditing need external to iForGit.
+In order to make this work correctly the STRSEUARC command will be copied to the QPDA library to replace the existing QPDA/STRSEU command.
 
-The iForGit software (V1.28 and beyond) ships with a CL command called ```MBRARC```. The command can snapshot a source member to 
-a source file ```IFORGIT/GITSRCARC```.
+The steps look essentially like this:
+- Rename the QSYS/STRSEU command to QSYS/STRSEUORIG.
+- Rename the QPDA/STRSEU command to QPDA/STRSEUORIG.
+- Build the STRSEUARC command and STRSEUARCC CL program in the IFORGIT library.
+- Copy the IFORGIT/STRSEUARC command to QPDA/STRSEU 
 
-When coupled with the ```STRSEUARC``` command to replace the default ```STRSEU``` command, source member 
-change made via PDM and SEU can be captured independently of any Git commits to source member snapshots. 
-
-The iForGit source member snapshot file is: ```IFORGIT/GTSRCARC```. 
-
-Essentially the idea is replace the existing ```STRSEU``` command with a copy of ```STRSEUARC``` that takes quick snapshot copies. 
-
-❗ If needed a variation of this could be done to use the SRCTOGIT command, but for now we will use ```MBRARC``` for snapshotting source members.
+Essentially the idea is replace the existing ```STRSEU``` command with a copy of ```STRSEUARC``` that commits source changes to Git.
 
 ## Set up custom STRSEU command based on STRSEUARC command
 
