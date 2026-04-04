@@ -1,6 +1,6 @@
 /******************************************************************/
 /* Name: STRSEUARCC                                               */
-/* Desc: Start Source Entry Utility with Archive Snapshot         */
+/* Desc: Start Source Entry Utility with Git Commit After         */
 /* STRSEUARCC: Create source snapshot with iForgit MBRARC command.*/
 /*             before and after editing.                          */
 /* Note: QPDA/STRSEUORIG command must already exists. You can     */
@@ -17,22 +17,25 @@
              DCL        VAR(&TYPE) TYPE(*CHAR) LEN(10)
              DCL        VAR(&OPTION) TYPE(*CHAR) LEN(6)
              DCL        VAR(&TEXT) TYPE(*CHAR) LEN(30)
-             DCL        VAR(&SEUCMD) TYPE(*CHAR) LEN(10)
-             DCL        VAR(&SEUCMDLIB) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&SRCCHGBEF) TYPE(*CHAR) LEN(13)
+             DCL        VAR(&SRCCHGAFT) TYPE(*CHAR) LEN(13)
 
              MONMSG     MSGID(CPF0000) EXEC(GOTO ERRORS)
 
+/* Get current user name  */
              RTVJOBA    USER(&USER)
 
 /* Parse source file info */
              CHGVAR     VAR(&IFILE) VALUE(%SST(&FILE 1 10))
              CHGVAR     VAR(&ILIB) VALUE(%SST(&FILE 11 10))
 
-/* Snapshot source to archive location before editing */
-/* We don't need to snapshot for a view. But we could */
-             IF         COND(&OPTION *EQ '2') THEN(DO)
-             IFORGIT/MBRARC SRCFILE(&ILIB/&IFILE) SRCMBR(&MEMBER) +
-                          ARCSRCFILE(*DEFAULT)
+/* Get source change time before */
+             RTVMBRD    FILE(&ILIB/&IFILE) MBR(&MEMBER) +
+                          SRCCHGDATE(&SRCCHGBEF)
+             /* If not found, set before change date/time to zeros */
+             /* Want to make sure SEU gets called to create the mbr */
+             MONMSG     MSGID(CPF0000) EXEC(DO)
+             CHGVAR     VAR(&SRCCHGBEF) VALUE('0000000000000')
              ENDDO
 
 /* Call SEU for viewing/editing */
@@ -51,11 +54,47 @@
              ENDDO
 
 /* Snapshot source to archive location after editing */
-/* We don't need to snapshot for a view. But we could */
-             IF         COND(&OPTION *EQ '2') THEN(DO)
-             IFORGIT/MBRARC SRCFILE(&ILIB/&IFILE) SRCMBR(&MEMBER) +
-                          ARCSRCFILE(*DEFAULT)
+
+/* Get source change time after */
+             RTVMBRD    FILE(&ILIB/&IFILE) MBR(&MEMBER) +
+                          SRCCHGDATE(&SRCCHGAFT)
+
+/* We will get a snapshot after a change or new mamber */
+             IF         COND(&OPTION *EQ '2' *OR &OPTION *EQ ' ') +
+                          THEN(DO)
+
+             /* If no changes, exit and let use know */
+             IF         COND(&SRCCHGBEF *EQ &SRCCHGAFT) THEN(DO)
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('No +
+                          changes were made to member ' |> &ILIB |< +
+                          '/' |< &IFILE |< '(' |< &MEMBER |< ')') +
+                          MSGTYPE(*COMP)
+             RETURN
              ENDDO
+
+             ?          IFORGIT/SRCTOGIT SRCFILE(&ILIB/&IFILE) +
+                          SRCMBR(&MEMBER) +
+                          IFSREPODIR(*LIBREPODTAARA) +
+                          SRCHEADER(*YES) SRCDATSEQ(*NO) +
+                          REPLACE(*YES) EDITOPT(*NONE) +
+                          VALIDREPO(*YES) IFSMKDIR(*YES) +
+                          INITREPO(*YES) COMMITOPT(*COMMIT) +
+                          ??COMMENT(*DATETIME) AUTHORITY(*INDIR)
+             /* If git error, send nice message and exit */
+             MONMSG     MSGID(CPF0000) EXEC(DO) /* No errors on F12 */
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('SEU +
+                          changes saved but NOT committed to Git +
+                          for' |> &ILIB |< '/' |< &IFILE |< '(' |< +
+                          &MEMBER |< ')') TOPGMQ(*PRV) MSGTYPE(*COMP)
+             RETURN
+             ENDDO
+
+             ENDDO /* ENDDO if editing */
+
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('SEU +
+                          changes saved and committed to Git for' +
+                          |> &ILIB |< '/' |< &IFILE |< '(' |< +
+                          &MEMBER |< ')') MSGTYPE(*COMP)
 
              RETURN
 
