@@ -1,4 +1,4 @@
-# Using the STRSEUARC Command to capture changes to Git after editing source with STRSEU
+# Using the STRSEUARC command to replace STRSEU and capture changes to Git after editing source with STRSEU
 Customer would like to automatically capture source member changes to Git after every SEU source edit.   
 
 Along with the source change being captured to Git, the commnad will interactively prompt the user to enter an optional source member comment.   
