@@ -1,4 +1,7 @@
-# Using the STRSEUARC Command to capture before/after changes from STRSEU
+# Using the STRSEUARC Command to capture changes to from STRSEU after editing
+Customer would like to automatically capture source member changes to git after every source edit.
+
+Along with the source changes they would like to prompt the user
 Customer has a need to determine who is making changes to source members with SEU.
 
 This is an independent auditing need external to iForGit.
