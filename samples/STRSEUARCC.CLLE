@@ -7,8 +7,10 @@
 /* create this command by duplicating the QPDA/STRSEU command.    */
 /* Type: CLLE                                                     */
 /******************************************************************/
-             PGM        PARM(&FILE &MEMBER &TYPE &OPTION &TEXT)
+             PGM        PARM(&FILE &MEMBER &TYPE &OPTION &TEXT +
+                          &PMTCOMMENT)
 
+             DCL        VAR(&PMTCOMMENT) TYPE(*CHAR) LEN(4)
              DCL        VAR(&USER) TYPE(*CHAR) LEN(10)
              DCL        VAR(&FILE) TYPE(*CHAR) LEN(20)
              DCL        VAR(&IFILE) TYPE(*CHAR) LEN(10)
@@ -53,7 +55,7 @@
                           TYPE(&TYPE) OPTION(&OPTION) TEXT(&TEXT)
              ENDDO
 
-/* Snapshot source to archive location after editing */
+/* Commit source member to Git repo after editing */
 
 /* Get source change time after */
              RTVMBRD    FILE(&ILIB/&IFILE) MBR(&MEMBER) +
@@ -72,6 +74,9 @@
              RETURN
              ENDDO
 
+             /* Git commit and prompt for comment entry */
+             IF         COND(&PMTCOMMENT *EQ *YES) THEN(DO)
+
              ?          IFORGIT/SRCTOGIT SRCFILE(&ILIB/&IFILE) +
                           SRCMBR(&MEMBER) +
                           IFSREPODIR(*LIBREPODTAARA) +
@@ -89,12 +94,35 @@
              RETURN
              ENDDO
 
-             ENDDO /* ENDDO if editing */
+             ENDDO /* ENDDO if editing and prompt for comment */
+
+             /* Git commit and don't prompt for comment entry */
+             IF         COND(&PMTCOMMENT *NE *YES) THEN(DO)
+
+             IFORGIT/SRCTOGIT SRCFILE(&ILIB/&IFILE) SRCMBR(&MEMBER) +
+                          IFSREPODIR(*LIBREPODTAARA) +
+                          SRCHEADER(*YES) SRCDATSEQ(*NO) +
+                          REPLACE(*YES) EDITOPT(*NONE) +
+                          VALIDREPO(*YES) IFSMKDIR(*YES) +
+                          INITREPO(*YES) COMMITOPT(*COMMIT) +
+                          COMMENT(*DATETIME) AUTHORITY(*INDIR)
+             /* If git error, send nice message and exit */
+             MONMSG     MSGID(CPF0000) EXEC(DO) /* No errors on F12 */
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('SEU +
+                          changes saved but NOT committed to Git +
+                          for' |> &ILIB |< '/' |< &IFILE |< '(' |< +
+                          &MEMBER |< ')') TOPGMQ(*PRV) MSGTYPE(*COMP)
+             RETURN
+             ENDDO
+
+             ENDDO /* ENDDO if editing and no comment entry */
 
              SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('SEU +
                           changes saved and committed to Git for' +
                           |> &ILIB |< '/' |< &IFILE |< '(' |< +
                           &MEMBER |< ')') MSGTYPE(*COMP)
+
+             ENDDO /* ENDDO if editing */
 
              RETURN
 
