@@ -1,7 +1,7 @@
 /* Name: STRSEUARC                                               */
-/* Desc: Start Source Entry Utility with Archive Snapshot        */
+/* Desc: Start Source Entry Utility with Git Commit After        */
 /* Type: CMD                                                     */
-             CMD        PROMPT('Start Source Entry Utility-Aud')
+             CMD        PROMPT('Start SEU and Commit Changes')
 
              PARM       KWD(SRCFILE) TYPE(Q1) +
                           PROMPT('Source file')
@@ -12,7 +12,7 @@
                           PROMPT('Source member')
              PARM       KWD(TYPE) TYPE(*CHAR) LEN(10) DFT(*SAME) +
                           PROMPT('Source type')
-             PARM       KWD(OPTION) TYPE(*CHAR) LEN(6) DFT('5') +
-                          PROMPT('Option')
+             PARM       KWD(OPTION) TYPE(*CHAR) LEN(6) DFT(*BLANK) +
+                          SPCVAL((*BLANK ' ')) PROMPT('Option')
              PARM       KWD(TEXT) TYPE(*CHAR) LEN(30) DFT(*BLANK) +
                           PROMPT('Text description')
