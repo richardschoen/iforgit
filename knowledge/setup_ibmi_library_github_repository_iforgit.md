@@ -223,7 +223,8 @@ This version of the LIBSRCEXP command settings is used to do an initial export o
 ```
 CHGJOB JOBMSGQFL(*WRAP)
 ```
-Run the initial LIBSRCEXP command with *ALL option to create and initialize the repository in the IFS or to update the repository if regular commits have been missed or developers are not doing individual commits. It's a good idea to run this iteration of LIBSRCEXP once per month to make sure nothing was missed. This version of the command does a local commit to the IFS based Git repository. Specify *COMMITSYNC to push the changes for each member as it gets exported.
+Run the initial LIBSRCEXP command with *ALL option to create and initialize the repository in the IFS or to update the repository if regular commits have been missed or developers are not doing individual commits. 
+❗ It's a good idea to run this iteration of LIBSRCEXP with *ALL once per month to make sure nothing was missed during the month. This version of the command does a local commit to the IFS based Git repository. You can specify *COMMITSYNC to push the changes for each member as it gets exported, but using *COMMIT and then doing a single push is more efficient.
 ```
  IFORGIT/LIBSRCEXP LIBRARY(LIB001)           
                    FILE(*ALL)                
@@ -244,6 +245,25 @@ Run the initial LIBSRCEXP command with *ALL option to create and initialize the 
 
 ❗ If you get a Git ```dubious ownership``` error, during ```LIBSRCEXP```, use the following article to resolve it for each user who will be committing source to Git:     
 https://github.com/richardschoen/iforgit/blob/master/git_dubiousownership.md
+
+### Committing changes for individual source members via SRCTOGIT command
+The SRCTOGIT command is a combo command that exports the source member from a source file to the IFS and then performs the local commit option = *COMMIT. If you want to update your remote GitHub or other remote repository you should use the commit option = *COMMITSYNC. This option does a pull and then push of the source member to make sure any changes that may have been made directly to the repo get merged with the source member. If you want to do local commits all day you can use the *COMMIT option and then do a single git push at the end of the day as described in the next section. It really depends on the work process you want to use.  
+
+This example exports a source member and pushes it to the remote GitHub repository right away.
+```
+IFORGIT/SRCTOGIT SRCFILE(LIB001/QCLSRC)  
+                 SRCMBR(MYMBR001)          
+                 SRCHEADER(*YES)             
+                 SRCDATSEQ(*NO)              
+                 REPLACE(*YES)               
+                 EDITOPT(*NONE)              
+                 VALIDREPO(*YES)             
+                 IFSMKDIR(*YES)              
+                 INITREPO(*YES)              
+                 COMMITOPT(*COMMITSYNC)          
+                 COMMENT(*DATEUSER)
+```
+
 
 ### Do a git push to push the committed source changes to the GitHub repository
 If you used the *COMMIT option on LIBSRCEXP for efficiency, run the following git command to push all committed changes from the local IFS Git repository to your GitHub site in one single command.     
