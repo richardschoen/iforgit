@@ -82,7 +82,7 @@ ORDER BY
 
 ## This SQL attempts to list all module info for RPGLE and CLLE objects. 
 Youe mileage may vary with this query.
-
+❗There are 3 places you need to replace ```YOURLIBNAME``` with the library you are working with.     
 ```
 -- List module info for ILE objects
 
@@ -111,7 +111,8 @@ bound_modules AS (
         bound_module,
         source_file_library,
         source_file,
-        source_file_member 
+        source_file_member,
+        source_change_timestamp
     FROM qsys2.bound_module_info
     WHERE program_library = 'YOURLIBNAME'
 ),
@@ -149,6 +150,8 @@ SELECT
     bm.source_file_library,
     bm.source_file,
     bm.source_file_member,
+    bm.source_change_timestamp, 
+
 
     m.objattribute                   AS module_attribute,
     m.objcreated                     AS module_created_or_compiled,
@@ -187,7 +190,8 @@ LEFT JOIN qsys2.syspartitionstat s
 
 ORDER BY
     p.objname,
-    bm.bound_module;    
+    bm.bound_module;
+
 ```    
     
     
