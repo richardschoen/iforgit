@@ -18,7 +18,7 @@ It shows the associated source file info for each source member if you want chec
 
 ## This query lists all program and command objects in a library. 
 For ILE object you will get object change info, but source file info doesn't show up for ILE objects so this many not be as useful for you. 
-❗ There are two spots that require teh library namae entry.    
+❗ ILE objects do not show source file info, but non-ILE objects do. The ```bound_module``` query above covers ILE objects and their source files.    
 ```
 -- Get program statistics for selected library
 -- Replace YOURLIBNAM with the object library you want to analyze
