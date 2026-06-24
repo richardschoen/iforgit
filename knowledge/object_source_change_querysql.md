@@ -1,4 +1,4 @@
-# List program objects and source change dates
+# List program objects and source change dates for impact analysis
 In this document there are a couple of SQL queries you can use to get a good look at a list of objects 
 in a library and their associated source files if any.
 
