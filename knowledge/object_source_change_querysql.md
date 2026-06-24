@@ -2,8 +2,8 @@
 In this document there are a couple of SQL queries you can use to get a good look at a list of objects 
 in a library and their associated source files if any.
 
-## This SQL query just lists all the ILE bound module info for objects in selected library. 
-It does show the associated source file info for each source member. 
+## This SQL query lists all the ILE bound module info for objects in selected library with module source info
+It does show the associated source file info for each source member if you want to check source changes. 
 ```
  -- Select all bound module info including source
  -- file info for ILE program objects
@@ -17,7 +17,7 @@ It does show the associated source file info for each source member.
 ```
 
 ## This query lists all program and command objects in a library. 
-For ILE object you will get object change info, but source file info doesn't show up so this many not be as useful for you.
+For ILE object you will get object change info, but source file info doesn't show up for ILE objects so this many not be as useful for you.
 ```
 -- Get program statistics for selected library
 -- Replace YOURLIBNAM with the object library you want to analyze
@@ -79,7 +79,10 @@ ORDER BY
     o.objname;    
 ```
 
-    
+## This SQL attempts to list all module info for RPGLE and CLLE objects. 
+Youe mileage may vary with this query.
+
+```
 -- List module info for ILE objects
 
 WITH pgms AS (
@@ -92,7 +95,7 @@ WITH pgms AS (
         change_timestamp
     FROM TABLE (
         qsys2.object_statistics(
-                   object_schema => 'QSHONI',
+                   object_schema => 'YOURLIBNAME',
                    objtypelist   => '*PGM *SRVPGM *MODULE *FILE *CMD'        
         )
     )
@@ -109,7 +112,7 @@ bound_modules AS (
         source_file,
         source_file_member 
     FROM qsys2.bound_module_info
-    WHERE program_library = 'QSHONI'
+    WHERE program_library = 'YOURLIBNAME'
 ),
 
 module_objs AS (
@@ -184,7 +187,7 @@ LEFT JOIN qsys2.syspartitionstat s
 ORDER BY
     p.objname,
     bm.bound_module;    
-    
+```    
     
     
     
