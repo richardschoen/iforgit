@@ -1,6 +1,6 @@
 # List program objects and source change dates for impact analysis
 In this document there are a couple of SQL queries you can use to get a good look at a list of objects 
-in a library and their associated source files if any.
+in a library and their associated source files and change dates if any.
 
 ## This SQL query lists all the ILE bound module info for objects in selected library along with module source info
 It shows the associated source file info for each source member if you want check source change dates. 
