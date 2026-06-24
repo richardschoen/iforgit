@@ -81,7 +81,7 @@ ORDER BY
 ```
 
 ## This SQL attempts to list all module info for RPGLE and CLLE objects. 
-Youe mileage may vary with this query.
+Youe mileage may vary with this query.   
 ❗There are 3 places you need to replace ```YOURLIBNAME``` with the library you are working with.     
 ```
 -- List module info for ILE objects
