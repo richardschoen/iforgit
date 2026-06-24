@@ -131,7 +131,7 @@ module_objs AS (
         compiler
     FROM TABLE (
         qsys2.object_statistics(
-                   object_schema => 'QSHONI',
+                   object_schema => 'YOURLIBNAME',
                    objtypelist   => '*PGM *SRVPGM *MODULE *FILE *CMD'
         )
     )
