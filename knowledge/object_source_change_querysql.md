@@ -2,6 +2,10 @@
 In this document there are a couple of SQL queries you can use to get a good look at a list of objects 
 in a library and their associated source files and change dates if any.
 
+The last two queries list all objects, but one only shows source file info for non-ILE objects. And the other shows source files info just for the ILE objects.
+
+**Future Todo: Come up with a composite query for ILE and non-ILE object source info in one list.   
+
 ## This SQL query lists all the ILE bound module info for objects in selected library along with module source info
 It shows the associated source file info for each source member if you want check source change dates. 
 ```
