@@ -16,8 +16,8 @@ It shows the associated source file info for each source member if you want chec
     order by program_library,program_name;
 ```
 
-## This query lists all program and command objects in a library. 
-For ILE object you will get object change info, but source file info doesn't show up for ILE objects so this many not be as useful for you. 
+## This query lists all program and command objects in a library along with source info for non-ILE objects 
+For ILE objects you will get object change info, but source file info doesn't show up for ILE objects so this many not be as useful for you. 
 ❗ ILE objects do not show source file info, but non-ILE objects do. The ```bound_module``` query above covers ILE objects and their source files.    
 ```
 -- Get program statistics for selected library
@@ -80,8 +80,8 @@ ORDER BY
     o.objname;    
 ```
 
-## This SQL attempts to list all module info for RPGLE and CLLE objects along with module source info   
-Your mileage may vary with this query.   
+## This SQL attempts to list all objects and module info for RPGLE and CLLE objects along with module source info   
+This variation lists source file info for ILE modules, but NOT for the non-ILE objects.     
 ❗There are 3 places you need to replace ```YOURLIBNAME``` with the library you are working with.     
 ```
 -- List module info for ILE objects
