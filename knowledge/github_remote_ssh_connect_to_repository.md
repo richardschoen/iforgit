@@ -53,7 +53,7 @@ Example site names gittest921 on site, richardschoen:
 
 ❗  You have to do the following steps to rename the ```master``` branch that gets created automatically by IBM I and iForgit when it first calls the ```git init``` command to create the repo on the IFS. We will rename the repo from ```master``` to ```main``` which is now the GitHub default.  
 
-**The branch name change thing is a change made by GitHub and other sites to use "main" as default branch instead of "master" a few year back.**
+**The branch name change thing is a change made by GitHub and other sites to use "main" as default branch instead of "master" a few years back.**
 
 Check to see if your your repo branch is master or main:
 ```git status```. 
