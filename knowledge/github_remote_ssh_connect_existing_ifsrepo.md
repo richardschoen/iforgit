@@ -6,7 +6,7 @@ Normally we recommend the following repository GitHub setup:
 - Clone the repository to the IFS directory. 
 ```
 cd /gitrepos
-git clone git remote add origin git@github.com:githubsiteprofile/githubrepo.git
+git clone git@github.com:githubsiteprofile/githubrepo.git
 ```
 - Make a source member change in selected library.
 - Run the GE PDM option or SRCTOGIT command with the *COMMITSYNC option
