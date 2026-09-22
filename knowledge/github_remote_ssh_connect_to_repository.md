@@ -46,17 +46,21 @@ Change to Git repository directory.
  
 Add remote origin SSH URL for repository (Can find in GitHub). This would typically be the URL to your remote repo. For SSH always use: git@github.com as the user. GitHub knows your SSH public and private keys based on how you set them up on GitHub and the IBM i.     
 
-```git remote add origin git@github.com:yourgithubreposite/libname.git```.  
+```
+git remote add origin git@github.com:yourgithubreposite/libname.git
+```  
 
 Example site named ```libname``` on site, richardschoen:   
-```git remote add origin git@github.com:richardschoen/libname.git```.  
+```git remote add origin git@github.com:richardschoen/libname.git```  
 
 ❗  You have to do the following steps to rename the ```master``` branch that gets created automatically by IBM i and iForgit when it first calls the ```git init``` command to create the repo on the IFS. We will rename the repo from ```master``` to ```main``` which is now the GitHub default.  
 
 **The branch name change thing is a change made by GitHub and other sites to use "main" as default branch instead of "master" a few years back.**
 
 Check to see if your your repo branch is master or main:
-```git status```. 
+```
+git status
+``` 
 
 If it says: ```On branch main``` your repo is already set to main, so you only need to do the following step:   
 ```
@@ -66,9 +70,17 @@ git push --set-upstream origin main
 Otherwise you need to rename the master branch to main in the IFS, get the remote repo, merge the remote repo with the local repo allowing unrelated histories. Then do a first time push ignoring setting the upstream GitHub remote repo be main.   
 ```
 git branch -m master main
+```
+```
 git switch main
+```
+```
 git fetch origin
+```
+```
 git merge origin/main --allow-unrelated-histories
+```
+```
 git push --set-upstream origin main
 ```
 ## Your GitHub and local IFS repositories should now be connected
