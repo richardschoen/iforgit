@@ -65,6 +65,7 @@ git push --set-upstream origin main
 
 Otherwise you need to rename the master branch to main in the IFS, get the remote repo, merge the remote repo with the local repo allowing unrelated histories. Then do a first time push ignoring setting the upstream GitHub remote repo be main.   
 ```
+git branch -m master main
 git switch main
 git fetch origin
 git merge origin/main --allow-unrelated-histories
