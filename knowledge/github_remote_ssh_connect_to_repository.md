@@ -73,6 +73,8 @@ git push --set-upstream origin main
 ## Your GitHub and local IFS repositories should now be connected
 ❗All other subsequent pushes to remote can just use:  ```git push``` or ```*COMMITSYNC``` on all iForGit Commands.    
 
+ **If needed reach out to MobiGoGo support to review your set up.**
+
 ## Viewing your .git/config file
 In case you want to look at your ```.git/config``` file within your repository with EDTF or from PASE or Midnite Commander it should look like this:
 ```
@@ -89,6 +91,3 @@ In case you want to look at your ```.git/config``` file within your repository w
         remote = origin
         merge = refs/heads/main
 ```
-
- 
-If needed reach out to MobiGoGo support to review your set up. 
