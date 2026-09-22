@@ -34,7 +34,7 @@ If the commit succeeds, all is good. If needed reach out to MobiGoGo support to 
 ## Scenario 2 - Connecting an existing Local IFS Repository to GitHub
 These are the steps to connect an existing local IFS based repository to a GitHub site and push the existing contents and Git history.   
 
-This assumes your local Git repository was created before the remote repository.   
+This assumes your local Git repository was created before the remote repository and has change commit history.
 
 Log on to an IBM i 5250 session. You can also probably use an SSH session if desired.
  
