@@ -1,9 +1,9 @@
 # One time Github remote set up for local IFS repository
 There are two ways to connect a GitHub repository to an IFS repo for use with iForGit:
 - Scenario 1: You have a brand new GitHub repo and you want to connect it to IBM i before exporting source from your IBM i source files.
-- Scenario 2: You have a brand new GitHub repo and you want to connect it to an existing IFS based Git repository. You were probably keeping your Git repos local in the IFS and are now starting to connect them to GitHub as you evolve to start using GitHub.    
+- Scenario 2: You have a brand new GitHub repo and you want to connect it to an existing IFS based Git repository and merge the contents. You were probably keeping your Git repos local in the IFS and are now starting to connect them to GitHub as you evolve to start using GitHub more.    
 
-❗Your user profile must also have an ssh public and private key file generated in the ```~/.ssh directory``` for the selected user. And the public key must be set for the selected user in the GitHub repository before attempting to connect to your GitHub repository from IBM i.
+❗Your IBM i user profile must also have an ssh public and private key file generated in the ```~/.ssh directory``` for the selected user. And the public key must be set for the selected user in the GitHub repository before attempting to connect to your GitHub repository from IBM i.
 
 ## Scenario 1 - Recommended Brand New Repo Setup and Connection to IBM i
 Normally we recommend the following repository GitHub setup:
