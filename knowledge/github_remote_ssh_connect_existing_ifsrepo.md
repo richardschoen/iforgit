@@ -1,6 +1,6 @@
 # One time Github remote set up for local IFS repository
 
-## Recommended Repo Setup and Connection to IBM i
+## Recommended New Repo Setup and Connection to IBM i
 Normally we recommend the following repository GitHub setup:
 - Create Github repository. 
 - Clone the repository to the IFS directory. 
@@ -24,7 +24,7 @@ IFORGIT/SRCTOGIT SRCFILE(LIBNAME/QRPGLESRC)
                  COMMITOPT(*COMMITSYNC)             
                  COMMENT(*DATEUSER)
 ```
-# Connecting an existing Local IFS Repository to GitHub
+## Connecting an existing Local IFS Repository to GitHub
 These are the steps to connect an existing local IFS based repository to a GitHub site and push the contents.   
 
 This assumes your local Git repository was created before the remote repository.   
