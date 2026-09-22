@@ -1,7 +1,7 @@
 # One time Github remote set up for local IFS repository
-There are two ways to connect a GitHub repos to the IFS repo for use with iForGit:
+There are two ways to connect a GitHub repository to the IFS repo for use with iForGit:
 - Scenario 1: You have a brand new GitHub repo and you want to connect it to IBM i before exporting source from your IBM i source files.
-- Scenario 2: You have a brand new GitHub repo and you want to connect it to an existing IFS based Git repository. You were keeping your Git repos local in the IFS and are now starting to connect them to GitHub as you evolve.
+- Scenario 2: You have a brand new GitHub repo and you want to connect it to an existing IFS based Git repository. You were keeping your Git repos local in the IFS and are now starting to connect them to GitHub as you evolve to start using GitHub.    
 
 ❗Your user profile must also have an ssh public and private key file generated in the ```~/.ssh directory``` for the selected user. And the public key must be set for the selected user in the GitHub repository before attempting to connect to your GitHub repository from IBM i.
 
@@ -29,8 +29,10 @@ IFORGIT/SRCTOGIT SRCFILE(LIBNAME/QRPGLESRC)
                  COMMITOPT(*COMMITSYNC)             
                  COMMENT(*DATEUSER)
 ```
+If the commit succeeds, all is good. If needed reach out to MobiGoGo support to review your set up.
+
 ## Scenario 2 - Connecting an existing Local IFS Repository to GitHub
-These are the steps to connect an existing local IFS based repository to a GitHub site and push the existing contents and history.   
+These are the steps to connect an existing local IFS based repository to a GitHub site and push the existing contents and Git history.   
 
 This assumes your local Git repository was created before the remote repository.   
 
@@ -42,7 +44,7 @@ Start QShell session or go to SSH terminal bash prompt.
 Change to Git repository directory.    
 ```cd /gitrepos/libname```  
  
-Add remote origin for repository. This would typically be the URL to your remote repo along with Github user and password info.   
+Add remote origin SSH URL for repository (Can find in GitHub). This would typically be the URL to your remote repo. For SSH always use: git@github.com as the user. GitHub knows your SSH public and private keys based on how you set them up on GitHub and the IBM i.     
 
 ```git remote add origin git@github.com:githubsiteprofile/githubrepo.git```.  
 
