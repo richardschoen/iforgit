@@ -1,5 +1,5 @@
 # One time Github remote set up for local IFS repository
-There are two ways to connect a GitHub repos to the IFS repo:
+There are two ways to connect a GitHub repos to the IFS repo for use with iForGit:
 - Scenario 1: You have a brand new GitHub repo and you want to connect it to IBM i before exporting source from your IBM i source files.
 - Scenario 2: You have a brand new GitHub repo and you want to connect it to an existing IFS based Git repository. You were keeping your Git repos local in the IFS and are now starting to connect them to GitHub as you evolve.
 
