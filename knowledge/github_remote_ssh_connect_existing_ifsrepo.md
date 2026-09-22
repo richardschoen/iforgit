@@ -41,8 +41,8 @@ Add remote origin for repository. This would typically be the URL to your remote
 
 ```git remote add origin git@github.com:githubsiteprofile/githubrepo.git```.  
 
-Example site:   
-```git remote add origin git@github.com:richardschoen/iforgit.git```.  
+Example site names gittest921 on site, richardschoen:   
+```git remote add origin git@github.com:richardschoen/gittest921.git```.  
 
 ❗  You have to do the following steps to rename the ```master``` branch that gets created automatically by iForgit when it first calls the git init command to create the rep. We will rename the repo from ```master``` to ```main``` which is now the GitHub default.  
 
