@@ -11,7 +11,7 @@ Normally we recommend the following repository GitHub setup:
 - Clone the repository to the IFS directory.    
 ```
 cd /gitrepos
-git clone git@github.com:githubsiteprofile/githubrepo.git
+git clone git@github.com:yourgithubreposite/libname.git
 ```
 - Make a source member change in selected library.
 - Run the GE PDM option or SRCTOGIT command with the *COMMITSYNC option
@@ -46,7 +46,7 @@ Change to Git repository directory.
  
 Add remote origin SSH URL for repository (Can find in GitHub). This would typically be the URL to your remote repo. For SSH always use: git@github.com as the user. GitHub knows your SSH public and private keys based on how you set them up on GitHub and the IBM i.     
 
-```git remote add origin git@github.com:githubsiteprofile/libname.git```.  
+```git remote add origin git@github.com:yourgithubreposite/libname.git```.  
 
 Example site named ```libname``` on site, richardschoen:   
 ```git remote add origin git@github.com:richardschoen/libname.git```.  
@@ -85,7 +85,7 @@ In case you want to look at your ```.git/config``` file within your repository w
         logallrefupdates = true
         ignorecase = true
 [remote "origin"]
-        url = git@github.com:richardschoen/libname.git
+        url = git@github.com:yourgitreposite/libname.git
         fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "main"]
         remote = origin
