@@ -51,7 +51,7 @@ Add remote origin SSH URL for repository (Can find in GitHub). This would typica
 Example site names gittest921 on site, richardschoen:   
 ```git remote add origin git@github.com:richardschoen/gittest921.git```.  
 
-❗  You have to do the following steps to rename the ```master``` branch that gets created automatically by IBM I and iForgit when it first calls the ```git init``` command to create the repo on the IFS. We will rename the repo from ```master``` to ```main``` which is now the GitHub default.  
+❗  You have to do the following steps to rename the ```master``` branch that gets created automatically by IBM i and iForgit when it first calls the ```git init``` command to create the repo on the IFS. We will rename the repo from ```master``` to ```main``` which is now the GitHub default.  
 
 **The branch name change thing is a change made by GitHub and other sites to use "main" as default branch instead of "master" a few years back.**
 
