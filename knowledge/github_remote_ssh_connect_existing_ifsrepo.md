@@ -1,6 +1,10 @@
 # One time Github remote set up for local IFS repository
+There are two ways to connect a GitHub repos to the IFS repo:
+- Scenario 1: You have a brand new GitHub repo and you want to connect it to IBM i before exporting source from your IBM i source files.
+- Scenario 2: You have a brand new GitHub repo and you want to connect it to an existing IFS based Git repository. You were keeping your Git repos local in the IFS and are now starting to connect them to GitHub as you evolve.
 
-## Recommended New Repo Setup and Connection to IBM i
+
+## Scenario 1 - Recommended Brand New Repo Setup and Connection to IBM i
 Normally we recommend the following repository GitHub setup:
 - Create Github repository. 
 - Clone the repository to the IFS directory. 
@@ -24,7 +28,7 @@ IFORGIT/SRCTOGIT SRCFILE(LIBNAME/QRPGLESRC)
                  COMMITOPT(*COMMITSYNC)             
                  COMMENT(*DATEUSER)
 ```
-## Connecting an existing Local IFS Repository to GitHub
+## Scenario 2 - Connecting an existing Local IFS Repository to GitHub
 These are the steps to connect an existing local IFS based repository to a GitHub site and push the contents.   
 
 This assumes your local Git repository was created before the remote repository.   
@@ -65,6 +69,6 @@ git fetch origin
 git merge origin/main --allow-unrelated-histories
 git push --set-upstream origin main
 ```
-
+## Your GitHub and local IFS repositories should now be connected
 ❗All other subsequent pushes to remote can just use:  ```git push``` or ```*COMMITSYNC``` on all iForGit Commands
 
