@@ -84,7 +84,7 @@ git merge origin/main --allow-unrelated-histories
 git push --set-upstream origin main
 ```
 ## Your GitHub and local IFS repositories should now be connected
-❗All other subsequent pushes to remote can just use:  ```git push``` or ```*COMMITSYNC``` on all iForGit Commands.    
+❗All other subsequent source export and pushes to remote GitHub the selected repository can just use:  ```git push``` or ```*COMMITSYNC``` on all iForGit Commands such as: ```LIBSRCEXP```, ```SRCTOGIT```, ```SRCFRMGIT```.    
 
  **If needed reach out to MobiGoGo support to review your set up.**
 
