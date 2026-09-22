@@ -3,11 +3,12 @@ There are two ways to connect a GitHub repos to the IFS repo:
 - Scenario 1: You have a brand new GitHub repo and you want to connect it to IBM i before exporting source from your IBM i source files.
 - Scenario 2: You have a brand new GitHub repo and you want to connect it to an existing IFS based Git repository. You were keeping your Git repos local in the IFS and are now starting to connect them to GitHub as you evolve.
 
+❗Your user profile must also have an ssh public and private key file generated in the ```~/.ssh directory``` for the selected user. And the public key must be set for the selected user in the GitHub repository before attempting to connect to your GitHub repository from IBM i.
 
 ## Scenario 1 - Recommended Brand New Repo Setup and Connection to IBM i
 Normally we recommend the following repository GitHub setup:
-- Create Github repository. 
-- Clone the repository to the IFS directory. 
+- Create Github repository. (Use IBM i library name if possible).    
+- Clone the repository to the IFS directory.    
 ```
 cd /gitrepos
 git clone git@github.com:githubsiteprofile/githubrepo.git
@@ -29,7 +30,7 @@ IFORGIT/SRCTOGIT SRCFILE(LIBNAME/QRPGLESRC)
                  COMMENT(*DATEUSER)
 ```
 ## Scenario 2 - Connecting an existing Local IFS Repository to GitHub
-These are the steps to connect an existing local IFS based repository to a GitHub site and push the contents.   
+These are the steps to connect an existing local IFS based repository to a GitHub site and push the existing contents and history.   
 
 This assumes your local Git repository was created before the remote repository.   
 
@@ -51,8 +52,6 @@ Example site names gittest921 on site, richardschoen:
 ❗  You have to do the following steps to rename the ```master``` branch that gets created automatically by iForgit when it first calls the git init command to create the rep. We will rename the repo from ```master``` to ```main``` which is now the GitHub default.  
 
 **The branch name change thing is a change made by GitHub and other sites to use "main" as default branch instead of "master" a few year back.**
-
-❗Your user profile must also have an ssh public and private key file generated in the ```~/.ssh directory``` for the selected user. And the public key must be set for the selected user in the GitHub repository.
 
 Check to see if your your repo branch is master or main:
 ```git status```. 
