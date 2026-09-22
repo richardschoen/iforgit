@@ -46,10 +46,10 @@ Change to Git repository directory.
  
 Add remote origin SSH URL for repository (Can find in GitHub). This would typically be the URL to your remote repo. For SSH always use: git@github.com as the user. GitHub knows your SSH public and private keys based on how you set them up on GitHub and the IBM i.     
 
-```git remote add origin git@github.com:githubsiteprofile/githubrepo.git```.  
+```git remote add origin git@github.com:githubsiteprofile/libname.git```.  
 
-Example site names gittest921 on site, richardschoen:   
-```git remote add origin git@github.com:richardschoen/gittest921.git```.  
+Example site named ```libname``` on site, richardschoen:   
+```git remote add origin git@github.com:richardschoen/libname.git```.  
 
 ❗  You have to do the following steps to rename the ```master``` branch that gets created automatically by IBM i and iForgit when it first calls the ```git init``` command to create the repo on the IFS. We will rename the repo from ```master``` to ```main``` which is now the GitHub default.  
 
