@@ -50,29 +50,33 @@ SETLIBREPO LIBRARY(BOBS1)
            IFSREPODIR('/home/BOB/gitrepos/BOBS1')        
            ENABLEGIT(*YES)                                        
 ```
-This command sets the GITENABLED and GITREPODIR values in your library.
+This command sets the GITENABLED and GITREPODIR values in your library. (Run one time).   
 
-Export all source to your new git repo. (Repo auto-created)
-LIBSRCEXP LIBRARY(RICHARDS1)        
-          STARTDATE(*ALL)           
+### First time export all source to your new git repo. (Repo auto-created)
+```
+LIBSRCEXP LIBRARY(RICHARDS1) STARTDATE(*ALL)           
+```
 
-You can see your repo in this directory via WRKLNK
-WRKLNK  OBJ('/home/richards/gitrepos/richards1')
+### You can see your repo and exported source in the Git repository directory via WRKLNK
+```
+WRKLNK  OBJ('/home/BOB/gitrepos/BOBS1')
+```
 
-Doing your first edit and commit
+### Doing your first edit and commit
 
-WRKMBRPDM. 
+Go to PDM to work with a source file:   
+```WRKMBRPDM```. 
 
-Edit a CL or RPGLE source member. 
+Edit a CL or RPGLE source member and save it.  
 
-Use PDM option GE to export changes to your Git repository
+Use PDM option ```GE``` to export changes to your Git repository. (F4 prompt if desired to see parameters).   
 
-Use PDM option GE to import last member from Git repository.
+Use PDM option ```GI``` to import last member from Git repository and overlay existing local copy.
 
-Use PDM option GV to view the Git history and view or restore a source member from repo.
+Use PDM option ```GV``` to view the Git history and view or restore a source member from repo.
 
+That concludes your first test of iForGFit. 
 
+To learn more please reach out to MobiGoGo LLC. 
 
-
-
-
+We are constantly adding new features and looking forward to your input. 
