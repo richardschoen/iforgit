@@ -33,18 +33,18 @@ Normally you can create these options on your system, but PUB400 locks things do
 ### Start up PDM
 ```
 STRPDM
-
-Take Option - 9. Work with user-defined options 
 ```
+Take Option - 9. Work with user-defined options 
+
 Set user defined options file:
-File: ```QAUOOPTGIT```   
-Library: ```IFORGIT```    
-Member: ```QAUOOPTGIT```
+File: ```QAUOOPTGIT```      
+Library: ```IFORGIT```             
+Member: ```QAUOOPTGIT```     
 
 ### Set up a git repository for your library
-This example uses a user library named ```BOBS1```.   
+This example uses a user named ```BOB``` and library named ```BOBS1```.   
 The repo will get created in a directory in BOBs home dir named ```/home/BOB/gitrepos/BOBS1```.   
-The directory will get auto-created during first export.
+The IFS repository directory will get auto-created during first export.
 ```
 SETLIBREPO LIBRARY(BOBS1)                                     
            IFSREPODIR('/home/BOB/gitrepos/BOBS1')        
@@ -75,8 +75,12 @@ Use PDM option ```GI``` to import last member from Git repository and overlay ex
 
 Use PDM option ```GV``` to view the Git history and view or restore a source member from repo.
 
-That concludes your first test of iForGFit. 
+**That concludes your first basic test of iForGFit.**
 
-To learn more please reach out to MobiGoGo LLC. 
+To learn more or discuss your scenario please reach out to MobiGoGo LLC. 
+Email: richard@mobigogo.net
+Web: https://www.iforgit.com 
 
-We are constantly adding new features and looking forward to your input. 
+Every shop has very different source versioning and deployment needs. Feel free to reach out to discuss your specific scenario.
+
+
