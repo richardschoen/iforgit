@@ -77,10 +77,14 @@ Use PDM option ```GV``` to view the Git history and view or restore a source mem
 
 **That concludes your first basic test of iForGFit.**
 
+❗iForGit CL commands also work well with RDI and VS Code.   
+
 To learn more or discuss your scenario please reach out to MobiGoGo LLC. 
 Email: richard@mobigogo.net
 Web: https://www.iforgit.com 
 
-Every shop has very different source versioning and deployment needs. Feel free to reach out to discuss your specific scenario.
+Every shop has very different source versioning and deployment needs. Feel free to reach out to discuss your specific scenario.  
+
+
 
 
