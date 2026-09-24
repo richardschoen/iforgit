@@ -80,7 +80,7 @@ Use PDM option ```GV``` to view the Git history and view or restore a source mem
 
 ❗iForGit CL commands also work well with RDI and VS Code.   
 
-To learn more or discuss your scenario please reach out to MobiGoGo LLC. 
+To learn more or discuss your scenario please reach out to MobiGoGo LLC.  
 Email: richard@mobigogo.net    
 Web: https://www.iforgit.com   
 
