@@ -54,8 +54,9 @@ This command sets the GITENABLED and GITREPODIR data area values in your library
 
 ### First time export all source to your new git repo. (Repo auto-created)
 ```
-LIBSRCEXP LIBRARY(RICHARDS1) STARTDATE(*ALL)           
+LIBSRCEXP LIBRARY(BOBS1) STARTDATE(*ALL)           
 ```
+This will create the Git repository and export to the IFS repo set in the previous step.  
 
 ### You can see your repo and exported source in the Git repository directory via WRKLNK
 ```
