@@ -50,7 +50,7 @@ SETLIBREPO LIBRARY(BOBS1)
            IFSREPODIR('/home/BOB/gitrepos/BOBS1')        
            ENABLEGIT(*YES)                                        
 ```
-This command sets the GITENABLED and GITREPODIR values in your library. (Run one time).   
+This command sets the GITENABLED and GITREPODIR data area values in your library. (Run one time).   
 
 ### First time export all source to your new git repo. (Repo auto-created)
 ```
