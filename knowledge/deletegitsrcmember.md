@@ -5,6 +5,7 @@ The steps would be:
 - Remove the source member from your Git repository.
 - Delete the source member from the source file using PDM option 4 or using RDI or VS Code.
 
+## Removing member using manual git sequence from SSH or PASE 
 For understanding how Git would do this, the general manual Git sequence for deleting a source member from a repository is something like this:
 ```
 # Remove the member from the local IFS repository
@@ -16,7 +17,7 @@ git push
 ```
 After removing the entry from your Git repository you can delete your source member from your library via PDM option 4 or from RDI or VS Code source member listing.
 
-# Sample using the GITCMD CL command for removing source member from Local Git repository
+## Sample using the GITCMD CL command for removing source member from Local Git repository
 This shows the above Git sample delete sequence accomplished using the GITCMD CL command from iForGit.   
 
 This example does a remove/delete from the local Git repository in the IFS only and displays the results.
@@ -39,7 +40,7 @@ IFORGIT/GITCMD IFSREPODIR(*LIBREPODTAARA)
 
 After removing the entry from your Git repository you can delete your source member from your library via PDM option 4 or from RDI or VS Code source member listing.
 
-# Creating a PDM option for removing source member from local IFS Git repository only.
+## Creating a PDM option for removing source member from local IFS Git repository only.
 This is an example ```PDM``` option for removing a source member. You can create a similar user action in ```RDI``` or ```VS Code``` as well if needed. We suggest naming the PDM option: ```RM``` for remove or ```DL``` for delete. Use your own discretion for naming.
 
 This example does a remove/delete from the local Git repository in the IFS only and displays the results. If there happens to be a remote repository connected, the results will sync to the remote the next time a ```git push``` is done.
@@ -52,7 +53,7 @@ IFORGIT/GITCMD IFSREPODIR(*LIBREPODTAARA)
 ```
 After removing the entry from your Git repository you can delete your source member from your library via PDM option 4 or from RDI or VS Code source member listing.
 
-# Creating a PDM option for removing source member from local IFS Git repository and syncing the removal to a remote repo
+## Creating a PDM option for removing source member from local IFS Git repository and syncing the removal to a remote repo
 This is an example ```PDM``` option for removing a source member. You can create a similar user action in ```RDI``` or ```VS Code``` as well if needed. We suggest naming the PDM option: ```RM``` for remove or ```DL``` for delete. Use your own discretion for naming.
 
 This example does a remove/delete from the local Git repository in the IFS only and syncs the results to the remote Git repository if you are using a remote Git repo.
