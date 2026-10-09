@@ -17,7 +17,8 @@ git push
 After removing the entry from your Git repository you can delete your source member from your library via PDM option 4 or from RDI or VS Code source member listing.
 
 # Sample using the GITCMD CL command for removing source member from Local Git repository
-This shows the above sample accomplished using the GITCMD CL command from iForGit.   
+This shows the above Git sample delete sequence accomplished using the GITCMD CL command from iForGit.   
+
 This example does a remove/delete from the local Git repository in the IFS only and displays the results.
 ```
 IFORGIT/GITCMD IFSREPODIR(*LIBREPODTAARA)                      
