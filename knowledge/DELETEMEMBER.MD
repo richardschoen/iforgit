@@ -11,7 +11,7 @@ For understanding how Git would do this, the general manual Git sequence for del
 git rm /gitrepos/gittest123/qrpglesrc/member1.rpgle
 # Commit the delete to the repository
 git commit -m "Remove member1.rpgle"
-# Push to remote repository to complete the delete
+# Push to remote repository to complete the delete if you are using a remote Git repo.
 git push 
 ```
 After removing the entry from your Git repository you can delete your source member from your library via PDM option 4 or from RDI or VS Code source member listing.
