@@ -40,7 +40,7 @@ IFORGIT/GITCMD IFSREPODIR(*LIBREPODTAARA)
 After removing the entry from your Git repository you can delete your source member from your library via PDM option 4 or from RDI or VS Code source member listing.
 
 # Creating a PDM option for removing source member from local IFS Git repository only.
-This is an example ```PDM``` option for removing a source member. You can create a similar user action in ```RDI``` or ```VS Code``` as well if needed.   
+This is an example ```PDM``` option for removing a source member. You can create a similar user action in ```RDI``` or ```VS Code``` as well if needed. We suggest naming the PDM option: ```RM``` for remove or ```DL``` for delete. Use your own discretion for naming.
 
 This example does a remove/delete from the local Git repository in the IFS only and displays the results. If there happens to be a remote repository connected, the results will sync to the remote the next time a ```git push``` is done.
 ```
@@ -53,7 +53,7 @@ IFORGIT/GITCMD IFSREPODIR(*LIBREPODTAARA)
 After removing the entry from your Git repository you can delete your source member from your library via PDM option 4 or from RDI or VS Code source member listing.
 
 # Creating a PDM option for removing source member from local IFS Git repository and syncing the removal to a remote repo
-This is an example ```PDM``` option for removing a source member. You can create a similar user action in ```RDI``` or ```VS Code``` as well if needed.
+This is an example ```PDM``` option for removing a source member. You can create a similar user action in ```RDI``` or ```VS Code``` as well if needed. We suggest naming the PDM option: ```RM``` for remove or ```DL``` for delete. Use your own discretion for naming.
 
 This example does a remove/delete from the local Git repository in the IFS only and syncs the results to the remote Git repository if you are using a remote Git repo.
 ```
