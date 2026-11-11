@@ -1,5 +1,6 @@
 # iForGit Simple Source Management CL Commands
-This document is a shortcut getting started document for using the simple source management commands in iForGit. The simple source managemenr commands can be used to do local source checkouts between libraries for development purposes with or without using Git commands. Sometimes it's easier for a development team to start with something like simple source checkout/checkin and creating snapshots prior to implementing Git for version control. These commands can still be used once Git has been implemented as well to checkout/checkin source between development and production libraries.
+This document is a shortcut getting started document for using the simple source management commands in iForGit. The simple source management commands can be used to do local source checkouts between libraries for development purposes with or without using Git commands.  
+Sometimes it's easier for a development team to start with something like simple source checkout/checkin and creating snapshots prior to implementing Git for version control. These commands can still be used once Git has been implemented as well to checkout/checkin source between development and production libraries.
 
 Visit: https://www.iforgit.com to request a demo.   
 
@@ -12,7 +13,7 @@ The simple source checkout command **MBRCHKO** can be used to check out and copy
 #### Source checkin - MBRCHKI
 The simple source checkin command **MBRCHKI** can be used to check in and copy a source member from a development source location to the production library. The development source member can optionally be removed from the development source after being worked on in the developer library after it's been checked in to production if no further work will be done on the source. A snapshot of the development source member is made prior to checkin. And if the production source member is replaced during checkin it also gets snapshotted before checkin. Snapshot archive copies are auto-named (Mxxxxxxxxx) and created in the GITSRCARC source physical file located in the IFORGIT or other library. An audit log entry is also placed into the GITSRCARCP file in the IFORGIT library. The archive source member text also holds the original source member information.    
 
-## iForgit Simple Source Management CL Commands
+## iForGit Simple Source Management CL Commands
 
 ### MBRARC - Take source member archive snapshot to source archive file
 This CL command can be used to quickly grab a snapshot copy of any source member and place it into the source archive source file IFORGIT/GITSRCARC or other custom archive source file using an automatically named source member.
