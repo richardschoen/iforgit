@@ -28,7 +28,11 @@ The following example snapshots a source member named MYSOURCE1 to the IFORGIT/G
 ``` 
 IFORGIT/MBRARC SRCFILE(QGPL/QRPGLESRC)    
         SRCMBR(MYSOURCE1)          
-        ARCSRCFILE(*DEFAULT)       
+        ARCSRCFILE(*DEFAULT)
+        CMTBEFORE(*NO)     
+        COMMITOPT(*COMMIT) 
+        COMMENT(*DATEUSER) 
+        CHKRCDLEN(*NO)           
 ```
 
 #### MBRARC command parms  
@@ -40,6 +44,30 @@ IFORGIT/MBRARC SRCFILE(QGPL/QRPGLESRC)
 **ARCSRCFILE** - The archive source file to capture source member to. ```*DEFAULT``` captures the source members to the IFORGIT/GITSRCARC archive source file with a unique member name. Ex: ```M000000001```.   
 The source file value can be changed if desired to place GITSRCARC in a different library by changing the ```DFTARCFILE``` and ```DFTARCLIB``` data area values and creating the new archive source file in the appropriate library via the CRTSRCPF command. 
 ❗The archive source file should be created with ```198``` column record length or more if possible to accomodate your longest source file members without truncation.
+
+**CMTBEFORE** - Commit source member to its associated repo before making the snapshot copy of source member to the source physical file specified in ```ARCSRCFILE```.
+
+**COMMITOPT** - Commit changes after source member export to IFS. Default: *COMMIT
+ 
+Options
+*COMMIT - Export source member to local git repository directory and commit to local repository in IFS. Use this if you are leaving git changes in the IFS or plan to push them to a remote repository later. This is the default option.
+ 
+*COMMITSYNC - Export source member to local git repository directory and commit to local repository in IFS. Then pull and merge any remote changes and push them back to the repository. Use this option normally for a full git edit and version life-cycle where the local copies stay in sync with the remote repository at all times.
+ 
+*COMMITPUSH - Export source member to local git repository directory and commit to local repository in IFS. Then push changes to remote repository. This option only pushes changes, but does not pull and merge remote changes with the local repository.
+ 
+*GITADD - Export source member to local git repository directory and add/stage to the commit list in local IFS repository. Use this if you want to stage a file for a future commit that will happen later. Good for staging multiple files for a single commit later by the GITCMD CL command with a commit option. Example commit: GITCMD CMDOPTS('-commit -m "My Commit of Many Staged Files')    
+ 
+*NOCOMMIT - Use this option if just simply exporting source member with no intent to commit to git immediately.
+
+**COMMENT** -  Commit comment. Default: *DATEUSER
+ 
+Enter a commit comment or special value.
+ 
+*DATEUSER - Write date info and user ID into commit comment automatically.
+                                                                  
+ **CHKRCDLEN** - Make sure record length matches. Default - *NO     
+ ``` This parm is not implemented yet, so don't use it currently. It will throw a non-implemented error.```
 
 ### MBRCHKO - Check out source member from production source location to developer library
 This CL command can be used to make a copy of a production source member to a developer library for development.
@@ -60,7 +88,11 @@ The following example checks out a source member named MBR001R from source file 
                  SKIPEXIST(*NO)                        
                  RMVPRDCOPY(*NO)                       
                  ARCSRCFILE(*DEFAULT)                  
-                 ARCHIVE(*YES)                         
+                 ARCHIVE(*YES)
+                 CMTBEFORE(*NO)     
+                 COMMITOPT(*COMMIT) 
+                 COMMENT(*DATEUSER) 
+                 CHKRCDLEN(*NO)                                 
 ```
 
 #### MBRCHKO command parms  
@@ -104,6 +136,30 @@ Should an archive version of the prod and dev source members get created before 
 **ARCSRCFILE** - The archive source file to capture source member to. ```*DEFAULT``` captures the source members to the IFORGIT/GITSRCARC archive source file with a unique member name. Ex: ```M000000001```.   
 The source file value can be changed if desired to place GITSRCARC in a different library by changing the ```DFTARCFILE``` and ```DFTARCLIB``` data area values and creating the new archive source file in the appropriate library via the CRTSRCPF command. 
 ❗The archive source file should be created with ```198``` column record length or more if possible to accomodate your longest source file members without truncation.
+
+**CMTBEFORE** - Commit source member to its associated repo before making the snapshot copy of source member to the source physical file specified in ```ARCSRCFILE```.
+
+**COMMITOPT** - Commit changes after source member export to IFS. Default: *COMMIT
+ 
+Options
+*COMMIT - Export source member to local git repository directory and commit to local repository in IFS. Use this if you are leaving git changes in the IFS or plan to push them to a remote repository later. This is the default option.
+ 
+*COMMITSYNC - Export source member to local git repository directory and commit to local repository in IFS. Then pull and merge any remote changes and push them back to the repository. Use this option normally for a full git edit and version life-cycle where the local copies stay in sync with the remote repository at all times.
+ 
+*COMMITPUSH - Export source member to local git repository directory and commit to local repository in IFS. Then push changes to remote repository. This option only pushes changes, but does not pull and merge remote changes with the local repository.
+ 
+*GITADD - Export source member to local git repository directory and add/stage to the commit list in local IFS repository. Use this if you want to stage a file for a future commit that will happen later. Good for staging multiple files for a single commit later by the GITCMD CL command with a commit option. Example commit: GITCMD CMDOPTS('-commit -m "My Commit of Many Staged Files')    
+ 
+*NOCOMMIT - Use this option if just simply exporting source member with no intent to commit to git immediately.
+
+**COMMENT** -  Commit comment. Default: *DATEUSER
+ 
+Enter a commit comment or special value.
+ 
+*DATEUSER - Write date info and user ID into commit comment automatically.
+                                                                  
+ **CHKRCDLEN** - Make sure record length matches. Default - *NO     
+ ``` This parm is not implemented yet, so don't use it currently. It will throw a non-implemented error.```
 
 ### MBRCHKI - Check in source member from developer source location to production library
 This CL command can be used to make a copy of a production source member to a developer library for development.
@@ -160,6 +216,30 @@ Should an archive version of the prod and dev source members get created before 
 **ARCSRCFILE** - The archive source file to capture source member to. ```*DEFAULT``` captures the source members to the IFORGIT/GITSRCARC archive source file with a unique member name. Ex: ```M000000001```.   
 The source file value can be changed if desired to place GITSRCARC in a different library by changing the ```DFTARCFILE``` and ```DFTARCLIB``` data area values and creating the new archive source file in the appropriate library via the CRTSRCPF command. 
 ❗The archive source file should be created with ```198``` column record length or more if possible to accomodate your longest source file members without truncation.
+
+**CMTBEFORE** - Commit source member to its associated repo before making the snapshot copy of source member to the source physical file specified in ```ARCSRCFILE```.
+
+**COMMITOPT** - Commit changes after source member export to IFS. Default: *COMMIT
+ 
+Options
+*COMMIT - Export source member to local git repository directory and commit to local repository in IFS. Use this if you are leaving git changes in the IFS or plan to push them to a remote repository later. This is the default option.
+ 
+*COMMITSYNC - Export source member to local git repository directory and commit to local repository in IFS. Then pull and merge any remote changes and push them back to the repository. Use this option normally for a full git edit and version life-cycle where the local copies stay in sync with the remote repository at all times.
+ 
+*COMMITPUSH - Export source member to local git repository directory and commit to local repository in IFS. Then push changes to remote repository. This option only pushes changes, but does not pull and merge remote changes with the local repository.
+ 
+*GITADD - Export source member to local git repository directory and add/stage to the commit list in local IFS repository. Use this if you want to stage a file for a future commit that will happen later. Good for staging multiple files for a single commit later by the GITCMD CL command with a commit option. Example commit: GITCMD CMDOPTS('-commit -m "My Commit of Many Staged Files')    
+ 
+*NOCOMMIT - Use this option if just simply exporting source member with no intent to commit to git immediately.
+
+**COMMENT** -  Commit comment. Default: *DATEUSER
+ 
+Enter a commit comment or special value.
+ 
+*DATEUSER - Write date info and user ID into commit comment automatically.
+                                                                  
+ **CHKRCDLEN** - Make sure record length matches. Default - *NO     
+ ``` This parm is not implemented yet, so don't use it currently. It will throw a non-implemented error.```
 
 ## iForGit Simple Source Management Command PDM Options  
 These options can be set up manually and are also shipped with iForGit in the file: ```IFORGIT/QAUOOPTGIT```
