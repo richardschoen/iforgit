@@ -47,7 +47,7 @@ The source file value can be changed if desired to place GITSRCARC in a differen
 
 **CMTBEFORE** - Commit source member to its associated repo before making the snapshot copy of source member to the source physical file specified in ```ARCSRCFILE```.
 
-**COMMITOPT** - Commit changes after source member export to IFS. Default: *COMMIT
+**COMMITOPT** - Git commit option. Default: *COMMIT
  
 Options
 *COMMIT - Export source member to local git repository directory and commit to local repository in IFS. Use this if you are leaving git changes in the IFS or plan to push them to a remote repository later. This is the default option.
@@ -137,9 +137,9 @@ Should an archive version of the prod and dev source members get created before 
 The source file value can be changed if desired to place GITSRCARC in a different library by changing the ```DFTARCFILE``` and ```DFTARCLIB``` data area values and creating the new archive source file in the appropriate library via the CRTSRCPF command. 
 ❗The archive source file should be created with ```198``` column record length or more if possible to accomodate your longest source file members without truncation.
 
-**CMTBEFORE** - Commit source member to its associated repo before making the snapshot copy of source member to the source physical file specified in ```ARCSRCFILE```.
+**CMTBEFORE** - Commit from production source member to its associated repo before making the snapshot copy of source member to the source physical file specified in ```ARCSRCFILE``` and before copying to the developer checkout source member specified in the ```TOSRCFILE``` and ```TOSRCMBR``` parameters.
 
-**COMMITOPT** - Commit changes after source member export to IFS. Default: *COMMIT
+**COMMITOPT** - Git commit option. Default: *COMMIT
  
 Options
 *COMMIT - Export source member to local git repository directory and commit to local repository in IFS. Use this if you are leaving git changes in the IFS or plan to push them to a remote repository later. This is the default option.
@@ -179,7 +179,11 @@ IFORGIT/MBRCHKI SRCFILE(DEVSOURCE1/QRPGLESRC)
                 REPLACE(*NO)                   
                 RMVDEVCOPY(*NO)                
                 ARCSRCFILE(*DEFAULT)           
-                ARCHIVE(*YES)                  
+                ARCHIVE(*YES)
+                CMTAFTER(*NO)     
+                COMMITOPT(*COMMIT) 
+                COMMENT(*DATEUSER) 
+                CHKRCDLEN(*NO)                                               
 ```
 
 #### MBRCHKI command parms  
@@ -217,9 +221,9 @@ Should an archive version of the prod and dev source members get created before 
 The source file value can be changed if desired to place GITSRCARC in a different library by changing the ```DFTARCFILE``` and ```DFTARCLIB``` data area values and creating the new archive source file in the appropriate library via the CRTSRCPF command. 
 ❗The archive source file should be created with ```198``` column record length or more if possible to accomodate your longest source file members without truncation.
 
-**CMTBEFORE** - Commit source member to its associated repo before making the snapshot copy of source member to the source physical file specified in ```ARCSRCFILE```.
+**CMTAFTER** - Commit to production source member to its associated repo after making the snapshot copy of source member to the source physical file specified in ```ARCSRCFILE``` and before copying to the production checkin source member specified in the ```TOSRCFILE``` and ```TOSRCMBR``` parameters.
 
-**COMMITOPT** - Commit changes after source member export to IFS. Default: *COMMIT
+**COMMITOPT** - Git commit option. Default: *COMMIT
  
 Options
 *COMMIT - Export source member to local git repository directory and commit to local repository in IFS. Use this if you are leaving git changes in the IFS or plan to push them to a remote repository later. This is the default option.
