@@ -17,6 +17,7 @@ Nice way to prepare for a change and ensure you have a current source member arc
 - Optionally commit to Git at the same time.
 
 ### Check out a source member with MBRCHKO
+Check out a copy of a source member from the production source to a selected developer library.
 - Take archive snapshot of member in prod source file before checkout.
 - Take archive snapshot copy of member in developer library if already there and replacing.
 - Make copy of source member to developer library. Optionally overwrite development copy if already found.
@@ -25,6 +26,7 @@ Nice way to prepare for a change and ensure you have a current source member arc
 - Optionally commit to Git during checkout.
 
 ### Check in a source member with MBRCHKI
+Check in a copy of a source member from the developer source to the selected production library when work is done.
 - Take archive snapshot of member in dev before checkin.
 - Take archive snapshot copy of member in prod library if already there and replacing.
 - Make copy of source member to prod from dev library. 
