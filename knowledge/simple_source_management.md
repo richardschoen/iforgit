@@ -9,6 +9,32 @@ The nice thing is you have options.
 
 Visit: https://www.iforgit.com to request a demo or reach out if you have questions on iForGit commands work.
 
+## Potential source member checkout workflow when changing source members
+
+### Capture a source member snapshot right now - MBRARC
+Nice way to prepare for a change and ensure you have a current source member archive snapshot.
+- Take archive snapshot of member in prod before checkout.
+- Optionally commit to Git at the same time.
+
+### Check out a source member with MBRCHKO
+- Take archive snapshot of member in prod source file before checkout.
+- Take archive snapshot copy of member in developer library if already there and replacing.
+- Make copy of source member to developer library. Optionally overwrite development copy if already found.
+- Optionally remove from production source file. 
+```(Not usually recommended but can be used when you want to guarantee nobody else has the source member)```
+- Optionally commit to Git during checkout.
+
+### Check in a source member with MBRCHKI
+- Take archive snapshot of member in dev before checkin.
+- Take archive snapshot copy of member in prod library if already there and replacing.
+- Make copy of source member to prod from dev library. 
+(Will need to overwrite prod when putting back)
+- Optionally remove from development source.
+```(Probably recommended when done with a source member and you don't want to leave the development version in dev library)```
+- Optionally commit to Git after returned to production library so the new version gets captured right away to Git.
+
+## The Simple Source Management CL command overviews
+
 #### Source member archive snapshot - MBRARC
 The simple source archive snapshot command **MBRARC** can be used to quickly grab a snapshot copy of any source member and place it into the source archive file before making changes or doing other work on the source. This is a nice way to capture a copy of an existing source member before making changes. Snapshot archive copies are auto-named (Mxxxxxxxxx) and created in the GITSRCARC source physical file located in the IFORGIT or other library. An audit log entry is also placed into the GITSRCARCP file in the IFORGIT library. The archive source member text also holds the original source member information.   
 
