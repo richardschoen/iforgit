@@ -1,8 +1,13 @@
 # iForGit Simple Source Management CL Commands
-This document is a shortcut getting started document for using the simple source management commands in iForGit. The simple source management commands can be used to do local source checkouts between libraries for development purposes with or without using Git commands.  
+This document is a shortcut getting started document for using the simple source management commands in iForGit. The simple source management commands can be used to do local source checkouts between libraries for development purposes with or without using Git commands. 
+
+If you're not quite ready to go live with Git, the commands can be a nice way to quickly capture snapshot copies of source members. And they can still be used to manage local source member checkouts between libraries once you do implement Git. 
+
 Sometimes it's easier for a development team to start with something like simple source checkout/checkin and creating snapshots prior to implementing Git for version control. These commands can still be used once Git has been implemented as well to checkout/checkin source between development and production libraries.
 
-Visit: https://www.iforgit.com to request a demo.   
+The nice thing is you have options. 
+
+Visit: https://www.iforgit.com to request a demo or reach out if you have questions on iForGit commands work.
 
 #### Source member archive snapshot - MBRARC
 The simple source archive snapshot command **MBRARC** can be used to quickly grab a snapshot copy of any source member and place it into the source archive file before making changes or doing other work on the source. This is a nice way to capture a copy of an existing source member before making changes. Snapshot archive copies are auto-named (Mxxxxxxxxx) and created in the GITSRCARC source physical file located in the IFORGIT or other library. An audit log entry is also placed into the GITSRCARCP file in the IFORGIT library. The archive source member text also holds the original source member information.   
